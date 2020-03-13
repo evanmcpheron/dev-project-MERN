@@ -1,19 +1,14 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const PostSchema = new Schema({
-    user: {
+const VideoSchema = mongoose.Schema({
+    tutorial: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'tutorial'
     },
-    text: {
-        type: String,
-        required: true
-    },
-    name: {
+    title: {
         type: String
     },
-    avatar: {
+    videoUrl: {
         type: String
     },
     likes: [
@@ -52,4 +47,4 @@ const PostSchema = new Schema({
     }
 });
 
-module.exports = Post = mongoose.model('post', PostSchema);
+module.exports = mongoose.model('video', VideoSchema);
