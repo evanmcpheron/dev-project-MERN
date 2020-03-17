@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
@@ -9,26 +9,26 @@ const Navbar = ({
     auth: { isAuthenticated, loading, isAdmin, user },
     logout
 }) => {
-    const getGreetingTime = m => {
-        var g = null; //return g
+    const getGreetingTime = time => {
+        var greeting = null; //return g
 
-        if (!m || !m.isValid()) {
+        if (!time || !time.isValid()) {
             return;
         } //if we can't find a valid or filled moment, we return.
 
         var split_afternoon = 12; //24hr time to split the afternoon
         var split_evening = 17; //24hr time to split the evening
-        var currentHour = parseFloat(m.format('HH'));
+        var currentHour = parseFloat(time.format('HH'));
 
         if (currentHour >= split_afternoon && currentHour <= split_evening) {
-            g = 'afternoon';
+            greeting = 'afternoon';
         } else if (currentHour >= split_evening) {
-            g = 'evening';
+            greeting = 'evening';
         } else {
-            g = 'morning';
+            greeting = 'morning';
         }
 
-        return g;
+        return greeting;
     };
 
     const humanizedGreeting = userName => {

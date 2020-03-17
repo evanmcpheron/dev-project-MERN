@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import React from 'react';
 
 import setAuthToken from '../utils/setAuthToken';
 import {
@@ -12,7 +11,6 @@ import {
     AUTH_ERROR,
     LOGOUT
 } from './types';
-import { Redirect } from 'react-router-dom';
 
 // LOAD USER
 export const loadUser = () => async dispatch => {

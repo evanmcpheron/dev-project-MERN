@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const VideoSchema = mongoose.Schema({
     tutorial: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'tutorial'
     },
     title: {
@@ -14,7 +14,7 @@ const VideoSchema = mongoose.Schema({
     likes: [
         {
             user: {
-                type: Schema.Types.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'users'
             }
         }
@@ -22,7 +22,7 @@ const VideoSchema = mongoose.Schema({
     comments: [
         {
             user: {
-                type: Schema.Types.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'users'
             },
             text: {
