@@ -68,25 +68,14 @@ router.post('/video/:id', auth, async (req, res) => {
             videoUrl: req.body.videoUrl
         });
 
-        // const videoID = Video.findById('5e703e235a4d7a666358da80');
+        tutorial.video.push(video);
 
-        await video.save(function(error, video) {
-            if (error) {
-                console.error(error);
-            } else {
-                tutorial.video.push(video);
-                tutorial.save(function(error, tutorial) {
-                    return res.json(tutorial);
-                });
-            }
+        await tutorial.save();
+        await video.save();
+
+        res.json({
+            tutorial
         });
-
-        // var r = new Recipe();
-
-        // r.name = 'Blah';
-        // r.ingredients.push('mongo id of ingredient');
-
-        // r.save();
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -134,5 +123,43 @@ router.post(
         }
     }
 );
+
+// @route    DELETE api/posts/comment/:id/:comment_id
+// @desc     Delete comment
+// @access   Private
+router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
+    try {
+        const video = await Video.findById(req.params.id);
+
+        // Pull out comment
+        const comment = video.comments.find(
+            comment => comment.id === req.params.comment_id
+        );
+
+        // Make sure comment exists
+        if (!comment) {
+            return res.status(404).json({ msg: 'Comment does not exist' });
+        }
+
+        // Check user
+        if (comment.user.toString() !== req.user.id) {
+            return res.status(401).json({ msg: 'User not authorized' });
+        }
+
+        // Get remove index
+        const removeIndex = video.comments
+            .map(comment => comment.user.toString())
+            .indexOf(req.user.id);
+
+        video.comments.splice(removeIndex, 1);
+
+        await video.save();
+
+        res.json(video.comments);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;
