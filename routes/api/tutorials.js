@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
+const url = require('url');
+const querystring = require('querystring');
 
 const Tutorial = require('../../models/Tutorial');
 const Video = require('../../models/Videos');
@@ -60,16 +62,31 @@ router.post('/video/:id', auth, async (req, res) => {
     try {
         const tutorial = await Tutorial.findById(req.params.id);
 
-        const newVideo = {
+        const video = new Video({
+            tutorialId: req.params.id,
             title: req.body.title,
             videoUrl: req.body.videoUrl
-        };
+        });
 
-        tutorial.video.push(newVideo);
+        // const videoID = Video.findById('5e703e235a4d7a666358da80');
 
-        await tutorial.save();
+        await video.save(function(error, video) {
+            if (error) {
+                console.error(error);
+            } else {
+                tutorial.video.push(video);
+                tutorial.save(function(error, tutorial) {
+                    return res.json(tutorial);
+                });
+            }
+        });
 
-        res.json(tutorial);
+        // var r = new Recipe();
+
+        // r.name = 'Blah';
+        // r.ingredients.push('mongo id of ingredient');
+
+        // r.save();
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -97,8 +114,7 @@ router.post(
 
         try {
             const user = await User.findById(req.user.id).select('-password');
-            const tutorial = await Tutorial.findById(req.params.id);
-            const video = await Tutorial.video.findById(req.params.id);
+            const video = await Video.findById(req.params.id);
 
             const newComment = {
                 text: req.body.text,
@@ -109,9 +125,9 @@ router.post(
 
             video.comments.unshift(newComment);
 
-            await tutorial.save();
+            await video.save();
 
-            res.json(tutorial);
+            res.json(video.comments);
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');

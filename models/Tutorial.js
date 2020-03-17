@@ -15,46 +15,8 @@ const TutorialSchema = new mongoose.Schema({
     },
     video: [
         {
-            title: {
-                type: String
-            },
-            videoUrl: {
-                type: String
-            },
-            date: {
-                type: Date,
-                default: Date.now
-            },
-            likes: [
-                {
-                    user: {
-                        type: mongoose.Schema.Types.ObjectId,
-                        ref: 'users'
-                    }
-                }
-            ],
-            comments: [
-                {
-                    user: {
-                        type: mongoose.Schema.Types.ObjectId,
-                        ref: 'users'
-                    },
-                    text: {
-                        type: String,
-                        required: true
-                    },
-                    name: {
-                        type: String
-                    },
-                    avatar: {
-                        type: String
-                    },
-                    date: {
-                        type: Date,
-                        default: Date.now
-                    }
-                }
-            ]
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'video'
         }
     ],
     date: {
@@ -63,4 +25,4 @@ const TutorialSchema = new mongoose.Schema({
     }
 });
 
-module.exports = Tutorial = mongoose.model('tutorial', TutorialSchema);
+module.exports = mongoose.model('Tutorial', TutorialSchema);

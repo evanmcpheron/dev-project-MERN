@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 
 const VideoSchema = mongoose.Schema({
-    tutorial: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'tutorial'
-    },
+    tutorialId: String,
     title: {
         type: String
     },
