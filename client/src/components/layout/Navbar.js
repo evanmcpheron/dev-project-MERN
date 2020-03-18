@@ -21,23 +21,23 @@ const Navbar = ({
         var currentHour = parseFloat(time.format('HH'));
 
         if (currentHour >= split_afternoon && currentHour <= split_evening) {
-            greeting = 'afternoon';
+            greeting = 'Afternoon';
         } else if (currentHour >= split_evening) {
-            greeting = 'evening';
+            greeting = 'Evening';
         } else {
-            greeting = 'morning';
+            greeting = 'Morning';
         }
 
         return greeting;
     };
 
     const humanizedGreeting = userName => {
-        return `Good ${getGreetingTime(moment())}, ${userName}.`;
+        return `Good ${getGreetingTime(moment())} ${userName}`;
     };
 
     const greeting = () => {
         if (user !== null && !loading) {
-            return <p>{humanizedGreeting(user.name)}</p>;
+            return <p>{humanizedGreeting(user.fName)}</p>;
         }
     };
 
@@ -45,6 +45,9 @@ const Navbar = ({
         <ul>
             <li>
                 <Link to="/tutorials">Tutorials</Link>
+            </li>
+            <li>
+                <Link to="/profiles">Developers</Link>
             </li>
             <li>
                 <p onClick={logout} href="#!">
