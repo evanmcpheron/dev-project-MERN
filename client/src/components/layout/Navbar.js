@@ -50,6 +50,11 @@ const Navbar = ({
                 <Link to="/profiles">Developers</Link>
             </li>
             <li>
+                <Link to="/dashboard">
+                    <i className="fas fa-user" /> Dashboard
+                </Link>
+            </li>
+            <li>
                 <p onClick={logout} href="#!">
                     <Link to="/">
                         <i className="fas fa-sign-out-alt"></i> Logout
@@ -69,6 +74,11 @@ const Navbar = ({
             </li>
             <li>
                 <Link to="/profiles">Developers</Link>
+            </li>
+            <li>
+                <Link to="/dashboard">
+                    <i className="fas fa-user" /> Dashboard
+                </Link>
             </li>
             <li>
                 <p onClick={logout} href="#!">
