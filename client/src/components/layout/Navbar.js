@@ -47,6 +47,9 @@ const Navbar = ({
                 <Link to="/tutorials">Tutorials</Link>
             </li>
             <li>
+                <Link to="/posts">Posts</Link>
+            </li>
+            <li>
                 <Link to="/profiles">Developers</Link>
             </li>
             <li>
@@ -71,6 +74,9 @@ const Navbar = ({
             </li>
             <li>
                 <Link to="/tutorials">Tutorials</Link>
+            </li>
+            <li>
+                <Link to="/posts">Posts</Link>
             </li>
             <li>
                 <Link to="/profiles">Developers</Link>

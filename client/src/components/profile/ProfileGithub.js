@@ -7,9 +7,40 @@ import { getGithubRepos } from '../../actions/profile';
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
     useEffect(() => {
         getGithubRepos(username);
-    }, [getGithubRepos(username)]);
+    }, [getGithubRepos]);
 
-    return <div></div>;
+    return (
+        <div>
+            <h2>Github Repos</h2>
+            {repos === null ? (
+                <Spinner />
+            ) : (
+                repos.map(repo => (
+                    <div key={repo._id}>
+                        <div>
+                            <h4>
+                                <a
+                                    href={repo.html_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {repo.name}
+                                </a>
+                            </h4>
+                            <p>{repo.desciption}</p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Stars: {repo.stargazers_count}</li>
+                                <li>Watchers: {repo.watchers_count}</li>
+                                <li>Forks: {repo.forks_count}</li>
+                            </ul>
+                        </div>
+                    </div>
+                ))
+            )}
+        </div>
+    );
 };
 
 ProfileGithub.propTypes = {

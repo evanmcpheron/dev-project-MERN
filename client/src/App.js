@@ -6,13 +6,6 @@ import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Register from './components/auth/Register';
-
-// REDUX
-import { Provider } from 'react-redux';
-import store from './store';
-import { loadUser } from './actions/auth';
-import setAuthToken from './utils/setAuthToken';
-import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Admin from './components/admin/Admin';
 import AdminRoute from './components/routing/AdminRoute';
@@ -22,6 +15,14 @@ import AddExperience from './components/profile-form/AddExperience';
 import AddEducation from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import Posts from './components/posts/Posts';
+
+// REDUX
+import { Provider } from 'react-redux';
+import store from './store';
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
+import Dashboard from './components/dashboard/Dashboard';
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -61,6 +62,11 @@ const App = () => {
                                 exact
                                 path="/dashboard"
                                 component={Dashboard}
+                            />
+                            <PrivateRoute
+                                exact
+                                path="/posts"
+                                component={Posts}
                             />
                             <PrivateRoute
                                 exact
