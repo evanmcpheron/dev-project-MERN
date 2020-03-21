@@ -190,13 +190,10 @@ router.post(
 
             const newComment = {
                 text: req.body.text,
-                fName: user.fName,
-                lName: user.lName,
+                name: user.fName + ' ' + user.lName,
                 avatar: user.avatar,
                 user: req.user.id
             };
-
-            console.log(post);
 
             post.comments.unshift(newComment);
 
