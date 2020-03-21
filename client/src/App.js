@@ -23,6 +23,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Dashboard from './components/dashboard/Dashboard';
+import Post from './components/post/Post';
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -62,6 +63,11 @@ const App = () => {
                                 exact
                                 path="/dashboard"
                                 component={Dashboard}
+                            />
+                            <PrivateRoute
+                                exact
+                                path="/post/:id"
+                                component={Post}
                             />
                             <PrivateRoute
                                 exact
