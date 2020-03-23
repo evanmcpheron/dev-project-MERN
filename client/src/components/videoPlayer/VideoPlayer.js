@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getTutorial } from '../../actions/tutorial';
 import PropTypes from 'prop-types';
 
-import VideoPlayerTwo from './src/demo/VideoPlayerTwo';
+import VideoPlayerTwo from './src/components/VideoPlayerTwo';
 
 const VideoPlayer = ({
     getTutorial,

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { deleteComment } from '../../actions/post';
 import { VideoPlayer } from '../videoPlayer/VideoPlayer';
-import VideoPlayerTwo from '../videoPlayer/src/demo/VideoPlayerTwo';
+import VideoPlayerTwo from '../videoPlayer/src/components/VideoPlayerTwo';
 
 const VideoItem = ({
     tutorialId,

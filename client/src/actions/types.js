@@ -28,3 +28,7 @@ export const GET_TUTORIALS = 'GET_TUTORIALS';
 export const GET_VIDEOS = 'GET_VIDEOS';
 export const GET_TUTORIAL = 'GET_TUTORIAL';
 export const TUTORIAL_ERROR = 'TUTORIAL_ERROR';
+
+export const ADD_TUTORIAL = 'ADD_TUTORIAL';
+export const ADD_VIDEO = 'ADD_VIDEO';
+export const DELETE_VIDEO = 'DELETE_VIDEO';

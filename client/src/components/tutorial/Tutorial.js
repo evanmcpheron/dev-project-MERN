@@ -9,7 +9,7 @@ import CommentItem from '../post/CommentItem';
 import { getTutorial } from '../../actions/tutorial';
 import VideoItem from './VideoItem';
 import { VideoPlayer } from '../videoPlayer/VideoPlayer';
-import VideoPlayerTwo from '../videoPlayer/src/demo/VideoPlayerTwo';
+import VideoPlayerTwo from '../videoPlayer/src/components/VideoPlayerTwo';
 
 const Tutorial = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
     useEffect(() => {

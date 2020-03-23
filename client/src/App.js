@@ -16,16 +16,17 @@ import AddEducation from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
+import Dashboard from './components/dashboard/Dashboard';
+import Post from './components/post/Post';
+import Tutorials from './components/tutorials/Tutorials';
+import Tutorial from './components/tutorial/Tutorial';
+import EditVideos from './components/admin/Videos';
 
 // REDUX
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
-import Dashboard from './components/dashboard/Dashboard';
-import Post from './components/post/Post';
-import Tutorials from './components/tutorials/Tutorials';
-import Tutorial from './components/tutorial/Tutorial';
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -111,6 +112,13 @@ const App = () => {
                                     exact
                                     path="/admin"
                                     component={Admin}
+                                />
+                            </PrivateRoute>
+                            <PrivateRoute>
+                                <AdminRoute
+                                    exact
+                                    path="/admin/tutorial/:id"
+                                    component={EditVideos}
                                 />
                             </PrivateRoute>
                         </Switch>
