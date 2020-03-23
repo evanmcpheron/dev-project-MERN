@@ -55,6 +55,48 @@ router.get('/', async (req, res) => {
     }
 });
 
+// @route    GET api/tutorial/:id
+// @desc     Get tutorial by ID
+// @access   Private
+router.get('/:id', async (req, res) => {
+    try {
+        const tutorial = await Tutorial.findById(req.params.id);
+
+        if (!tutorial) {
+            return res.status(404).json({ msg: 'Tutorial not found' });
+        }
+
+        res.json(tutorial);
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'Tutorial not found' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route    GET api/tutorial/video/:id
+// @desc     Get tutorial by ID
+// @access   Private
+router.get('/video/:id', async (req, res) => {
+    try {
+        const tutorial = await Tutorial.findById(req.params.id);
+
+        if (!tutorial) {
+            return res.status(404).json({ msg: 'Tutorial not found' });
+        }
+
+        res.json(tutorial.video);
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'Tutorial not found' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route    POST api/tutorial/video/:id
 // @desc     Add a video to tutorial
 // @access   Admin
@@ -62,20 +104,23 @@ router.post('/video/:id', auth, async (req, res) => {
     try {
         const tutorial = await Tutorial.findById(req.params.id);
 
-        const video = new Video({
+        const position = req.body.position;
+
+        const video = {
             tutorialId: req.params.id,
             title: req.body.title,
-            videoUrl: req.body.videoUrl
-        });
+            position: req.body.position,
+            videoUrl: req.body.videoUrl,
+            githubUrl: req.body.githubUrl
+        };
 
-        tutorial.video.push(video);
+        // tutorial.video.push(video);
+        tutorial.video.splice(position - 1, 0, video);
 
         await tutorial.save();
-        await video.save();
+        // await video.save();
 
-        res.json({
-            tutorial
-        });
+        res.json(tutorial.video);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -86,7 +131,7 @@ router.post('/video/:id', auth, async (req, res) => {
 // @desc     Comment on a tutorial
 // @access   Private
 router.post(
-    '/comment/:id',
+    '/comment/:id/:vidId',
     [
         auth,
         [
@@ -103,7 +148,8 @@ router.post(
 
         try {
             const user = await User.findById(req.user.id).select('-password');
-            const video = await Video.findById(req.params.id);
+            const tutorial = await Tutorial.findById(req.params.id);
+            const specificVideo = tutorial.video;
 
             const newComment = {
                 text: req.body.text,
@@ -112,11 +158,17 @@ router.post(
                 user: req.user.id
             };
 
-            video.comments.unshift(newComment);
+            // res.send(req.params.vidId);
 
-            await video.save();
+            for (let i = 0; i < specificVideo.length; i++) {
+                if (specificVideo[i]._id == req.params.vidId) {
+                    specificVideo[i].comments.unshift(newComment);
 
-            res.json(video.comments);
+                    await tutorial.save();
+
+                    return res.json(specificVideo[i].comments);
+                }
+            }
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');

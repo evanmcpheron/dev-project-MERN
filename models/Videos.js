@@ -8,6 +8,10 @@ const VideoSchema = mongoose.Schema({
     videoUrl: {
         type: String
     },
+    position: {
+        type: Number,
+        required: true
+    },
     likes: [
         {
             user: {

@@ -3,5 +3,6 @@ import alert from './alert';
 import auth from './auth';
 import profile from './profile';
 import post from './post';
+import tutorial from './tutorial';
 
-export default combineReducers({ alert, auth, profile, post });
+export default combineReducers({ alert, auth, profile, post, tutorial });
