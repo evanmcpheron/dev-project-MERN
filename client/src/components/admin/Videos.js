@@ -5,11 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getTutorial } from '../../actions/tutorial';
 
-const EditVideos = ({
-    getTutorial,
-    tutorial: { tutorial, loading },
-    match
-}) => {
+const Videos = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
     useEffect(() => {
         getTutorial(match.params.id);
     }, [getTutorial]);
@@ -30,7 +26,7 @@ const EditVideos = ({
     );
 };
 
-EditVideos.propTypes = {
+Videos.propTypes = {
     getTutorial: PropTypes.func.isRequired,
     tutorial: PropTypes.object.isRequired
 };
@@ -39,4 +35,4 @@ const mapStateToProps = state => ({
     tutorial: state.tutorial
 });
 
-export default connect(mapStateToProps, { getTutorial })(EditVideos);
+export default connect(mapStateToProps, { getTutorial })(Videos);

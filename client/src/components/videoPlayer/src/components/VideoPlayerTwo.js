@@ -7,13 +7,8 @@ import './range.css';
 import './App.css';
 
 import ReactPlayer from '../ReactPlayer';
-import Duration from './Duration';
-import { VideoPlayer } from '../../VideoPlayer';
 
 class VideoPlayerTwo extends Component {
-    constructor(props) {
-        super(props);
-    }
     state = {
         url: this.props.videos[0].videoUrl,
         pip: false,
@@ -87,14 +82,8 @@ class VideoPlayerTwo extends Component {
             volume,
             muted,
             loop,
-            played,
-            loaded,
-            duration,
             playbackRate,
-            pip,
-            videos,
-            currentVideo,
-            currentPosition
+            pip
         } = this.state;
         const SEPARATOR = ' · ';
 

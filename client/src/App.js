@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+// Components
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
@@ -20,7 +21,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import Post from './components/post/Post';
 import Tutorials from './components/tutorials/Tutorials';
 import Tutorial from './components/tutorial/Tutorial';
-import EditVideos from './components/admin/Videos';
+import Videos from './components/admin/Videos';
 
 // REDUX
 import { Provider } from 'react-redux';
@@ -107,20 +108,13 @@ const App = () => {
                                 path="/edit-profile"
                                 component={EditProfile}
                             />
-                            <PrivateRoute>
-                                <AdminRoute
-                                    exact
-                                    path="/admin"
-                                    component={Admin}
-                                />
-                            </PrivateRoute>
-                            <PrivateRoute>
-                                <AdminRoute
-                                    exact
-                                    path="/admin/tutorial/:id"
-                                    component={EditVideos}
-                                />
-                            </PrivateRoute>
+
+                            <AdminRoute exact path="/admin" component={Admin} />
+                            <AdminRoute
+                                exact
+                                path="/admin/tutorial/:id"
+                                component={Videos}
+                            />
                         </Switch>
                     </section>
                 </Fragment>
