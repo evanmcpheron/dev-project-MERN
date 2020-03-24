@@ -63,8 +63,8 @@ class VideoPlayerTwo extends Component {
     };
 
     handleDuration = duration => {
-        console.log('onDuration', duration);
-        console.log(this.props.tutorial);
+        // console.log('onDuration', duration);
+        console.log('TUTORIAL PROPS', this.props.tutorial);
 
         this.setState({ duration });
     };
@@ -112,6 +112,31 @@ class VideoPlayerTwo extends Component {
                         />
                     </div>
                 </section>
+                <section>
+                    {this.props.videos.map(video => {
+                        return (
+                            <div key={video._id}>
+                                {video.videoUrl === this.state.url ? (
+                                    video.comments.length > 0 ? (
+                                        video.comments.map(comment => (
+                                            <div key={comment._id}>
+                                                <img
+                                                    src={comment.avatar}
+                                                    alt="avatar"
+                                                />
+                                                <p>{comment.name}</p>
+                                                <p>{comment.text}</p>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>No Comments Yet</p>
+                                    )
+                                ) : null}
+                                {}
+                            </div>
+                        );
+                    })}
+                </section>
                 {this.props.videos.map(video => {
                     return (
                         <div key={video._id}>
@@ -126,8 +151,25 @@ class VideoPlayerTwo extends Component {
                                 }
                             >
                                 {video.position} {video.title}
+                                <img
+                                    src={this.props.tutorial.thumbnailURL}
+                                    alt="Thumbnail Image"
+                                />
                             </button>
-                            <img src={this.props.tutorial.thumbnailUrl} />
+                            {/* {video.comments.length > 0 ? (
+                                video.comments.map(comment => (
+                                    <div key={comment._id}>
+                                        <img
+                                            src={comment.avatar}
+                                            alt="avatar"
+                                        />
+                                        <p>{comment.name}</p>
+                                        <p>{comment.text}</p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>No Comments Yet</p>
+                            )} */}
                         </div>
                     );
                 })}
