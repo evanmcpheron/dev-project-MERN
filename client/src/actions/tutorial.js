@@ -4,7 +4,8 @@ import {
     GET_TUTORIALS,
     TUTORIAL_ERROR,
     GET_TUTORIAL,
-    GET_VIDEOS
+    GET_VIDEOS,
+    ADD_VIDEO_COMMENT
 } from './types';
 
 // Get all tutorials
@@ -56,6 +57,38 @@ export const getTutorial = id => async dispatch => {
             type: GET_TUTORIAL,
             payload: res.data
         });
+    } catch (err) {
+        dispatch({
+            type: TUTORIAL_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        });
+    }
+};
+
+// Delete comment
+export const addComment = (tutorialId, videoId, formData) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    try {
+        const res = await axios.post(
+            `/api/tutorial/comment/${tutorialId}/${videoId}`,
+            formData,
+            config
+        );
+
+        dispatch({
+            type: ADD_VIDEO_COMMENT,
+            payload: res.data
+        });
+
+        dispatch(setAlert('Comment Added', 'success'));
     } catch (err) {
         dispatch({
             type: TUTORIAL_ERROR,

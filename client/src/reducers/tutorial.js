@@ -1,4 +1,10 @@
-import { GET_TUTORIALS, GET_TUTORIAL, GET_VIDEOS } from '../actions/types';
+import {
+    GET_TUTORIALS,
+    GET_TUTORIAL,
+    GET_VIDEOS,
+    TUTORIAL_ERROR,
+    ADD_VIDEO_COMMENT
+} from '../actions/types';
 
 const initialState = {
     tutorials: [],
@@ -29,6 +35,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 tutorial: payload,
+                loading: false
+            };
+        case ADD_VIDEO_COMMENT:
+            return {
+                ...state,
+                tutorial: { ...state.tutorial, comments: payload },
                 loading: false
             };
         default:

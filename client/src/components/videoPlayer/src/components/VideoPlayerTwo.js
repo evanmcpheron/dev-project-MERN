@@ -7,6 +7,8 @@ import './range.css';
 import './App.css';
 
 import ReactPlayer from '../ReactPlayer';
+import CommentForm from '../../../tutorial/CommentForm';
+import CommentItem from '../../../tutorial/CommentItem';
 
 class VideoPlayerTwo extends Component {
     state = {
@@ -112,6 +114,13 @@ class VideoPlayerTwo extends Component {
                         />
                     </div>
                 </section>
+                <CommentForm
+                    tutorialId={
+                        this.props.videos[this.state.currentPosition]._id
+                    }
+                    videoId={this.props.tutorial._id}
+                />
+
                 <section>
                     {this.props.videos.map(video => {
                         return (
@@ -119,14 +128,11 @@ class VideoPlayerTwo extends Component {
                                 {video.videoUrl === this.state.url ? (
                                     video.comments.length > 0 ? (
                                         video.comments.map(comment => (
-                                            <div key={comment._id}>
-                                                <img
-                                                    src={comment.avatar}
-                                                    alt="avatar"
-                                                />
-                                                <p>{comment.name}</p>
-                                                <p>{comment.text}</p>
-                                            </div>
+                                            <CommentItem
+                                                key={comment._id}
+                                                comment={comment}
+                                                Id={this.props.tutorial._id}
+                                            />
                                         ))
                                     ) : (
                                         <p>No Comments Yet</p>

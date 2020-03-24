@@ -32,3 +32,4 @@ export const TUTORIAL_ERROR = 'TUTORIAL_ERROR';
 export const ADD_TUTORIAL = 'ADD_TUTORIAL';
 export const ADD_VIDEO = 'ADD_VIDEO';
 export const DELETE_VIDEO = 'DELETE_VIDEO';
+export const ADD_VIDEO_COMMENT = 'ADD_VIDEO_COMMENT';
