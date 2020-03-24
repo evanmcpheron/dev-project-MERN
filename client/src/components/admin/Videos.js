@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getTutorial } from '../../actions/tutorial';
+import VideoForm from './VideoForm';
 
 const Videos = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
     useEffect(() => {
@@ -12,17 +13,24 @@ const Videos = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
 
     console.log(tutorial, 'Tutorial.js');
 
-    return (
-        <div>
-            <div>Testing</div>
-            <div>Testing</div>
-            <div>Testing</div>
-            <div>Testing</div>
-            <div>Testing</div>
-            <div>Testing</div>
-            <div>Testing</div>
-            <div>Testing</div>
-        </div>
+    return loading || tutorial === null ? (
+        <Spinner />
+    ) : (
+        <Fragment>
+            <Link to="/admin" className="btn">
+                Back To Admin
+            </Link>
+            <VideoForm videoId={tutorial._id} />
+            {tutorial.video.map(vid => (
+                <div key={vid._id}>
+                    <h2>{vid.title}</h2>
+                    <p>{vid.position}</p>
+                    <p>{vid.videoUrl}</p>
+                    <p>{vid.githubUrl}</p>
+                    <hr />
+                </div>
+            ))}
+        </Fragment>
     );
 };
 

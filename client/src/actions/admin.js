@@ -28,3 +28,33 @@ export const addTutorial = formData => async dispatch => {
         });
     }
 };
+// Add Video to Tutorial
+export const addVideo = (formData, tutorialId) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    try {
+        const res = await axios.post(
+            `/api/tutorial/video/${tutorialId}`,
+            formData,
+            config
+        );
+
+        dispatch({
+            type: ADD_VIDEO,
+            payload: res.data
+        });
+
+        dispatch(setAlert('Video Added', 'success'));
+    } catch (err) {
+        dispatch({
+            type: TUTORIAL_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        });
+    }
+};

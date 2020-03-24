@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import PostItem from '../posts/PostItem';
 import CommentForm from '../post/CommentForm';
-import CommentItem from '../post/CommentItem';
+import CommentItem from './CommentItem';
 import { getTutorial } from '../../actions/tutorial';
 import VideoItem from './VideoItem';
 import { VideoPlayer } from '../videoPlayer/VideoPlayer';
@@ -28,6 +28,9 @@ const Tutorial = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
             <h1>{tutorial.title}</h1>
             <div className="comments">
                 <VideoPlayerTwo videos={tutorial.video} tutorial={tutorial} />
+
+                {tutorial.video.comments}
+
                 {/* {tutorial.video.map(vid => (
                     <button>
                         <VideoItem

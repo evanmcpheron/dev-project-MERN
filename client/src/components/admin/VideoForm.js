@@ -2,25 +2,33 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
-import { addTutorial } from '../../actions/admin';
+import { addVideo } from '../../actions/admin';
 import PropTypes from 'prop-types';
 
-const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
+const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
     const [formData, setFormData] = useState({
         title: '',
-        description: '',
-        thumbnailURL: ''
+        position: '',
+        videoUrl: '',
+        githubUrl: ''
     });
 
-    const { title, description, thumbnailURL } = formData;
+    const { title, position, videoUrl, githubUrl } = formData;
 
-    const onChange = event =>
+    const onChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
+        console.log(videoId);
+    };
 
     const onSubmit = async event => {
         event.preventDefault();
-
-        addTutorial({ title, description, thumbnailURL });
+        setFormData({
+            title: '',
+            position: '',
+            videoUrl: '',
+            githubUrl: ''
+        });
+        addVideo({ title, position, videoUrl, githubUrl }, videoId);
     };
 
     return (
@@ -38,23 +46,30 @@ const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
                         required
                     />
                     <input
-                        type="text"
-                        placeholder="Description"
-                        name="description"
-                        value={description}
+                        type="number"
+                        placeholder="Video Position"
+                        name="position"
+                        value={position}
                         onChange={event => onChange(event)}
                         required
                     />
                     <input
                         type="text"
-                        placeholder="Tutorial Thumbnail URL"
-                        value={thumbnailURL}
+                        placeholder="Video URL"
+                        value={videoUrl}
                         onChange={event => onChange(event)}
-                        name="thumbnailURL"
+                        name="videoUrl"
+                        required
+                    />
+                    <input
+                        type="text"
+                        placeholder="GitHub URL"
+                        value={githubUrl}
+                        onChange={event => onChange(event)}
+                        name="githubUrl"
                         required
                     />
                 </div>
-
                 <input
                     type="submit"
                     className="btn btn-primary"
@@ -65,9 +80,9 @@ const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
     );
 };
 
-AdminForm.propTypes = {
+VideoForm.propTypes = {
     setAlert: PropTypes.func.isRequired,
-    addTutorial: PropTypes.func.isRequired,
+    addVideo: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };
 
@@ -75,4 +90,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlert, addTutorial })(AdminForm);
+export default connect(mapStateToProps, { setAlert, addVideo })(VideoForm);

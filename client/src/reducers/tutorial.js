@@ -4,7 +4,6 @@ const initialState = {
     tutorials: [],
     tutorial: null,
     video: [],
-    cheezeWhiz: null,
     loading: true,
     error: {}
 };
@@ -17,14 +16,14 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 tutorials: payload,
+                tutorial: null,
                 loading: false
             };
         case GET_VIDEOS:
             return {
                 ...state,
                 video: payload,
-                loading: false,
-                cheezeWhiz: 'Testing Cheezy'
+                loading: false
             };
         case GET_TUTORIAL:
             return {

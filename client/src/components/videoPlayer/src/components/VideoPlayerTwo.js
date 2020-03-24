@@ -138,4 +138,4 @@ class VideoPlayerTwo extends Component {
     }
 }
 
-export default hot(module)(VideoPlayerTwo);
+export default VideoPlayerTwo;
