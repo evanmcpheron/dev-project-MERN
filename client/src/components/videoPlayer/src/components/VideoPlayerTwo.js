@@ -131,14 +131,17 @@ class VideoPlayerTwo extends Component {
                                             <CommentItem
                                                 key={comment._id}
                                                 comment={comment}
-                                                Id={this.props.tutorial._id}
-                                            />
+                                                tutorialId={
+                                                    this.props.tutorial._id
+                                                }
+                                                videoId={video._id}
+                                                commentId={comment._id}
+                                            ></CommentItem>
                                         ))
                                     ) : (
                                         <p>No Comments Yet</p>
                                     )
                                 ) : null}
-                                {}
                             </div>
                         );
                     })}

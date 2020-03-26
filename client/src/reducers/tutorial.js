@@ -3,8 +3,11 @@ import {
     GET_TUTORIAL,
     GET_VIDEOS,
     TUTORIAL_ERROR,
-    ADD_VIDEO_COMMENT
+    ADD_VIDEO_COMMENT,
+    DELETE_VIDEO_COMMENT
 } from '../actions/types';
+
+const filterComments = () => {};
 
 const initialState = {
     tutorials: [],
@@ -41,6 +44,34 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 tutorial: { ...state.tutorial, comments: payload },
+                videoTest: console.log(
+                    'TUTORIAL',
+                    state.tutorial.video[0].comments.unshift(payload[0])
+                ),
+                payloadTest: console.log('PAYLOAD', payload),
+                loading: false
+            };
+        case DELETE_VIDEO_COMMENT:
+            return {
+                ...state,
+                testPayload: console.log('PAYLOAD DELETE COMMENT', payload),
+                tutorial: {
+                    ...state.tutorial,
+                    videos: {
+                        ...state.tutorial.video,
+                        comment: state.tutorial.video.forEach(vid =>
+                            vid.comments.filter(
+                                comment => comment._id !== payload
+                            )
+                        )
+                    }
+                },
+                loading: false
+            };
+        case TUTORIAL_ERROR:
+            return {
+                ...state,
+                error: payload,
                 loading: false
             };
         default:

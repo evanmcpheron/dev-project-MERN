@@ -120,14 +120,14 @@ router.post('/video/:id', auth, async (req, res) => {
         await tutorial.save();
         // await video.save();
 
-        res.json(tutorial.video);
+        res.json(tutorial);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
 
-// @route    POST api/tutorial/video/:id
+// @route    POST api/tutorial/video/:id/:vidId
 // @desc     Comment on a tutorial
 // @access   Private
 router.post(
@@ -176,14 +176,18 @@ router.post(
     }
 );
 
-// @route    DELETE api/tutorial/comment/:id/:comment_id
+// @route    DELETE api/tutorial/comment/:id/:video_id/:comment_id
 // @desc     Delete comment
 // @access   Private
-router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
+router.delete('/comment/:id/:video_id/:comment_id', auth, async (req, res) => {
     try {
-        const video = await Video.findById(req.params.id);
+        const tutorial = await Tutorial.findById(req.params.id);
 
         // Pull out comment
+        const video = tutorial.video.find(
+            video => video.id === req.params.video_id
+        );
+
         const comment = video.comments.find(
             comment => comment.id === req.params.comment_id
         );
@@ -200,12 +204,12 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 
         // Get remove index
         const removeIndex = video.comments
-            .map(comment => comment.user.toString())
-            .indexOf(req.user.id);
+            .map(comment => comment._id.toString())
+            .indexOf(req.params.comment_id);
 
         video.comments.splice(removeIndex, 1);
 
-        await video.save();
+        await tutorial.save();
 
         res.json(video.comments);
     } catch (err) {

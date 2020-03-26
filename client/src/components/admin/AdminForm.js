@@ -2,10 +2,15 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
-import { addTutorial } from '../../actions/admin';
+import { addTutorial, getTutorials } from '../../actions/admin';
 import PropTypes from 'prop-types';
 
-const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
+const AdminForm = ({
+    setAlert,
+    addTutorial,
+    isAuthenticated,
+    getTutorials
+}) => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -19,8 +24,13 @@ const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
 
     const onSubmit = async event => {
         event.preventDefault();
-
+        setFormData({
+            title: '',
+            description: '',
+            thumbnailURL: ''
+        });
         addTutorial({ title, description, thumbnailURL });
+        getTutorials();
     };
 
     return (
@@ -67,6 +77,7 @@ const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
 
 AdminForm.propTypes = {
     setAlert: PropTypes.func.isRequired,
+    getTutorials: PropTypes.func.isRequired,
     addTutorial: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };
@@ -75,4 +86,8 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlert, addTutorial })(AdminForm);
+export default connect(mapStateToProps, {
+    setAlert,
+    addTutorial,
+    getTutorials
+})(AdminForm);

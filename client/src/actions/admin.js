@@ -1,6 +1,14 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { ADD_TUTORIAL, ADD_VIDEO, DELETE_VIDEO, TUTORIAL_ERROR } from './types';
+import {
+    ADD_TUTORIAL,
+    ADD_VIDEO,
+    DELETE_VIDEO,
+    GET_ADMIN_VIDEOS,
+    TUTORIAL_ERROR,
+    GET_TUTORIAL,
+    GET_TUTORIALS
+} from './types';
 
 // Add Tutorial
 export const addTutorial = formData => async dispatch => {
@@ -28,6 +36,47 @@ export const addTutorial = formData => async dispatch => {
         });
     }
 };
+
+// Get all tutorials
+export const getTutorials = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/tutorial');
+
+        dispatch({
+            type: GET_TUTORIALS,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: TUTORIAL_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        });
+    }
+};
+
+// Get single tutorial
+export const getTutorial = id => async dispatch => {
+    try {
+        const res = await axios.get(`/api/tutorial/${id}`);
+
+        dispatch({
+            type: GET_TUTORIAL,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: TUTORIAL_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        });
+    }
+};
+
 // Add Video to Tutorial
 export const addVideo = (formData, tutorialId) => async dispatch => {
     const config = {

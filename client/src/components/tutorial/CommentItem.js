@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
-import { deleteComment } from '../../actions/post';
+import { deleteComment } from '../../actions/tutorial';
 
 const CommentItem = ({
-    postId,
+    tutorialId,
+    videoId,
     comment: { _id, text, name, avatar, user, date },
     auth,
+    commentId,
     deleteComment
 }) => (
     <div className="post bg-white p-1 my-1">
@@ -25,11 +27,12 @@ const CommentItem = ({
             </p>
             {!auth.loading && user === auth.user._id && (
                 <button
-                    onClick={e => deleteComment(postId, _id)}
+                    onClick={e => deleteComment(tutorialId, videoId, commentId)}
                     type="button"
                     className="btn btn-danger"
                 >
                     <i className="fas fa-times" />
+                    <p>{commentId}</p>
                 </button>
             )}
         </div>
@@ -37,7 +40,7 @@ const CommentItem = ({
 );
 
 CommentItem.propTypes = {
-    postId: PropTypes.string.isRequired,
+    videoId: PropTypes.string.isRequired,
     comment: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     deleteComment: PropTypes.func.isRequired

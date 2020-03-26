@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import { getTutorial } from '../../actions/tutorial';
+import { getTutorial } from '../../actions/admin';
 import VideoForm from './VideoForm';
+import TutorialItem from './TutorialItem';
 
 const Videos = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
     useEffect(() => {
@@ -22,13 +23,7 @@ const Videos = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
             </Link>
             <VideoForm videoId={tutorial._id} />
             {tutorial.video.map(vid => (
-                <div key={vid._id}>
-                    <h2>{vid.title}</h2>
-                    <p>{vid.position}</p>
-                    <p>{vid.videoUrl}</p>
-                    <p>{vid.githubUrl}</p>
-                    <hr />
-                </div>
+                <TutorialItem key={vid._id} tutorial={vid} />
             ))}
         </Fragment>
     );

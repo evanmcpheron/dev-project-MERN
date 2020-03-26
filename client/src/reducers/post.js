@@ -13,8 +13,7 @@ const initialState = {
     posts: [],
     post: null,
     loading: true,
-    error: {},
-    videos: []
+    error: {}
 };
 
 export default function(state = initialState, action) {

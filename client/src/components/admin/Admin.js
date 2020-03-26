@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdminForm from './AdminForm';
 import Spinner from '../layout/Spinner';
-import { getTutorials } from '../../actions/tutorial';
+import { getTutorials } from '../../actions/admin';
 import TutorialItem from './TutorialItem';
 
 const Admin = ({ getTutorials, tutorial: { tutorials, loading } }) => {
