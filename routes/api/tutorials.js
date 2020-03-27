@@ -31,7 +31,14 @@ router.post('/', async (req, res) => {
         });
 
         await tutorial.save();
-        res.send(tutorial);
+
+        const tutorials = await Tutorial.find().populate('tutorial', [
+            'title',
+            'description',
+            'thumbnailURL'
+        ]);
+
+        res.send(tutorials);
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server error');
@@ -114,11 +121,9 @@ router.post('/video/:id', auth, async (req, res) => {
             githubUrl: req.body.githubUrl
         };
 
-        // tutorial.video.push(video);
         tutorial.video.splice(position - 1, 0, video);
 
         await tutorial.save();
-        // await video.save();
 
         res.json(tutorial);
     } catch (err) {
@@ -166,7 +171,7 @@ router.post(
 
                     await tutorial.save();
 
-                    return res.json(specificVideo[i].comments);
+                    return res.json(tutorial);
                 }
             }
         } catch (err) {
@@ -211,7 +216,7 @@ router.delete('/comment/:id/:video_id/:comment_id', auth, async (req, res) => {
 
         await tutorial.save();
 
-        res.json(video.comments);
+        res.json(tutorial);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

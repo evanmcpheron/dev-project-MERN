@@ -32,7 +32,6 @@ const CommentItem = ({
                     className="btn btn-danger"
                 >
                     <i className="fas fa-times" />
-                    <p>{commentId}</p>
                 </button>
             )}
         </div>

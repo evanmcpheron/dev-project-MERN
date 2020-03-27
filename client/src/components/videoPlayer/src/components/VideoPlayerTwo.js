@@ -114,6 +114,7 @@ class VideoPlayerTwo extends Component {
                         />
                     </div>
                 </section>
+                <h1>{this.props.videos[this.state.currentPosition].title}</h1>
                 <CommentForm
                     tutorialId={
                         this.props.videos[this.state.currentPosition]._id
@@ -125,23 +126,22 @@ class VideoPlayerTwo extends Component {
                     {this.props.videos.map(video => {
                         return (
                             <div key={video._id}>
-                                {video.videoUrl === this.state.url ? (
-                                    video.comments.length > 0 ? (
-                                        video.comments.map(comment => (
-                                            <CommentItem
-                                                key={comment._id}
-                                                comment={comment}
-                                                tutorialId={
-                                                    this.props.tutorial._id
-                                                }
-                                                videoId={video._id}
-                                                commentId={comment._id}
-                                            ></CommentItem>
-                                        ))
-                                    ) : (
-                                        <p>No Comments Yet</p>
-                                    )
-                                ) : null}
+                                {video.videoUrl === this.state.url
+                                    ? video.comments.length > 0
+                                        ? video.comments.map(comment => (
+                                              <CommentItem
+                                                  key={comment._id}
+                                                  comment={comment}
+                                                  tutorialId={
+                                                      this.props.tutorial._id
+                                                  }
+                                                  videoId={video._id}
+                                                  commentId={comment._id}
+                                              ></CommentItem>
+                                          ))
+                                        : // <p>No Comments Yet</p>
+                                          null
+                                    : null}
                             </div>
                         );
                     })}
@@ -165,20 +165,6 @@ class VideoPlayerTwo extends Component {
                                     alt="Thumbnail Image"
                                 />
                             </button>
-                            {/* {video.comments.length > 0 ? (
-                                video.comments.map(comment => (
-                                    <div key={comment._id}>
-                                        <img
-                                            src={comment.avatar}
-                                            alt="avatar"
-                                        />
-                                        <p>{comment.name}</p>
-                                        <p>{comment.text}</p>
-                                    </div>
-                                ))
-                            ) : (
-                                <p>No Comments Yet</p>
-                            )} */}
                         </div>
                     );
                 })}

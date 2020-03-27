@@ -10,6 +10,7 @@ import TutorialItem from './TutorialItem';
 const Admin = ({ getTutorials, tutorial: { tutorials, loading } }) => {
     useEffect(() => {
         getTutorials();
+        console.log('GET TUTORIALS: ', tutorials);
     }, [getTutorials]);
     return loading ? (
         <Spinner />
@@ -22,6 +23,8 @@ const Admin = ({ getTutorials, tutorial: { tutorials, loading } }) => {
                 {tutorials.map(tut => (
                     <div className="post bg-white p-1 my-1" key={tut._id}>
                         <h1>{tut.title}</h1>
+
+                        <p>{tut.description}</p>
 
                         <Link to={`/admin/tutorial/${tut._id}`}>
                             Edit Videos

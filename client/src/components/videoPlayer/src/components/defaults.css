@@ -1,4 +1,4 @@
-$light-grey: #eee;
+/* $light-grey: #eee;
 
 body {
   margin-right: 10px;
@@ -75,3 +75,4 @@ button {
   &:hover {  background: darken($light-grey, 10); }
   &:active { background: darken($light-grey, 15); }
 }
+ */

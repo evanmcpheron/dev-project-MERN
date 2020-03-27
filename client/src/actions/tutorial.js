@@ -108,13 +108,13 @@ export const deleteComment = (
     commentId
 ) => async dispatch => {
     try {
-        await axios.delete(
+        const res = await axios.delete(
             `/api/tutorial/comment/${tutorialId}/${videoId}/${commentId}`
         );
 
         dispatch({
             type: DELETE_VIDEO_COMMENT,
-            payload: commentId
+            payload: res.data
         });
 
         dispatch(setAlert('Comment Removed', 'success'));

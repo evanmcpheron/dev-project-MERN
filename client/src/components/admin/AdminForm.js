@@ -5,12 +5,7 @@ import { setAlert } from '../../actions/alert';
 import { addTutorial, getTutorials } from '../../actions/admin';
 import PropTypes from 'prop-types';
 
-const AdminForm = ({
-    setAlert,
-    addTutorial,
-    isAuthenticated,
-    getTutorials
-}) => {
+const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -30,7 +25,6 @@ const AdminForm = ({
             thumbnailURL: ''
         });
         addTutorial({ title, description, thumbnailURL });
-        getTutorials();
     };
 
     return (
@@ -77,7 +71,6 @@ const AdminForm = ({
 
 AdminForm.propTypes = {
     setAlert: PropTypes.func.isRequired,
-    getTutorials: PropTypes.func.isRequired,
     addTutorial: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };

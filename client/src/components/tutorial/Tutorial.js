@@ -27,17 +27,6 @@ const Tutorial = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
             <h1>{tutorial.title}</h1>
             <div className="comments">
                 <VideoPlayerTwo videos={tutorial.video} tutorial={tutorial} />
-
-                {/* {tutorial.video.map(vid => (
-                    <button>
-                        <VideoItem
-                            key={vid._id}
-                            video={vid}
-                            tutorialId={tutorial._id}
-                        />
-                        <p>{vid.title}</p>
-                    </button>
-                ))} */}
             </div>
         </Fragment>
     );

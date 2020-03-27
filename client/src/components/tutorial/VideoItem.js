@@ -17,18 +17,6 @@ const VideoItem = ({
             <p>{position}</p>
             <p>{videoUrl}</p>
             <p>{githubUrl}</p>
-            {/* {comments.map(comment => {
-                return (
-                    <div key={_id}>
-                        <img
-                            src={comment.avatar}
-                            alt={`${comment.name}'s avatar`}
-                        />
-                        <p>{comment.name}</p>
-                        <p>{comment.text}</p>
-                    </div>
-                );
-            })} */}
         </div>
     </div>
 );

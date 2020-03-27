@@ -19,20 +19,22 @@ export default function(state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
+        case ADD_TUTORIAL:
+            return {
+                ...state,
+                tutorials: payload,
+                testTutorials: console.log('ADD TUTORIAL PAYLOAD ', payload),
+                loading: false,
+                testingAdd: console.log('ADD_TUTORIAL', payload)
+            };
         case GET_TUTORIALS:
             return {
                 ...state,
                 tutorials: payload,
                 tutorialsPay: console.log('GET_TUTORIALS', payload),
+                testState: console.log('CURRENT STATE', state),
                 tutorial: null,
                 loading: false
-            };
-        case ADD_TUTORIAL:
-            return {
-                ...state,
-                tutorials: state.tutorials.push(payload),
-                loading: false,
-                testingAdd: console.log('ADD_TUTORIAL', payload)
             };
         case GET_TUTORIAL:
             return {
@@ -44,8 +46,8 @@ export default function(state = initialState, action) {
         case ADD_VIDEO:
             return {
                 ...state,
-                tutorial: payload.video,
-                videoTest: console.log('PAYLOAD', payload.video),
+                tutorial: payload,
+                videoTest: console.log('PAYLOAD', payload),
                 stateTest: console.log('STATE', state),
                 loading: false
             };

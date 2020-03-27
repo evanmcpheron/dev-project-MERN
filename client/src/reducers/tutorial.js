@@ -43,7 +43,7 @@ export default function(state = initialState, action) {
         case ADD_VIDEO_COMMENT:
             return {
                 ...state,
-                tutorial: { ...state.tutorial, comments: payload },
+                tutorial: payload,
                 videoTest: console.log(
                     'TUTORIAL',
                     state.tutorial.video[0].comments.unshift(payload[0])
@@ -55,17 +55,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 testPayload: console.log('PAYLOAD DELETE COMMENT', payload),
-                tutorial: {
-                    ...state.tutorial,
-                    videos: {
-                        ...state.tutorial.video,
-                        comment: state.tutorial.video.forEach(vid =>
-                            vid.comments.filter(
-                                comment => comment._id !== payload
-                            )
-                        )
-                    }
-                },
+                tutorial: payload,
                 loading: false
             };
         case TUTORIAL_ERROR:
