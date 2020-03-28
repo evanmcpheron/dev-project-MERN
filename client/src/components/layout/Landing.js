@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import background from '../../img/landing.jpg';
 
 const Landing = ({ isAuthenticated }) => {
     if (isAuthenticated) {
@@ -9,19 +10,19 @@ const Landing = ({ isAuthenticated }) => {
     }
 
     return (
-        <section className="landing">
-            <div className="dark-overlay">
-                <div className="landing-inner">
-                    <h1 className="x-large">ePoint.io</h1>
-                    <p className="lead">
+        <section className="landing-wrapper">
+            <div className="middle">
+                <div>
+                    <h1>ePoint.io</h1>
+                    <p>
                         Create a developer profile/portfolio, share posts, and
                         learn
                     </p>
-                    <div className="buttons">
+                    <div className="action">
                         <Link to="/register" className="btn btn-primary">
                             Sign Up
                         </Link>
-                        <Link to="/login" className="btn btn-light">
+                        <Link to="/login" className="btn btn-primary">
                             Login
                         </Link>
                     </div>

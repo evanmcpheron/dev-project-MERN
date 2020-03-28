@@ -18,9 +18,7 @@ const Videos = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
         <Spinner />
     ) : (
         <Fragment>
-            <Link to="/admin" className="btn">
-                Back To Admin
-            </Link>
+            <Link to="/admin">Back To Admin</Link>
             <VideoForm videoId={tutorial._id} />
             {tutorial.video.map(vid => (
                 <TutorialItem key={vid._id} tutorial={vid} />

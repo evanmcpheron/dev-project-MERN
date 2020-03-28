@@ -8,7 +8,8 @@ import {
     UPDATE_PROFILE,
     ACCOUNT_DELETED,
     CLEAR_PROFILE,
-    GET_REPOS
+    GET_REPOS,
+    ADD_AVATAR
 } from './types';
 
 // Get current users profile

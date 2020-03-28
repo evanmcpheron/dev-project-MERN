@@ -35,12 +35,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Sign Up</h1>
-            <p className="lead">
+            <h1>Sign Up</h1>
+            <p>
                 <i className="fas fa-user"></i> Create Your Account
             </p>
-            <form className="form" onSubmit={onSubmit}>
-                <div className="form-group">
+            <form onSubmit={onSubmit}>
+                <div>
                     <input
                         type="text"
                         placeholder="First Name"
@@ -58,7 +58,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div>
                     <input
                         type="email"
                         placeholder="Email Address"
@@ -67,12 +67,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         name="email"
                         required
                     />
-                    <small className="form-text">
+                    <small>
                         This site uses Gravatar so if you want a profile image,
                         use a Gravatar email
                     </small>
                 </div>
-                <div className="form-group">
+                <div>
                     <input
                         type="password"
                         placeholder="Password"
@@ -82,7 +82,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         minLength="6"
                     />
                 </div>
-                <div className="form-group">
+                <div>
                     <input
                         type="password"
                         placeholder="Confirm Password"
@@ -92,13 +92,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         minLength="6"
                     />
                 </div>
-                <input
-                    type="submit"
-                    className="btn btn-primary"
-                    value="Register"
-                />
+                <input type="submit" value="Register" />
             </form>
-            <p className="my-1">
+            <p>
                 Already have an account? <Link to="/login">Sign In</Link>
             </p>
         </Fragment>

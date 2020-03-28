@@ -1,17 +1,9 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Moment from 'react-moment';
-import { deleteComment } from '../../actions/post';
-import { VideoPlayer } from '../videoPlayer/VideoPlayer';
-import VideoPlayerTwo from '../videoPlayer/src/components/VideoPlayerTwo';
 
-const VideoItem = ({
-    tutorialId,
-    video: { _id, title, position, videoUrl, githubUrl, comments }
-}) => (
-    <div className="post bg-white p-1 my-1">
+const VideoItem = ({ video: { title, position, videoUrl, githubUrl } }) => (
+    <div>
         <div>
             <p>{title}</p>
             <p>{position}</p>

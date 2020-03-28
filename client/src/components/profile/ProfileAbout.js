@@ -9,16 +9,16 @@ const ProfileAbout = ({
     }
 }) => {
     return (
-        <div className="profile-about bg-light p-2">
+        <div>
             {bio && (
                 <Fragment>
-                    <h2 className="text-primary">{fName}'s Bio</h2>
+                    <h2>{fName}'s Bio</h2>
                     <p>{bio}</p>
-                    <div className="line"></div>
+                    <div></div>
                 </Fragment>
             )}
-            <h2 className="text-primary">Skill Set</h2>
-            <div className="skills">
+            <h2>Skill Set</h2>
+            <div>
                 {skills.map((skill, index) => (
                     <div key={index}>
                         <i className="fas fa-check"></i> {skill}

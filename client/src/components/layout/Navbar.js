@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,6 +9,8 @@ const Navbar = ({
     auth: { isAuthenticated, loading, isAdmin, user },
     logout
 }) => {
+    const [count, setCount] = useState('closed');
+
     const getGreetingTime = time => {
         var greeting = null; //return g
 
@@ -37,27 +39,55 @@ const Navbar = ({
 
     const greeting = () => {
         if (user !== null && !loading) {
-            return <p>{humanizedGreeting(user.fName)}</p>;
+            return <p className="greeting">{humanizedGreeting(user.fName)}</p>;
         }
     };
 
     const authLinks = (
         <ul>
             <li>
-                <Link to="/tutorials">Tutorials</Link>
-            </li>
-            <li>
-                <Link to="/posts">Posts</Link>
-            </li>
-            <li>
-                <Link to="/profiles">Developers</Link>
-            </li>
-            <li>
-                <Link to="/dashboard">
-                    <i className="fas fa-user" /> Dashboard
+                <Link
+                    to="/tutorials"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Tutorials
                 </Link>
             </li>
             <li>
+                <Link
+                    to="/posts"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Posts
+                </Link>
+            </li>
+            <li>
+                <Link
+                    to="/profiles"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Developers
+                </Link>
+            </li>
+            <li>
+                <Link
+                    to="/dashboard"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    <i className="fas fa-user" /> Dashboard
+                </Link>
+            </li>
+            <li
+                onClick={() => setCount(count === 'closed' ? 'open' : 'closed')}
+            >
                 <p onClick={logout} href="#!">
                     <Link to="/">
                         <i className="fas fa-sign-out-alt"></i> Logout
@@ -70,25 +100,63 @@ const Navbar = ({
     const adminLinks = (
         <ul>
             <li>
-                <Link to="/admin">Admin</Link>
+                <Link
+                    to="/admin"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Admin
+                </Link>
             </li>
             <li>
-                <Link to="/tutorials">Tutorials</Link>
+                <Link
+                    to="/tutorials"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Tutorials
+                </Link>
             </li>
             <li>
-                <Link to="/posts">Posts</Link>
+                <Link
+                    to="/posts"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Posts
+                </Link>
             </li>
             <li>
-                <Link to="/profiles">Developers</Link>
+                <Link
+                    to="/profiles"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Developers
+                </Link>
             </li>
             <li>
-                <Link to="/dashboard">
+                <Link
+                    to="/dashboard"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
                     <i className="fas fa-user" /> Dashboard
                 </Link>
             </li>
             <li>
                 <p onClick={logout} href="#!">
-                    <Link to="/">
+                    <Link
+                        to="/"
+                        onClick={() =>
+                            setCount(count === 'closed' ? 'open' : 'closed')
+                        }
+                    >
                         <i className="fas fa-sign-out-alt"></i> Logout
                     </Link>
                 </p>
@@ -99,16 +167,34 @@ const Navbar = ({
     const guestLinks = (
         <ul>
             <li>
-                <Link to="/tutorials">Tutorials</Link>
+                <Link
+                    to="/profiles"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Developers
+                </Link>
             </li>
             <li>
-                <Link to="/profiles">Developers</Link>
+                <Link
+                    to="/register"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Register
+                </Link>
             </li>
             <li>
-                <Link to="/register">Register</Link>
-            </li>
-            <li>
-                <Link to="/login">Login</Link>
+                <Link
+                    to="/login"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                >
+                    Login
+                </Link>
             </li>
         </ul>
     );
@@ -122,25 +208,50 @@ const Navbar = ({
     };
 
     return (
-        <nav className="navbar bg-dark">
-            <h1>
+        <div>
+            {count === 'open' ? (
+                <div
+                    className="overlay"
+                    onClick={() =>
+                        setCount(count === 'closed' ? 'open' : 'closed')
+                    }
+                ></div>
+            ) : null}
+
+            <i
+                class={`fas fa-hamburger fa-hamburger-${count}`}
+                onClick={() => setCount(count === 'closed' ? 'open' : 'closed')}
+            ></i>
+            <nav className={`navbar-wrapper ${count}`}>
                 {isAuthenticated ? (
-                    <Link to="/dashboard">
-                        <i className="fas fa-code"></i> ePOINT
+                    <Link className="logo-navbar" to="/dashboard">
+                        <i
+                            className="fas fa-code"
+                            onClick={() =>
+                                setCount(count === 'closed' ? 'open' : 'closed')
+                            }
+                        ></i>{' '}
+                        ePOINT
                     </Link>
                 ) : (
-                    <Link to="/">
-                        <i className="fas fa-code"></i> ePOINT
+                    <Link className="logo-navbar" to="/">
+                        <i
+                            className="fas fa-code"
+                            onClick={() =>
+                                setCount(count === 'closed' ? 'open' : 'closed')
+                            }
+                        ></i>{' '}
+                        ePOINT
                     </Link>
                 )}
-            </h1>
-            {!loading && (
-                <Fragment>
-                    {isAuthenticated ? greeting() : null}
-                    {isAuthenticated ? navSwitch() : guestLinks}
-                </Fragment>
-            )}
-        </nav>
+                {!loading && (
+                    <Fragment>
+                        {isAuthenticated ? greeting() : null}
+                        {isAuthenticated ? navSwitch() : guestLinks}
+                    </Fragment>
+                )}
+            </nav>
+        </div>
     );
 };
 

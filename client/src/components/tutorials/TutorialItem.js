@@ -1,18 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CommentItem from '../tutorial/CommentItem';
 
 const TutorialItem = ({ tutorial: { _id, title } }) => {
     return (
-        <div className="post bg-white p-1 my-1">
+        <div>
             <h1>{title}</h1>
 
-            <Link to={`/tutorial/${_id}`} className="btn btn-primary">
-                Watch Videos
-            </Link>
+            <Link to={`/tutorial/${_id}`}>Watch Videos</Link>
         </div>
     );
 };

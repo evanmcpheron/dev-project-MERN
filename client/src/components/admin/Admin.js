@@ -21,7 +21,7 @@ const Admin = ({ getTutorials, tutorial: { tutorials, loading } }) => {
             <h1>Tutorials</h1>
             <div>
                 {tutorials.map(tut => (
-                    <div className="post bg-white p-1 my-1" key={tut._id}>
+                    <div key={tut._id}>
                         <h1>{tut.title}</h1>
 
                         <p>{tut.description}</p>

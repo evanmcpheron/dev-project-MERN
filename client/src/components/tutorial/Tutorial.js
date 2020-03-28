@@ -21,11 +21,9 @@ const Tutorial = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
         <Spinner />
     ) : (
         <Fragment>
-            <Link to="/tutorials" className="btn">
-                Back To Tutorials
-            </Link>
+            <Link to="/tutorials">Back To Tutorials</Link>
             <h1>{tutorial.title}</h1>
-            <div className="comments">
+            <div>
                 <VideoPlayerTwo videos={tutorial.video} tutorial={tutorial} />
             </div>
         </Fragment>

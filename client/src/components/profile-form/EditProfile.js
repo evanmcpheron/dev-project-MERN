@@ -76,14 +76,14 @@ const EditProfile = ({
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Edit Your Profile</h1>
-            <p className="lead">
+            <h1>Edit Your Profile</h1>
+            <p>
                 <i className="fas fa-user"></i> Let's get some information to
                 make your profile stand out
             </p>
             <small>* = required field</small>
-            <form onSubmit={e => onSubmit(e)} className="form">
-                <div className="form-group">
+            <form onSubmit={e => onSubmit(e)}>
+                <div>
                     <select
                         value={status}
                         onChange={event => onChange(event)}
@@ -107,11 +107,11 @@ const EditProfile = ({
                         <option value="Intern">Intern</option>
                         <option value="Other">Other</option>
                     </select>
-                    <small className="form-text">
+                    <small>
                         Give us an idea of where you are at in your career
                     </small>
                 </div>
-                <div className="form-group">
+                <div>
                     <input
                         type="text"
                         placeholder="Company"
@@ -119,11 +119,9 @@ const EditProfile = ({
                         value={company}
                         onChange={e => onChange(e)}
                     />
-                    <small className="form-text">
-                        Could be your own company or one you work for
-                    </small>
+                    <small>Could be your own company or one you work for</small>
                 </div>
-                <div className="form-group">
+                <div>
                     <input
                         type="text"
                         placeholder="Website"
@@ -131,11 +129,9 @@ const EditProfile = ({
                         value={website}
                         onChange={e => onChange(e)}
                     />
-                    <small className="form-text">
-                        Could be your own or a company website
-                    </small>
+                    <small>Could be your own or a company website</small>
                 </div>
-                <div className="form-group">
+                <div>
                     <input
                         type="text"
                         placeholder="Location"
@@ -143,11 +139,9 @@ const EditProfile = ({
                         value={location}
                         onChange={e => onChange(e)}
                     />
-                    <small className="form-text">
-                        City & state suggested (eg. Boston, MA)
-                    </small>
+                    <small>City & state suggested (eg. Boston, MA)</small>
                 </div>
-                <div className="form-group">
+                <div>
                     <input
                         type="text"
                         placeholder="* Skills"
@@ -155,12 +149,12 @@ const EditProfile = ({
                         value={skills}
                         onChange={e => onChange(e)}
                     />
-                    <small className="form-text">
+                    <small>
                         Please use comma separated values (eg.
                         HTML,CSS,JavaScript,PHP)
                     </small>
                 </div>
-                <div className="form-group">
+                <div>
                     <input
                         type="text"
                         placeholder="Github Username"
@@ -168,28 +162,25 @@ const EditProfile = ({
                         value={githubusername}
                         onChange={e => onChange(e)}
                     />
-                    <small className="form-text">
+                    <small>
                         If you want your latest repos and a Github link, include
                         your username
                     </small>
                 </div>
-                <div className="form-group">
+                <div>
                     <textarea
                         placeholder="A short bio of yourself"
                         name="bio"
                         value={bio}
                         onChange={e => onChange(e)}
                     ></textarea>
-                    <small className="form-text">
-                        Tell us a little about yourself
-                    </small>
+                    <small>Tell us a little about yourself</small>
                 </div>
 
-                <div className="my-2">
+                <div>
                     <button
                         onClick={() => toggleSocialInputs(!displaySocialInputs)}
                         type="button"
-                        className="btn btn-light"
                     >
                         Add Social Network Links
                     </button>
@@ -199,7 +190,7 @@ const EditProfile = ({
                 {displaySocialInputs && (
                     <Fragment>
                         {' '}
-                        <div className="form-group social-input">
+                        <div>
                             <i className="fab fa-twitter fa-2x"></i>
                             <input
                                 type="text"
@@ -209,7 +200,7 @@ const EditProfile = ({
                                 onChange={e => onChange(e)}
                             />
                         </div>
-                        <div className="form-group social-input">
+                        <div>
                             <i className="fab fa-facebook fa-2x"></i>
                             <input
                                 type="text"
@@ -219,7 +210,7 @@ const EditProfile = ({
                                 onChange={e => onChange(e)}
                             />
                         </div>
-                        <div className="form-group social-input">
+                        <div>
                             <i className="fab fa-youtube fa-2x"></i>
                             <input
                                 type="text"
@@ -229,7 +220,7 @@ const EditProfile = ({
                                 onChange={e => onChange(e)}
                             />
                         </div>
-                        <div className="form-group social-input">
+                        <div>
                             <i className="fab fa-linkedin fa-2x"></i>
                             <input
                                 type="text"
@@ -239,7 +230,7 @@ const EditProfile = ({
                                 onChange={e => onChange(e)}
                             />
                         </div>
-                        <div className="form-group social-input">
+                        <div>
                             <i className="fab fa-instagram fa-2x"></i>
                             <input
                                 type="text"
@@ -252,10 +243,8 @@ const EditProfile = ({
                     </Fragment>
                 )}
 
-                <input type="submit" className="btn btn-primary my-1" />
-                <Link className="btn btn-light my-1" to="/dashboard">
-                    Go Back
-                </Link>
+                <input type="submit" />
+                <Link to="/dashboard">Go Back</Link>
             </form>
         </Fragment>
     );

@@ -168,8 +168,6 @@ class VideoPlayerTwo extends Component {
                         </div>
                     );
                 })}
-
-                <section className="section"></section>
             </div>
         );
     }

@@ -5,13 +5,11 @@ import PropTypes from 'prop-types';
 
 const TutorialItem = ({ tutorial: { _id, title, description } }) => {
     return (
-        <div className="post bg-white p-1 my-1">
+        <div>
             <h1>{title}</h1>
             <p>{description}</p>
 
-            <Link to={`/admin/tutorial/${_id}`} className="btn btn-primary">
-                Edit Videos
-            </Link>
+            <Link to={`/admin/tutorial/${_id}`}>Edit Videos</Link>
         </div>
     );
 };

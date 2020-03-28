@@ -1,0 +1,19 @@
+.landing-wrapper {
+    color: $white;
+    background: linear-gradient(rgba($primary-0, 0.45), rgba($primary-0, 0.45)),
+        linear-gradient(rgba($black, 0.6), rgba($black, 0.6)),
+        url('../../img/landing.jpg');
+    .middle {
+        height: 100vh;
+        text-align: center;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .action {
+        display: flex;
+        justify-content: space-around;
+        padding: 3rem 0rem;
+    }
+}

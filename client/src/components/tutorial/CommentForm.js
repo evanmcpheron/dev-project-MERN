@@ -12,14 +12,13 @@ const CommentForm = ({
     const [text, setText] = useState('');
 
     return (
-        <div className="post-form">
+        <div>
             {isAuthenticated ? (
                 <div>
-                    <div className="bg-primary p">
+                    <div>
                         <h3>Leave a Comment</h3>
                     </div>
                     <form
-                        className="form my-1"
                         onSubmit={e => {
                             e.preventDefault();
                             addComment(videoId, tutorialId, { text });
@@ -36,11 +35,7 @@ const CommentForm = ({
                             required
                         />
 
-                        <input
-                            type="submit"
-                            className="btn btn-dark my-1"
-                            value="Submit"
-                        />
+                        <input type="submit" value="Submit" />
                     </form>
                 </div>
             ) : (

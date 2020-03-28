@@ -13,23 +13,22 @@ const CommentItem = ({
     commentId,
     deleteComment
 }) => (
-    <div className="post bg-white p-1 my-1">
+    <div>
         <div>
             <Link to={`/profile/${user}`}>
-                <img className="round-img" src={avatar} alt="" />
+                <img src={avatar} alt="" />
                 <h4>{name}</h4>
             </Link>
         </div>
         <div>
-            <p className="my-1">{text}</p>
-            <p className="post-date">
+            <p>{text}</p>
+            <p>
                 Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
             </p>
             {!auth.loading && user === auth.user._id && (
                 <button
                     onClick={e => deleteComment(tutorialId, videoId, commentId)}
                     type="button"
-                    className="btn btn-danger"
                 >
                     <i className="fas fa-times" />
                 </button>

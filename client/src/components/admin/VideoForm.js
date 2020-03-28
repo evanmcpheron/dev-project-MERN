@@ -33,10 +33,10 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Create a new tutorial</h1>
+            <h1>Create a new tutorial</h1>
 
-            <form className="form" onSubmit={onSubmit}>
-                <div className="form-group">
+            <form onSubmit={onSubmit}>
+                <div>
                     <input
                         type="text"
                         placeholder="Title"
@@ -70,11 +70,7 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
                         required
                     />
                 </div>
-                <input
-                    type="submit"
-                    className="btn btn-primary"
-                    value="Create Tutorial"
-                />
+                <input type="submit" value="Create Tutorial" />
             </form>
         </Fragment>
     );
