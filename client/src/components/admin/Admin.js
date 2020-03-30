@@ -4,15 +4,18 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdminForm from './AdminForm';
 import Spinner from '../layout/Spinner';
-import { getTutorials } from '../../actions/admin';
+import { getTutorials, deleteTutorial } from '../../actions/admin';
 import TutorialItem from './TutorialItem';
 
-const Admin = ({ getTutorials, tutorial: { tutorials, loading } }) => {
+const Admin = ({ getTutorials, deleteTutorial, admin }, props, state) => {
     useEffect(() => {
         getTutorials();
-        console.log('GET TUTORIALS: ', tutorials);
+        console.log('GET TUTORIALS: ', admin);
     }, [getTutorials]);
-    return loading ? (
+
+    console.log(state, ' ', props);
+
+    return admin.loading ? (
         <Spinner />
     ) : (
         <Fragment>
@@ -20,7 +23,7 @@ const Admin = ({ getTutorials, tutorial: { tutorials, loading } }) => {
             <hr />
             <h1>Tutorials</h1>
             <div>
-                {tutorials.map(tut => (
+                {admin.tutorials.map(tut => (
                     <div key={tut._id}>
                         <h1>{tut.title}</h1>
 
@@ -29,6 +32,12 @@ const Admin = ({ getTutorials, tutorial: { tutorials, loading } }) => {
                         <Link to={`/admin/tutorial/${tut._id}`}>
                             Edit Videos
                         </Link>
+                        <button
+                            onClick={e => deleteTutorial(tut._id)}
+                            type="button"
+                        >
+                            <i className="fas fa-times"></i>
+                        </button>
                     </div>
                 ))}
             </div>
@@ -37,12 +46,15 @@ const Admin = ({ getTutorials, tutorial: { tutorials, loading } }) => {
 };
 
 Admin.propTypes = {
+    deleteTutorial: PropTypes.func.isRequired,
     getTutorials: PropTypes.func.isRequired,
     tutorial: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    tutorial: state.tutorial
+    admin: state.admin
 });
 
-export default connect(mapStateToProps, { getTutorials })(Admin);
+export default connect(mapStateToProps, { getTutorials, deleteTutorial })(
+    Admin
+);

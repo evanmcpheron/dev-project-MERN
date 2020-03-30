@@ -219,7 +219,7 @@ const Navbar = ({
             ) : null}
 
             <i
-                class={`fas fa-hamburger fa-hamburger-${count}`}
+                className={`fas fa-hamburger fa-hamburger-${count}`}
                 onClick={() => setCount(count === 'closed' ? 'open' : 'closed')}
             ></i>
             <nav className={`navbar-wrapper ${count}`}>

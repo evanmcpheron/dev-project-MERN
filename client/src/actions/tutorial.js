@@ -14,6 +14,7 @@ export const getTutorials = () => async dispatch => {
     try {
         const res = await axios.get('/api/tutorial');
 
+        console.log('GET ALL TUTORIALS ACTION IN TUTORIAL');
         dispatch({
             type: GET_TUTORIALS,
             payload: res.data

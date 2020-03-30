@@ -4,6 +4,7 @@ import {
     ADD_TUTORIAL,
     ADD_VIDEO,
     DELETE_VIDEO,
+    DELETE_TUTORIAL,
     GET_ADMIN_VIDEOS,
     TUTORIAL_ERROR,
     GET_TUTORIAL,
@@ -41,6 +42,7 @@ export const addTutorial = formData => async dispatch => {
 export const getTutorials = () => async dispatch => {
     try {
         const res = await axios.get('/api/tutorial');
+        console.log('GET ALL TUTORIALS ACTION IN ADMIN');
 
         dispatch({
             type: GET_TUTORIALS,
@@ -55,6 +57,30 @@ export const getTutorials = () => async dispatch => {
             }
         });
     }
+};
+
+// DELETE SINGLE TUTORIAL
+export const deleteTutorial = id => async dispatch => {
+    // if (window.confirm('Are you sure? This CANNOT be undone!')) {
+    try {
+        const res = await axios.delete(`/api/tutorial/${id} `);
+
+        dispatch({
+            type: DELETE_TUTORIAL,
+            payload: res.data
+        });
+
+        dispatch(setAlert('Tutorial Removed', 'success'));
+    } catch (err) {
+        dispatch({
+            type: TUTORIAL_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        });
+    }
+    // }
 };
 
 // Get single tutorial

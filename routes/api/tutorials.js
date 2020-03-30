@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
             'thumbnailURL'
         ]);
 
-        res.send(tutorials);
+        res.send(tutorial);
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server error');
@@ -74,6 +74,34 @@ router.get('/:id', async (req, res) => {
         }
 
         res.json(tutorial);
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'Tutorial not found' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route    DELETE api/tutorial/:id
+// @desc     Get tutorial by ID
+// @access   Private
+router.delete('/:id', async (req, res) => {
+    try {
+        const tutorial = await Tutorial.findOneAndDelete({
+            _id: req.params.id
+        });
+        const tutorials = await Tutorial.find().populate('tutorial', [
+            'title',
+            'description',
+            'thumbnailURL'
+        ]);
+
+        if (!tutorial) {
+            return res.status(404).json({ msg: 'Tutorial not found' });
+        }
+
+        res.json(tutorials);
     } catch (err) {
         console.error(err.message);
         if (err.kind === 'ObjectId') {
@@ -126,6 +154,30 @@ router.post('/video/:id', auth, async (req, res) => {
         await tutorial.save();
 
         res.json(tutorial);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route    DELETE api/tutorial/video/:id
+// @desc     Add a video to tutorial
+// @access   Admin
+router.delete('/videos/:id/:video_id', auth, async (req, res) => {
+    try {
+        const tutorial = await Tutorial.findById(req.params.id);
+
+        for (let i = 0; i < tutorial.video.length; i++) {
+            if (tutorial.video[i]._id == req.params.video_id) {
+                const index = tutorial.video.indexOf(tutorial.video[i]);
+                // res.json({ data: index });
+                tutorial.video.splice(index, 1);
+
+                await tutorial.save();
+                return res.json({ data: tutorial.video });
+            }
+            console.log(tutorial.video[i]._id);
+        }
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

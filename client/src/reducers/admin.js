@@ -2,6 +2,7 @@ import {
     ADD_TUTORIAL,
     ADD_VIDEO,
     DELETE_VIDEO,
+    DELETE_TUTORIAL,
     TUTORIAL_ERROR,
     GET_TUTORIAL,
     GET_TUTORIALS
@@ -22,13 +23,29 @@ export default function(state = initialState, action) {
         case ADD_TUTORIAL:
             return {
                 ...state,
-                tutorials: payload,
+                tutorials: [...state.tutorials, payload],
+                testTutorial: console.log(
+                    'ADD TUTORIAL PAYLOAD REDUCER: ',
+                    payload
+                ),
+                getTutorial: console.log(
+                    'ADD TUTORIAL STATE REDUCER: ',
+                    state.tutorials
+                ),
                 loading: false
             };
         case GET_TUTORIALS:
             return {
                 ...state,
                 tutorials: payload,
+                testState: console.log(
+                    'GET TUTORIALS PAYLOAD REDUCER: ',
+                    payload
+                ),
+                testStateTwo: console.log(
+                    'GET TUTORIALS STATE IN REDUCER: ',
+                    state.tutorials
+                ),
                 tutorial: null,
                 loading: false
             };
@@ -39,10 +56,17 @@ export default function(state = initialState, action) {
                 tutorial: payload,
                 loading: false
             };
+        case DELETE_TUTORIAL:
+            return {
+                ...state,
+                testPayload: console.log('PAYLOAD DELETE TUTORIAL: ', payload),
+                tutorials: payload,
+                loading: false
+            };
         case ADD_VIDEO:
             return {
                 ...state,
-                tutorial: 'payload',
+                tutorial: payload,
                 videoTest: console.log('PAYLOAD', payload),
                 stateTest: console.log('STATE', state.tutorial),
                 loading: false

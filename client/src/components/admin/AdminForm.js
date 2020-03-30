@@ -29,6 +29,7 @@ const AdminForm = ({
             description: '',
             thumbnailURL: ''
         });
+        getTutorials();
         addTutorial({ title, description, thumbnailURL });
     };
 

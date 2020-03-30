@@ -7,7 +7,7 @@ import { getTutorial } from '../../actions/admin';
 import VideoForm from './VideoForm';
 import TutorialItem from './TutorialItem';
 
-const Videos = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
+const Videos = ({ getTutorial, admin: { tutorial, loading }, match }) => {
     useEffect(() => {
         getTutorial(match.params.id);
     }, [getTutorial]);
@@ -33,7 +33,7 @@ Videos.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    tutorial: state.tutorial
+    admin: state.admin
 });
 
 export default connect(mapStateToProps, { getTutorial })(Videos);

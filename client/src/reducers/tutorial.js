@@ -7,8 +7,6 @@ import {
     DELETE_VIDEO_COMMENT
 } from '../actions/types';
 
-const filterComments = () => {};
-
 const initialState = {
     tutorials: [],
     tutorial: null,
