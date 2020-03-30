@@ -23,16 +23,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 tutorials: payload,
-                testTutorials: console.log('ADD TUTORIAL PAYLOAD ', payload),
-                loading: false,
-                testingAdd: console.log('ADD_TUTORIAL', payload)
+                loading: false
             };
         case GET_TUTORIALS:
             return {
                 ...state,
                 tutorials: payload,
-                tutorialsPay: console.log('GET_TUTORIALS', payload),
-                testState: console.log('CURRENT STATE', state),
                 tutorial: null,
                 loading: false
             };
@@ -46,9 +42,9 @@ export default function(state = initialState, action) {
         case ADD_VIDEO:
             return {
                 ...state,
-                tutorial: payload,
+                tutorial: 'payload',
                 videoTest: console.log('PAYLOAD', payload),
-                stateTest: console.log('STATE', state),
+                stateTest: console.log('STATE', state.tutorial),
                 loading: false
             };
         case TUTORIAL_ERROR:

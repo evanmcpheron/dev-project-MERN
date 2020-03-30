@@ -68,6 +68,43 @@ a:focus {
     padding: 1rem 2.5rem;
     border-radius: 5px;
     box-shadow: 0 0 10px 1px rgba($black-60, 0.3);
+
+    &-success {
+        background: $green;
+    }
+}
+
+small {
+    font-size: 1rem;
+}
+
+.container {
+    width: 80%;
+    padding-top: 10rem;
+    margin-left: 10%;
+}
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        width: 90%;
+        margin-left: 5%;
+        padding-top: 0;
+    }
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+    height: 4rem;
+    border: none;
+    font-family: inherit;
+    box-sizing: border-box;
+    font-size: 1.75rem;
+    padding-left: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.2);
+    margin: 2rem 0;
+    width: 100%;
 }
 
 .player-wrapper {

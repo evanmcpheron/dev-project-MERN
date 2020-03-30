@@ -34,7 +34,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
 
     return (
-        <Fragment>
+        <Fragment className="register-wrapper container">
             <h1>Sign Up</h1>
             <p>
                 <i className="fas fa-user"></i> Create Your Account
@@ -92,7 +92,17 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         minLength="6"
                     />
                 </div>
-                <input type="submit" value="Register" />
+                <input
+                    type="submit"
+                    className="btn btn-success"
+                    value="Register"
+                    style={{
+                        border: 'none',
+                        width: '100%',
+                        fontSize: '2rem',
+                        marginBottom: '2rem'
+                    }}
+                />
             </form>
             <p>
                 Already have an account? <Link to="/login">Sign In</Link>

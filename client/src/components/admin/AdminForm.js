@@ -1,11 +1,16 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { addTutorial, getTutorials } from '../../actions/admin';
 import PropTypes from 'prop-types';
 
-const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
+const AdminForm = ({
+    setAlert,
+    addTutorial,
+    getTutorials,
+    isAuthenticated
+}) => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -17,7 +22,7 @@ const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
     const onChange = event =>
         setFormData({ ...formData, [event.target.name]: event.target.value });
 
-    const onSubmit = async event => {
+    const onSubmit = event => {
         event.preventDefault();
         setFormData({
             title: '',
@@ -31,7 +36,17 @@ const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
         <Fragment>
             <h1>Create a new tutorial</h1>
 
-            <form onSubmit={onSubmit}>
+            <form
+                onSubmit={event => {
+                    event.preventDefault();
+                    setFormData({
+                        title: '',
+                        description: '',
+                        thumbnailURL: ''
+                    });
+                    addTutorial({ title, description, thumbnailURL });
+                }}
+            >
                 <div>
                     <input
                         type="text"
@@ -59,13 +74,18 @@ const AdminForm = ({ setAlert, addTutorial, isAuthenticated }) => {
                     />
                 </div>
 
-                <input type="submit" value="Create Tutorial" />
+                <input
+                    type="submit"
+                    value="Create Tutorial"
+                    onClick={getTutorials}
+                />
             </form>
         </Fragment>
     );
 };
 
 AdminForm.propTypes = {
+    getTutorials: PropTypes.func.isRequired,
     setAlert: PropTypes.func.isRequired,
     addTutorial: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool

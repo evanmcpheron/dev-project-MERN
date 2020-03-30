@@ -20,7 +20,7 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
         console.log(videoId);
     };
 
-    const onSubmit = async event => {
+    const onSubmit = event => {
         event.preventDefault();
         setFormData({
             title: '',
