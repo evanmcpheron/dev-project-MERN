@@ -174,7 +174,7 @@ router.delete('/videos/:id/:video_id', auth, async (req, res) => {
                 tutorial.video.splice(index, 1);
 
                 await tutorial.save();
-                return res.json({ data: tutorial.video });
+                return res.json(tutorial);
             }
             console.log(tutorial.video[i]._id);
         }

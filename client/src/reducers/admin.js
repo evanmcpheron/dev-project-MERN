@@ -20,6 +20,12 @@ export default function(state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
+        case DELETE_VIDEO:
+            return {
+                ...state,
+                tutorial: payload,
+                loading: false
+            };
         case ADD_TUTORIAL:
             return {
                 ...state,

@@ -3,12 +3,24 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const TutorialItem = ({ tutorial: { _id, title } }) => {
+const TutorialItem = ({
+    tutorial: { _id, title, description, thumbnailURL }
+}) => {
     return (
-        <div>
-            <h1>{title}</h1>
-
-            <Link to={`/tutorial/${_id}`}>Watch Videos</Link>
+        <div className="tutorials-container">
+            <div>
+                <img src={thumbnailURL} />
+                <div className="tutorials-container-body">
+                    <h5>{title}</h5>
+                    <p>{description}</p>
+                </div>
+            </div>
+            <div>
+                <Link className="btn btn-success" to={`/tutorial/${_id}`}>
+                    Watch Videos
+                </Link>
+                <div></div>
+            </div>
         </div>
     );
 };

@@ -3,10 +3,14 @@ import spinner from '../../img/spinner.gif';
 
 export default () => (
     <Fragment>
-        <img
+        {/* <img
             src={spinner}
             style={{ width: '200px', margin: 'auto', display: 'block' }}
             alt="Loading..."
-        />
+        /> */}
+        <i
+            class="fas fa-spinner"
+            style={{ width: '200px', margin: 'auto', display: 'block' }}
+        ></i>
     </Fragment>
 );

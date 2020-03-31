@@ -12,17 +12,23 @@ const Videos = ({ getTutorial, admin: { tutorial, loading }, match }) => {
         getTutorial(match.params.id);
     }, [getTutorial]);
 
-    console.log(tutorial, 'Tutorial.js');
-
     return loading || tutorial === null ? (
         <Spinner />
     ) : (
         <Fragment>
-            <Link to="/admin">Back To Admin</Link>
-            <VideoForm videoId={tutorial._id} />
-            {tutorial.video.map(vid => (
-                <TutorialItem key={vid._id} tutorial={vid} />
-            ))}
+            <section className="container">
+                <Link to="/admin" className="btn">
+                    Back To Admin
+                </Link>
+                <VideoForm videoId={tutorial._id} />
+                {tutorial.video.map(vid => (
+                    <TutorialItem
+                        key={vid._id}
+                        tutorial={vid}
+                        tutorialId={tutorial._id}
+                    />
+                ))}
+            </section>
         </Fragment>
     );
 };
@@ -33,6 +39,7 @@ Videos.propTypes = {
 };
 
 const mapStateToProps = state => ({
+    tutorial: state.tutorial,
     admin: state.admin
 });
 

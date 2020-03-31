@@ -12,7 +12,7 @@ const Landing = ({ isAuthenticated }) => {
     return (
         <section className="landing-wrapper">
             <div className="middle">
-                <div>
+                <div className="stuff">
                     <h1>ePoint.io</h1>
                     <p>
                         Create a developer profile/portfolio, share posts, and
@@ -22,7 +22,11 @@ const Landing = ({ isAuthenticated }) => {
                         <Link to="/register" className="btn btn-primary">
                             Sign Up
                         </Link>
-                        <Link to="/login" className="btn btn-primary">
+                        <Link
+                            to="/login"
+                            className="btn btn-primary"
+                            style={{ marginLeft: '1.5rem' }}
+                        >
                             Login
                         </Link>
                     </div>

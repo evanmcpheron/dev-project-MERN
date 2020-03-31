@@ -13,26 +13,28 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 
     return (
         <Fragment>
-            {loading ? (
-                <Spinner />
-            ) : (
-                <Fragment>
-                    <h1>Developers</h1>
-                    <p>Browse and connect with developers</p>
-                    <div>
-                        {profiles.length > 0 ? (
-                            profiles.map(profile => (
-                                <ProfileItem
-                                    key={profile._id}
-                                    profile={profile}
-                                />
-                            ))
-                        ) : (
-                            <h4>No profiles found...</h4>
-                        )}
-                    </div>
-                </Fragment>
-            )}
+            <section className="container profiles-wrapper">
+                {loading ? (
+                    <Spinner />
+                ) : (
+                    <Fragment>
+                        <h2>Developers</h2>
+                        <p>Browse and connect with developers</p>
+                        <div>
+                            {profiles.length > 0 ? (
+                                profiles.map(profile => (
+                                    <ProfileItem
+                                        key={profile._id}
+                                        profile={profile}
+                                    />
+                                ))
+                            ) : (
+                                <h4>No profiles found...</h4>
+                            )}
+                        </div>
+                    </Fragment>
+                )}
+            </section>
         </Fragment>
     );
 };

@@ -1,0 +1,42 @@
+.dashboard-wrapper {
+    .first-btn {
+        margin-right: 2rem;
+    }
+    .topGrid {
+        display: grid;
+        grid-template-rows: 0.5fr 1fr;
+        background: rgba($black, 0.5);
+        padding: 3rem;
+        border-radius: 1.5rem;
+        margin: 2rem 0;
+        border: $grey solid 2px;
+    }
+    .baseGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .flex {
+        display: flex;
+        align-items: center;
+    }
+
+    @media only screen and (max-width: 900px) {
+        .mobile {
+            display: none;
+        }
+
+        .dashboard-btns {
+            display: grid;
+        }
+
+        .dash-btn {
+            margin: 2rem 0 !important;
+        }
+    }
+    @media only screen and (max-width: 1200px) {
+        .tablet {
+            display: none;
+        }
+    }
+}

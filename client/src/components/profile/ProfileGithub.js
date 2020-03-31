@@ -10,35 +10,43 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
     }, [getGithubRepos]);
 
     return (
-        <div>
-            <h2>Github Repos</h2>
-            {repos === null ? (
-                <Spinner />
-            ) : (
-                repos.map(repo => (
-                    <div key={repo.node_id}>
-                        <div>
-                            <h4>
-                                <a
-                                    href={repo.html_url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    {repo.name}
-                                </a>
-                            </h4>
-                            <p>{repo.desciption}</p>
+        <div className="experience-profile" style={{ marginBottom: '3rem' }}>
+            <h2 style={{ textAlign: 'center' }}>Github Repos</h2>
+            <div className="github-wrapper">
+                {repos === null ? (
+                    <Spinner />
+                ) : (
+                    repos.map(repo => (
+                        <div key={repo.node_id}>
+                            <div>
+                                <h4>
+                                    <a
+                                        href={repo.html_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {repo.name}
+                                    </a>
+                                </h4>
+                                <p>{repo.desciption}</p>
+                            </div>
+                            <div>
+                                <ul style={{ listStyle: 'none' }}>
+                                    <li>
+                                        <p>Stars: {repo.stargazers_count}</p>
+                                    </li>
+                                    <li>
+                                        <p>Watchers: {repo.watchers_count}</p>
+                                    </li>
+                                    <li>
+                                        <p>Forks: {repo.forks_count}</p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div>
-                            <ul>
-                                <li>Stars: {repo.stargazers_count}</li>
-                                <li>Watchers: {repo.watchers_count}</li>
-                                <li>Forks: {repo.forks_count}</li>
-                            </ul>
-                        </div>
-                    </div>
-                ))
-            )}
+                    ))
+                )}
+            </div>
         </div>
     );
 };

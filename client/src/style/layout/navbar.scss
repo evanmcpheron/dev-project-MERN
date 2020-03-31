@@ -9,6 +9,7 @@
     align-items: center;
     background: $primary-0;
     box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.25);
+    z-index: 998;
 
     .logo-navbar {
         font-size: 3rem;
@@ -31,12 +32,12 @@
 @media only screen and (max-width: 1200px) {
     .fa-hamburger {
         display: block;
-        position: absolute;
+        position: fixed;
         top: 3rem;
         right: 3rem;
         font-size: 3rem;
         z-index: 999;
-        color: $primary-0;
+        color: $success-0;
 
         &-open {
             color: $white;
@@ -65,6 +66,7 @@
         left: 0;
         background: rgba($black, 0.5);
         position: fixed;
+        z-index: 997;
     }
     .closed {
         top: -1000px;

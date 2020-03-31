@@ -76,6 +76,7 @@ const AdminForm = ({
                 </div>
 
                 <input
+                    className="btn btn-success admin-submit-btn"
                     type="submit"
                     value="Create Tutorial"
                     onClick={getTutorials}

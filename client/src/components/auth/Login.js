@@ -28,46 +28,48 @@ const Login = ({ login, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <h1>Sign In</h1>
-            <p>
-                <i className="fas fa-user"></i> Log into your account
-            </p>
-            <form onSubmit={onSubmit}>
-                <div>
+            <section className="container">
+                <h1>Sign In</h1>
+                <p>
+                    <i className="fas fa-user"></i> Log into your account
+                </p>
+                <form onSubmit={onSubmit}>
+                    <div>
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            value={email}
+                            onChange={event => onChange(event)}
+                            name="email"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            value={password}
+                            onChange={event => onChange(event)}
+                            minLength="6"
+                        />
+                    </div>
                     <input
-                        type="email"
-                        placeholder="Email Address"
-                        value={email}
-                        onChange={event => onChange(event)}
-                        name="email"
-                        required
+                        type="submit"
+                        value="Sign In"
+                        className="btn btn-success"
+                        style={{
+                            border: 'none',
+                            width: '100%',
+                            fontSize: '2rem',
+                            marginBottom: '2rem'
+                        }}
                     />
-                </div>
-                <div>
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={password}
-                        onChange={event => onChange(event)}
-                        minLength="6"
-                    />
-                </div>
-                <input
-                    type="submit"
-                    value="Sign In"
-                    className="btn btn-success"
-                    style={{
-                        border: 'none',
-                        width: '100%',
-                        fontSize: '2rem',
-                        marginBottom: '2rem'
-                    }}
-                />
-            </form>
-            <p>
-                Don't have an account? <Link to="/register">Sign Up</Link>
-            </p>
+                </form>
+                <p>
+                    Don't have an account? <Link to="/register">Sign Up</Link>
+                </p>
+            </section>
         </Fragment>
     );
 };

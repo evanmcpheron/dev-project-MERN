@@ -70,7 +70,11 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
                         required
                     />
                 </div>
-                <input type="submit" value="Create Tutorial" />
+                <input
+                    className="btn btn-success"
+                    type="submit"
+                    value="Create Tutorial"
+                />
             </form>
         </Fragment>
     );

@@ -22,30 +22,39 @@ const Dashboard = ({
         <Spinner />
     ) : (
         <Fragment>
-            <h1>Dashboard</h1>
-            <p>
-                <i className="fas fa-user"></i>Welcome {user && user.fName}
-            </p>
-            {profile !== null ? (
-                <Fragment>
-                    <DashboardActions />
-                    <Experience experience={profile.experience} />
-                    <Education education={profile.education} />
+            <section className="container dashboard-wrapper">
+                <h1>Dashboard</h1>
+                {profile !== null ? (
+                    <Fragment>
+                        <DashboardActions />
+                        <Experience experience={profile.experience} />
+                        <Education education={profile.education} />
 
-                    <div>
-                        <button onClick={() => deleteAccount()}>
-                            <i className="fas fa-user"></i> Delete My Account
-                        </button>
-                    </div>
-                </Fragment>
-            ) : (
-                <Fragment>
-                    <p>
-                        You have not yet set up a profile, please add some info
-                    </p>
-                    <Link to="/create-profile">Create Profile</Link>
-                </Fragment>
-            )}
+                        <div>
+                            <button
+                                style={{
+                                    position: 'absolute',
+                                    bottom: '10px',
+                                    right: '10px'
+                                }}
+                                className="btn btn-danger my2"
+                                onClick={() => deleteAccount()}
+                            >
+                                <i className="fas fa-user"></i> Delete My
+                                Account
+                            </button>
+                        </div>
+                    </Fragment>
+                ) : (
+                    <Fragment>
+                        <p>
+                            You have not yet set up a profile, please add some
+                            info
+                        </p>
+                        <Link to="/create-profile">Create Profile</Link>
+                    </Fragment>
+                )}
+            </section>
         </Fragment>
     );
 };

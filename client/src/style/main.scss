@@ -9,8 +9,11 @@ html,
 body {
     font-size: 10px;
     font-family: 'Mukta', sans-serif;
-    color: $black;
-    background: $white;
+    color: $grey;
+    height: 100vh;
+    background: linear-gradient(140deg, $secondary-0, #411141);
+    background-size: contain;
+    background-attachment: fixed;
 }
 
 h1 {
@@ -52,26 +55,57 @@ a {
     text-decoration: none;
 }
 
+a,
+a:hover,
+a:focus,
 a:visited,
 a:active {
     color: $success-0;
 }
 
-a:hover,
-a:focus {
-    color: $success-1;
-}
-
 .btn {
     color: black !important;
-    background: white;
+    background: $white;
     padding: 1rem 2.5rem;
     border-radius: 5px;
     box-shadow: 0 0 10px 1px rgba($black-60, 0.3);
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
 
     &-success {
-        background: $green;
+        background: $success-0;
     }
+
+    &-warn {
+        background: $warn-0;
+    }
+    &-danger {
+        background: $red;
+    }
+}
+
+.mt2 {
+    margin-top: 2rem;
+}
+.mt0 {
+    margin-top: 0 !important;
+}
+
+.mb2 {
+    margin-bottom: 2rem;
+}
+
+.my2 {
+    margin: 2rem 0;
+}
+
+.mx2 {
+    margin: 0 2rem;
+}
+
+.m2 {
+    margin: 2rem;
 }
 
 small {
@@ -90,8 +124,36 @@ small {
         margin-left: 5%;
         padding-top: 0;
     }
+
+    .tablet {
+        display: none;
+    }
 }
 
+@media only screen and (max-width: 900px) {
+    .container {
+        width: 90%;
+        margin-left: 5%;
+        padding-top: 0;
+    }
+
+    .mobile {
+        display: none;
+    }
+}
+
+.avatar {
+    border-radius: 10%;
+}
+
+small {
+    font-size: 1.4rem;
+}
+
+textarea,
+select,
+input[type='number'],
+input[type='date'],
 input[type='text'],
 input[type='email'],
 input[type='password'] {
@@ -105,6 +167,12 @@ input[type='password'] {
     box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.2);
     margin: 2rem 0;
     width: 100%;
+    background: $grey;
+}
+
+textarea {
+    resize: none;
+    height: 15rem;
 }
 
 .player-wrapper {

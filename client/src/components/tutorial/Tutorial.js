@@ -21,11 +21,16 @@ const Tutorial = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
         <Spinner />
     ) : (
         <Fragment>
-            <Link to="/tutorials">Back To Tutorials</Link>
-            <h1>{tutorial.title}</h1>
-            <div>
-                <VideoPlayerTwo videos={tutorial.video} tutorial={tutorial} />
-            </div>
+            <section className="container">
+                <Link to="/tutorials">Back To Tutorials</Link>
+                <h1>{tutorial.title}</h1>
+                <div>
+                    <VideoPlayerTwo
+                        videos={tutorial.video}
+                        tutorial={tutorial}
+                    />
+                </div>
+            </section>
         </Fragment>
     );
 };

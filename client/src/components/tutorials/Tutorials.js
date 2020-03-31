@@ -13,19 +13,19 @@ const Tutorials = ({ getTutorials, tutorial: { tutorials, loading } }) => {
         <Spinner />
     ) : (
         <Fragment>
-            <h1>Posts</h1>
-            <p>
-                <i className="fas fa-user"></i> Welcome to the community
-            </p>
-            <div>
-                {tutorials.map(tut => (
-                    <TutorialItem
-                        showActions={true}
-                        key={tut._id}
-                        tutorial={tut}
-                    />
-                ))}
-            </div>
+            <section className="container">
+                <h1>Tutorials</h1>
+
+                <div className="tutorial-video-wrapper">
+                    {tutorials.map(tut => (
+                        <TutorialItem
+                            showActions={true}
+                            key={tut._id}
+                            tutorial={tut}
+                        />
+                    ))}
+                </div>
+            </section>
         </Fragment>
     );
 };

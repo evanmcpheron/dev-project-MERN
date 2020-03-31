@@ -1,6 +1,13 @@
 @import './variables.scss';
 @import './main.scss';
+@import './mixins.scss';
 
 // LAYOUT
 @import './layout/landing.scss';
 @import './layout/navbar.scss';
+
+// DASHBOARD
+@import './dashboard/dashboard.scss';
+@import './tutorial.scss';
+@import './profiles.scss';
+@import './admin.scss';

@@ -12,23 +12,29 @@ const ProfileItem = ({
     }
 }) => {
     return (
-        <div>
-            <img src={avatar} alt="" />
+        <div className="profile-grid">
             <div>
-                <h2>{`${fName} ${lName}`}</h2>
-                <p>
-                    {status} {company && <span> at {company}</span>}
-                </p>
-                <p>{location && <span>{location}</span>}</p>
-                <Link to={`/profile/${_id}`}>View Profile</Link>
+                <img className="avatar" src={avatar} alt="" />
+                <h5>{`${fName} ${lName}`}</h5>
             </div>
-            <ul>
+            <div>
+                <p>
+                    - {status} {company && <span> at {company}</span>}
+                </p>
+                <p>- {location && <span>{location}</span>}</p>
+            </div>
+            <ul style={{ listStyle: 'none' }}>
                 {skills.slice(0, 4).map((skill, index) => (
-                    <li key={index}>
-                        <i className="fas fa-check" /> {skill}
-                    </li>
+                    <p>
+                        <li key={index}>
+                            <i className="fas fa-check" /> {skill}
+                        </li>
+                    </p>
                 ))}
             </ul>
+            <Link className="btn" to={`/profile/${_id}`}>
+                View Profile
+            </Link>
         </div>
     );
 };

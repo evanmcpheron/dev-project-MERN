@@ -14,16 +14,22 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
         <Spinner />
     ) : (
         <Fragment>
-            <h1>Posts</h1>
-            <p>
-                <i className="fas fa-user"></i> Welcome to the community
-            </p>
-            <PostForm />
-            <div>
-                {posts.map(post => (
-                    <PostItem showActions={true} key={post._id} post={post} />
-                ))}
-            </div>
+            <section className="container">
+                <h1>Posts</h1>
+                <p>
+                    <i className="fas fa-user"></i> Welcome to the community
+                </p>
+                <PostForm />
+                <div>
+                    {posts.map(post => (
+                        <PostItem
+                            showActions={true}
+                            key={post._id}
+                            post={post}
+                        />
+                    ))}
+                </div>
+            </section>
         </Fragment>
     );
 };

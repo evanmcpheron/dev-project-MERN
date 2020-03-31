@@ -17,18 +17,20 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
         <Spinner />
     ) : (
         <Fragment>
-            <Link to="/posts">Back To Posts</Link>
-            <PostItem post={post} showActions={false} />
-            <CommentForm postId={post._id} />
-            <div>
-                {post.comments.map(comment => (
-                    <CommentItem
-                        key={comment._id}
-                        comment={comment}
-                        postId={post._id}
-                    />
-                ))}
-            </div>
+            <section className="container">
+                <Link to="/posts">Back To Posts</Link>
+                <PostItem post={post} showActions={false} />
+                <CommentForm postId={post._id} />
+                <div>
+                    {post.comments.map(comment => (
+                        <CommentItem
+                            key={comment._id}
+                            comment={comment}
+                            postId={post._id}
+                        />
+                    ))}
+                </div>
+            </section>
         </Fragment>
     );
 };

@@ -35,78 +35,80 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
     return (
         <Fragment className="register-wrapper container">
-            <h1>Sign Up</h1>
-            <p>
-                <i className="fas fa-user"></i> Create Your Account
-            </p>
-            <form onSubmit={onSubmit}>
-                <div>
+            <section className="container">
+                <h1>Sign Up</h1>
+                <p>
+                    <i className="fas fa-user"></i> Create Your Account
+                </p>
+                <form onSubmit={onSubmit}>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="First Name"
+                            name="fName"
+                            value={fName}
+                            onChange={event => onChange(event)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            name="lName"
+                            value={lName}
+                            onChange={event => onChange(event)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            value={email}
+                            onChange={event => onChange(event)}
+                            name="email"
+                            required
+                        />
+                        <small>
+                            This site uses Gravatar so if you want a profile
+                            image, use a Gravatar email
+                        </small>
+                    </div>
+                    <div>
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            value={password}
+                            onChange={event => onChange(event)}
+                            minLength="6"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            name="password2"
+                            value={password2}
+                            onChange={event => onChange(event)}
+                            minLength="6"
+                        />
+                    </div>
                     <input
-                        type="text"
-                        placeholder="First Name"
-                        name="fName"
-                        value={fName}
-                        onChange={event => onChange(event)}
-                        required
+                        type="submit"
+                        className="btn btn-success"
+                        value="Register"
+                        style={{
+                            border: 'none',
+                            width: '100%',
+                            fontSize: '2rem',
+                            marginBottom: '2rem'
+                        }}
                     />
-                    <input
-                        type="text"
-                        placeholder="Last Name"
-                        name="lName"
-                        value={lName}
-                        onChange={event => onChange(event)}
-                        required
-                    />
-                </div>
-                <div>
-                    <input
-                        type="email"
-                        placeholder="Email Address"
-                        value={email}
-                        onChange={event => onChange(event)}
-                        name="email"
-                        required
-                    />
-                    <small>
-                        This site uses Gravatar so if you want a profile image,
-                        use a Gravatar email
-                    </small>
-                </div>
-                <div>
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={password}
-                        onChange={event => onChange(event)}
-                        minLength="6"
-                    />
-                </div>
-                <div>
-                    <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        name="password2"
-                        value={password2}
-                        onChange={event => onChange(event)}
-                        minLength="6"
-                    />
-                </div>
-                <input
-                    type="submit"
-                    className="btn btn-success"
-                    value="Register"
-                    style={{
-                        border: 'none',
-                        width: '100%',
-                        fontSize: '2rem',
-                        marginBottom: '2rem'
-                    }}
-                />
-            </form>
-            <p>
-                Already have an account? <Link to="/login">Sign In</Link>
-            </p>
+                </form>
+                <p>
+                    Already have an account? <Link to="/login">Sign In</Link>
+                </p>
+            </section>
         </Fragment>
     );
 };

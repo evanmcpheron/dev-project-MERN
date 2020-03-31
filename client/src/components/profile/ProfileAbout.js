@@ -9,19 +9,26 @@ const ProfileAbout = ({
     }
 }) => {
     return (
-        <div>
+        <div style={{ textAlign: 'center' }} className="experience-profile">
             {bio && (
                 <Fragment>
-                    <h2>{fName}'s Bio</h2>
+                    <h3>{fName}'s Bio</h3>
                     <p>{bio}</p>
                     <div></div>
                 </Fragment>
             )}
-            <h2>Skill Set</h2>
-            <div>
+            <h3>Skill Set</h3>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 {skills.map((skill, index) => (
                     <div key={index}>
-                        <i className="fas fa-check"></i> {skill}
+                        <p style={{ margin: '0 1rem' }}>
+                            <i
+                                className="fas fa-check"
+                                style={{ fontSize: '1.5rem' }}
+                            ></i>
+                            {'   '}
+                            {skill}
+                        </p>
                     </div>
                 ))}
             </div>

@@ -19,28 +19,42 @@ const Admin = ({ getTutorials, deleteTutorial, admin }, props, state) => {
         <Spinner />
     ) : (
         <Fragment>
-            <AdminForm />
-            <hr />
-            <h1>Tutorials</h1>
-            <div>
-                {admin.tutorials.map(tut => (
-                    <div key={tut._id}>
-                        <h1>{tut.title}</h1>
+            <section className="container admin-wrapper">
+                <AdminForm />
+                <hr />
+                <h1>Tutorials</h1>
+                <div className="bottom-section-admin mb2">
+                    {admin.tutorials.map(tut => (
+                        <div className="tutorials-container" key={tut._id}>
+                            <div>
+                                <img src={tut.thumbnailURL} />
+                                <div className="tutorials-container-body">
+                                    <h6 style={{ fontWeight: '600' }}>
+                                        {tut.title}
+                                    </h6>
 
-                        <p>{tut.description}</p>
-
-                        <Link to={`/admin/tutorial/${tut._id}`}>
-                            Edit Videos
-                        </Link>
-                        <button
-                            onClick={e => deleteTutorial(tut._id)}
-                            type="button"
-                        >
-                            <i className="fas fa-times"></i>
-                        </button>
-                    </div>
-                ))}
-            </div>
+                                    <p>{tut.description}</p>
+                                </div>
+                            </div>
+                            <div className="btn-grid">
+                                <Link
+                                    className="btn btn-success"
+                                    to={`/admin/tutorial/${tut._id}`}
+                                >
+                                    Edit Videos
+                                </Link>
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={e => deleteTutorial(tut._id)}
+                                    type="button"
+                                >
+                                    <i className="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
         </Fragment>
     );
 };

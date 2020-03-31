@@ -6,37 +6,44 @@ import { deleteEducation } from '../../actions/profile';
 
 const Education = ({ education, deleteEducation }) => {
     const educations = education.map(edu => (
-        <tr key={edu._id}>
-            <td>{edu.school}</td>
-            <td>{edu.degree}</td>
-            <td>
-                <Moment format="YYYY/MM/DD">{edu.from}</Moment> -{' '}
-                {edu.to === null ? (
-                    ' Current School'
-                ) : (
-                    <Moment format="YYYY/MM/DD">{edu.to}</Moment>
-                )}
-            </td>
-            <td>
-                <button onClick={() => deleteEducation(edu._id)}>Delete</button>
-            </td>
-        </tr>
+        <div className="baseGrid" key={edu._id}>
+            <p className=" flex">{edu.school}</p>
+            <p className="mobile flex">{edu.degree}</p>
+            <div className="tablet flex">
+                <p>
+                    <Moment format="YYYY/MM/DD">{edu.from}</Moment> -{' '}
+                    {edu.to === null ? (
+                        ' Current School'
+                    ) : (
+                        <Moment format="YYYY/MM/DD">{edu.to}</Moment>
+                    )}
+                </p>
+            </div>
+            <div>
+                <button
+                    className="btn btn-danger my2"
+                    onClick={() => deleteEducation(edu._id)}
+                >
+                    Delete
+                </button>
+            </div>
+        </div>
     ));
 
     return (
         <Fragment>
-            <h2>Education Credentials</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>School</th>
-                        <th>Degree</th>
-                        <th>Years</th>
-                        <th />
-                    </tr>
-                </thead>
-                <tbody>{educations}</tbody>
-            </table>
+            <h2 style={{ marginTop: '5rem' }}>Education</h2>
+            <div className="topGrid">
+                <div className="middleGrid">
+                    <div className="baseGrid">
+                        <h4>School</h4>
+                        <h4 className="mobile">Degree</h4>
+                        <h4 className="tablet">Years</h4>
+                    </div>
+                    <hr />
+                </div>
+                <div>{educations}</div>
+            </div>
         </Fragment>
     );
 };

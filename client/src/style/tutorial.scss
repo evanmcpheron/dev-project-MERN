@@ -1,0 +1,57 @@
+.tutorial-video-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 3rem;
+    margin-bottom: 3rem;
+
+    .tutorials-container {
+        @include borderThing;
+        border-radius: 0;
+        background: $white;
+        color: $black;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 60rem;
+        max-height: 100rem;
+        margin: 0;
+        padding: 0;
+
+        .btn {
+            height: 4rem;
+            padding: 3px;
+            border-radius: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-body {
+            border-left: black 2px solid;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            margin-top: 2rem;
+            padding-right: 2rem;
+        }
+        img {
+            width: 100%;
+            height: 15rem;
+        }
+    }
+}
+@media only screen and (min-width: 500px) {
+    .tutorial-video-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media only screen and (min-width: 900px) {
+    .tutorial-video-wrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media only screen and (min-width: 1400px) {
+    .tutorial-video-wrapper {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

@@ -12,14 +12,25 @@ const ProfileTop = ({
     }
 }) => {
     return (
-        <div>
-            <img src={avatar} alt="" />
+        <div className="top-wrapper experience-profile">
+            <img
+                className="avatar"
+                style={{ marginTop: '3rem' }}
+                src={avatar}
+                alt=""
+            />
             <h1>{`${fName} ${lName}`}</h1>
             <p>
                 {status} {company && <span> at {company}</span>}
             </p>
             <p>{location && <span>{location}</span>}</p>
-            <div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    margin: '3rem 0'
+                }}
+            >
                 {website && (
                     <a href={website} target="_blank" rel="noopener noreferrer">
                         <i className="fas fa-globe fa-2x"></i>
