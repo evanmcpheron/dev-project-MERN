@@ -11,6 +11,10 @@ import CommentForm from '../../../tutorial/CommentForm';
 import CommentItem from '../../../tutorial/CommentItem';
 
 class VideoPlayerTwo extends Component {
+    constructor(props) {
+        super(props);
+        this.updateDimensions = this.updateDimensions.bind(this);
+    }
     state = {
         url: this.props.videos[0].videoUrl,
         pip: false,
@@ -27,7 +31,9 @@ class VideoPlayerTwo extends Component {
         ended: false,
         videos: this.props.videos,
         currentVideo: null,
-        currentPosition: 0
+        currentPosition: 0,
+        height: window.innerHeight,
+        width: window.innerWidth
     };
 
     load = url => {
@@ -38,6 +44,18 @@ class VideoPlayerTwo extends Component {
             pip: false
         });
     };
+
+    componentDidMount() {
+        console.log(this.state.height);
+        // Additionally I could have just used an arrow function for the binding `this` to the component...
+        window.addEventListener('resize', this.updateDimensions);
+    }
+    updateDimensions() {
+        this.setState({
+            height: window.innerHeight,
+            width: window.innerWidth
+        });
+    }
 
     handleProgress = state => {
         console.log('onProgress', state);
@@ -75,6 +93,10 @@ class VideoPlayerTwo extends Component {
         this.player = player;
     };
 
+    windowResize = () => {
+        window.addEventListener('resize');
+    };
+
     render() {
         const {
             url,
@@ -90,84 +112,268 @@ class VideoPlayerTwo extends Component {
         const SEPARATOR = ' · ';
 
         return (
-            <div className="VideoPlayerTwo">
-                <section className="section">
-                    <div className="player-wrapper">
-                        <ReactPlayer
-                            ref={this.ref}
-                            className="react-player"
-                            width="100%"
-                            height="100%"
-                            url={url}
-                            pip={pip}
-                            playing={playing}
-                            controls={controls}
-                            light={light}
-                            loop={loop}
-                            playbackRate={playbackRate}
-                            volume={volume}
-                            muted={muted}
-                            onEnded={this.handleEnded}
-                            onError={e => console.log('onError', e)}
-                            onProgress={this.handleProgress}
-                            onDuration={this.handleDuration}
-                        />
-                    </div>
-                </section>
-                <h1>{this.props.videos[this.state.currentPosition].title}</h1>
-                <CommentForm
-                    tutorialId={
-                        this.props.videos[this.state.currentPosition]._id
-                    }
-                    videoId={this.props.tutorial._id}
-                />
-
-                <section>
-                    {this.props.videos.map(video => {
-                        return (
-                            <div key={video._id}>
-                                {video.videoUrl === this.state.url
-                                    ? video.comments.length > 0
-                                        ? video.comments.map(comment => (
-                                              <CommentItem
-                                                  key={comment._id}
-                                                  comment={comment}
-                                                  tutorialId={
-                                                      this.props.tutorial._id
-                                                  }
-                                                  videoId={video._id}
-                                                  commentId={comment._id}
-                                              ></CommentItem>
-                                          ))
-                                        : // <p>No Comments Yet</p>
-                                          null
-                                    : null}
-                            </div>
-                        );
-                    })}
-                </section>
-                {this.props.videos.map(video => {
-                    return (
-                        <div key={video._id}>
-                            <button
-                                value={video.url}
-                                onClick={() =>
-                                    this.setState({
-                                        url: video.videoUrl,
-                                        currentVideo: video.videoUrl,
-                                        currentPosition: video.position - 1
-                                    })
-                                }
-                            >
-                                {video.position} {video.title}
-                                <img
-                                    src={this.props.tutorial.thumbnailURL}
-                                    alt="Thumbnail Image"
+            <div className="VideoPlayerTwo ">
+                {this.state.width >= 1200 ? (
+                    <div>
+                        <section className="section player-section">
+                            <div className="player-wrapper">
+                                <ReactPlayer
+                                    ref={this.ref}
+                                    className="react-player"
+                                    width="100%"
+                                    height="100%"
+                                    url={url}
+                                    pip={pip}
+                                    playing={playing}
+                                    controls={controls}
+                                    light={light}
+                                    loop={loop}
+                                    playbackRate={playbackRate}
+                                    volume={volume}
+                                    muted={muted}
+                                    onEnded={this.handleEnded}
+                                    onError={e => console.log('onError', e)}
+                                    onProgress={this.handleProgress}
+                                    onDuration={this.handleDuration}
                                 />
-                            </button>
+                            </div>
+
+                            <section className="side-playlist">
+                                {this.props.videos.map(video => {
+                                    return (
+                                        <div
+                                            key={video._id}
+                                            className={`playlist-wrapper`}
+                                        >
+                                            <button
+                                                className="playlist-btn"
+                                                value={video.url}
+                                                onClick={() =>
+                                                    this.setState({
+                                                        url: video.videoUrl,
+                                                        currentVideo:
+                                                            video.videoUrl,
+                                                        currentPosition:
+                                                            video.position - 1
+                                                    })
+                                                }
+                                            >
+                                                {/* <img
+                                            className="playlist-img"
+                                            src={
+                                                this.props.tutorial.thumbnailURL
+                                            }
+                                            alt="Thumbnail Image"
+                                        /> */}
+                                                <h6>
+                                                    {video.position}{' '}
+                                                    {video.title}
+                                                </h6>
+                                            </button>
+                                        </div>
+                                    );
+                                })}
+                            </section>
+                        </section>
+                        <h6 className="mt2">
+                            {
+                                this.props.videos[this.state.currentPosition]
+                                    .title
+                            }
+                        </h6>
+                        <a
+                            href={
+                                this.props.videos[this.state.currentPosition]
+                                    .githubUrl
+                            }
+                            target="_blank"
+                        >
+                            Github Repo
+                        </a>
+                        <div className="playlist playlist-bottom">
+                            <section>
+                                <CommentForm
+                                    tutorialId={
+                                        this.props.videos[
+                                            this.state.currentPosition
+                                        ]._id
+                                    }
+                                    videoId={this.props.tutorial._id}
+                                />
+
+                                {this.props.videos.map(video => {
+                                    return (
+                                        <div
+                                            className="comments-wrapper mb2"
+                                            key={video._id}
+                                        >
+                                            {video.videoUrl === this.state.url
+                                                ? video.comments.length > 0
+                                                    ? video.comments.map(
+                                                          comment => (
+                                                              <CommentItem
+                                                                  key={
+                                                                      comment._id
+                                                                  }
+                                                                  comment={
+                                                                      comment
+                                                                  }
+                                                                  tutorialId={
+                                                                      this.props
+                                                                          .tutorial
+                                                                          ._id
+                                                                  }
+                                                                  videoId={
+                                                                      video._id
+                                                                  }
+                                                                  commentId={
+                                                                      comment._id
+                                                                  }
+                                                              ></CommentItem>
+                                                          )
+                                                      )
+                                                    : // <p>No Comments Yet</p>
+                                                      null
+                                                : null}
+                                        </div>
+                                    );
+                                })}
+                                <div></div>
+                            </section>
                         </div>
-                    );
-                })}
+                    </div>
+                ) : (
+                    <p>
+                        <section className="section player-section">
+                            <div className="player-wrapper">
+                                <ReactPlayer
+                                    ref={this.ref}
+                                    className="react-player"
+                                    width="100%"
+                                    height="100%"
+                                    url={url}
+                                    pip={pip}
+                                    playing={playing}
+                                    controls={controls}
+                                    light={light}
+                                    loop={loop}
+                                    playbackRate={playbackRate}
+                                    volume={volume}
+                                    muted={muted}
+                                    onEnded={this.handleEnded}
+                                    onError={e => console.log('onError', e)}
+                                    onProgress={this.handleProgress}
+                                    onDuration={this.handleDuration}
+                                />
+                            </div>
+                        </section>
+                        <h6 className="mt2">
+                            {
+                                this.props.videos[this.state.currentPosition]
+                                    .title
+                            }
+                        </h6>
+                        <a
+                            href={
+                                this.props.videos[this.state.currentPosition]
+                                    .githubUrl
+                            }
+                            target="_blank"
+                        >
+                            Github Repo
+                        </a>
+                        <div className="playlist playlist-bottom">
+                            <section>
+                                <CommentForm
+                                    tutorialId={
+                                        this.props.videos[
+                                            this.state.currentPosition
+                                        ]._id
+                                    }
+                                    videoId={this.props.tutorial._id}
+                                />
+
+                                {this.props.videos.map(video => {
+                                    return (
+                                        <div
+                                            className="comments-wrapper mb2"
+                                            key={video._id}
+                                        >
+                                            {video.videoUrl === this.state.url
+                                                ? video.comments.length > 0
+                                                    ? video.comments.map(
+                                                          comment => (
+                                                              <CommentItem
+                                                                  key={
+                                                                      comment._id
+                                                                  }
+                                                                  comment={
+                                                                      comment
+                                                                  }
+                                                                  tutorialId={
+                                                                      this.props
+                                                                          .tutorial
+                                                                          ._id
+                                                                  }
+                                                                  videoId={
+                                                                      video._id
+                                                                  }
+                                                                  commentId={
+                                                                      comment._id
+                                                                  }
+                                                              ></CommentItem>
+                                                          )
+                                                      )
+                                                    : // <p>No Comments Yet</p>
+                                                      null
+                                                : null}
+                                        </div>
+                                    );
+                                })}
+                                <div>
+                                    <section>
+                                        {this.props.videos.map(video => {
+                                            return (
+                                                <div
+                                                    key={video._id}
+                                                    className="playlist-wrapper"
+                                                >
+                                                    <button
+                                                        className="playlist-btn"
+                                                        value={video.url}
+                                                        onClick={() =>
+                                                            this.setState({
+                                                                url:
+                                                                    video.videoUrl,
+                                                                currentVideo:
+                                                                    video.videoUrl,
+                                                                currentPosition:
+                                                                    video.position -
+                                                                    1
+                                                            })
+                                                        }
+                                                    >
+                                                        {/* <img
+                                            className="playlist-img"
+                                            src={
+                                                this.props.tutorial.thumbnailURL
+                                            }
+                                            alt="Thumbnail Image"
+                                        /> */}
+                                                        <h6>
+                                                            {video.position}{' '}
+                                                            {video.title}
+                                                        </h6>
+                                                    </button>
+                                                </div>
+                                            );
+                                        })}
+                                    </section>
+                                </div>
+                            </section>
+                        </div>
+                    </p>
+                )}
             </div>
         );
     }

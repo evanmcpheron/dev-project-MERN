@@ -8,9 +8,7 @@ const PostForm = ({ addPost }) => {
 
     return (
         <div>
-            <div>
-                <h3>Say Something...</h3>
-            </div>
+            <div></div>
             <form
                 onSubmit={e => {
                     e.preventDefault();
@@ -27,7 +25,11 @@ const PostForm = ({ addPost }) => {
                     value={text}
                     onChange={e => setText(e.target.value)}
                 ></textarea>
-                <input type="submit" value="Submit" />
+                <input
+                    className="btn btn-success"
+                    type="submit"
+                    value="Submit"
+                />
             </form>
         </div>
     );

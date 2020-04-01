@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -11,23 +11,35 @@ const CommentItem = ({
     auth,
     deleteComment
 }) => (
-    <div>
-        <div>
-            <Link to={`/profile/${user}`}>
-                <img src={avatar} alt="" />
-                <h4>{name}</h4>
+    <div className="post-item">
+        <div className="avatar-post">
+            <Link className="avatar-center" to={`/profile/${user}`}>
+                <img className="avatar" src={avatar} alt="" />
+            </Link>
+            <Link className="avatar-center" to={`/profile/${user}`}>
+                <p>{name}</p>
             </Link>
         </div>
-        <div>
-            <p>{text}</p>
-            <p>
-                Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
-            </p>
-            {!auth.loading && user === auth.user._id && (
-                <button onClick={e => deleteComment(postId, _id)} type="button">
-                    <i className="fas fa-times" />
-                </button>
-            )}
+        <div className="post-text">
+            <p style={{ paddingBottom: '2rem' }}>{text}</p>
+            <div className="bottom-post-text">
+                <span></span>
+                <p className="moment" style={{ marginRight: '1rem' }}>
+                    Posted on<span style={{ paddingRight: '1rem' }}></span>{' '}
+                    <Moment format="YYYY/MM/DD">{date}</Moment>
+                </p>
+
+                <Fragment></Fragment>
+                {!auth.loading && user === auth.user._id && (
+                    <button
+                        className="danger-button"
+                        onClick={e => deleteComment(postId, _id)}
+                        type="button"
+                    >
+                        <i className="fas fa-times" />
+                    </button>
+                )}
+            </div>
         </div>
     </div>
 );

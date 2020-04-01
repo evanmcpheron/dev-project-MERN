@@ -22,8 +22,10 @@ const Tutorial = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
     ) : (
         <Fragment>
             <section className="container">
-                <Link to="/tutorials">Back To Tutorials</Link>
-                <h1>{tutorial.title}</h1>
+                <Link className="btn" to="/tutorials">
+                    Back To Tutorials
+                </Link>
+                <h4 className="mt2">{tutorial.title}</h4>
                 <div>
                     <VideoPlayerTwo
                         videos={tutorial.video}

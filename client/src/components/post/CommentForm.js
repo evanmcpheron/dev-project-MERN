@@ -9,7 +9,7 @@ const CommentForm = ({ postId, addComment }) => {
     return (
         <div>
             <div>
-                <h3>Leave a Comment</h3>
+                <h5>Leave a Comment</h5>
             </div>
             <form
                 onSubmit={e => {
@@ -27,7 +27,11 @@ const CommentForm = ({ postId, addComment }) => {
                     onChange={e => setText(e.target.value)}
                     required
                 />
-                <input type="submit" value="Submit" />
+                <input
+                    className="btn btn-success"
+                    type="submit"
+                    value="Submit"
+                />
             </form>
         </div>
     );

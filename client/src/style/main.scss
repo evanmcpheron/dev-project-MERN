@@ -61,6 +61,7 @@ a:focus,
 a:visited,
 a:active {
     color: $success-0;
+    outline: none;
 }
 
 .btn {
@@ -175,13 +176,25 @@ textarea {
     height: 15rem;
 }
 
-.player-wrapper {
-    position: relative;
-    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
-}
+.alert {
+    position: fixed;
 
-.react-player {
-    position: absolute;
-    top: 0;
-    left: 0;
+    top: 1rem;
+    width: 80%;
+    margin-left: 10%;
+    height: 5rem;
+    font-weight: 200;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+
+    &-success {
+        background: $success-0;
+        color: $black;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .alert {
+        top: 7rem;
+    }
 }

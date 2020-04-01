@@ -18,10 +18,12 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
     ) : (
         <Fragment>
             <section className="container">
-                <Link to="/posts">Back To Posts</Link>
+                <Link className="btn" to="/posts">
+                    Back To Posts
+                </Link>
                 <PostItem post={post} showActions={false} />
                 <CommentForm postId={post._id} />
-                <div>
+                <div style={{ paddingTop: '3rem' }}>
                     {post.comments.map(comment => (
                         <CommentItem
                             key={comment._id}

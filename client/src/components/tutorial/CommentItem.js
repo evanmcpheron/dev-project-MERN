@@ -13,26 +13,33 @@ const CommentItem = ({
     commentId,
     deleteComment
 }) => (
-    <div>
-        <div>
+    <div className="playlist-comment-item">
+        <div class="avatar-link">
             <Link to={`/profile/${user}`}>
-                <img src={avatar} alt="" />
-                <h4>{name}</h4>
+                <img className="avatar" src={avatar} alt="" />
+            </Link>
+            <Link style={{ lineHeight: '1' }} to={`/profile/${user}`}>
+                <h6>{name}</h6>
             </Link>
         </div>
-        <div>
+        <div className="bottom-comment">
             <p>{text}</p>
-            <p>
-                Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
-            </p>
-            {!auth.loading && user === auth.user._id && (
-                <button
-                    onClick={e => deleteComment(tutorialId, videoId, commentId)}
-                    type="button"
-                >
-                    <i className="fas fa-times" />
-                </button>
-            )}
+            <div className="btn-comment">
+                <p style={{ lineHeight: '1' }}>
+                    Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
+                </p>
+                {!auth.loading && user === auth.user._id && (
+                    <button
+                        className="btn btn-danger"
+                        onClick={e =>
+                            deleteComment(tutorialId, videoId, commentId)
+                        }
+                        type="button"
+                    >
+                        <i className="fas fa-times" />
+                    </button>
+                )}
+            </div>
         </div>
     </div>
 );

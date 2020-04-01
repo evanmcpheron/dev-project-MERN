@@ -14,43 +14,66 @@ const PostItem = ({
     showActions
 }) => {
     return (
-        <div>
-            <div>
+        <div className="post-item">
+            <div className="avatar-post">
+                <Link className="avatar-center" to={`/profile/${user}`}>
+                    <img className="avatar" src={avatar} alt="" />
+                </Link>
                 <Link to={`/profile/${user}`}>
-                    <img src={avatar} alt="" />
-                    <h4>{name}</h4>
+                    <p>{name}</p>
                 </Link>
             </div>
-            <div>
-                <p>{text}</p>
-                <p>
-                    Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
-                </p>
-                {showActions && (
-                    <Fragment>
-                        <button onClick={e => addLike(_id)} type="button">
-                            <i className="fas fa-thumbs-up"></i>
-                            {likes.length > 0 && <span> {likes.length}</span>}
-                        </button>
-                        <button onClick={e => removeLike(_id)} type="button">
-                            <i className="fas fa-thumbs-down"></i>
-                        </button>
-                        <Link to={`/post/${_id}`} className="btn btn-primary">
-                            Discussion{' '}
-                            {comments.length > 0 && (
-                                <span>{comments.length}</span>
-                            )}
-                        </Link>
-                        {!auth.loading && user === auth.user._id && (
+            <div className="post-text">
+                <p style={{ paddingBottom: '2rem' }}>{text}</p>
+                <div className="bottom-post-text">
+                    <span></span>
+                    <p className="moment" style={{ marginRight: '1rem' }}>
+                        Posted on <span style={{ paddingRight: '1rem' }}></span>
+                        <Moment format="YYYY/MM/DD">{date}</Moment>
+                    </p>
+                    {showActions && (
+                        <Fragment>
                             <button
-                                onClick={e => deletePost(_id)}
+                                className="success-button"
+                                style={{ marginRight: '1rem' }}
+                                onClick={e => addLike(_id)}
                                 type="button"
                             >
-                                <i className="fas fa-times"></i>
+                                <i className="fas fa-thumbs-up"></i>
+                                {likes.length > 0 && (
+                                    <span> {likes.length}</span>
+                                )}
                             </button>
-                        )}
-                    </Fragment>
-                )}
+                            <button
+                                style={{ marginRight: '1rem' }}
+                                onClick={e => removeLike(_id)}
+                                type="button"
+                                className="danger-button"
+                            >
+                                <i className="fas fa-thumbs-down"></i>
+                            </button>
+                            <Link
+                                style={{ marginRight: '1rem' }}
+                                to={`/post/${_id}`}
+                                className="button"
+                            >
+                                Discussion{' '}
+                                {comments.length > 0 && (
+                                    <span>{comments.length}</span>
+                                )}
+                            </Link>
+                            {!auth.loading && user === auth.user._id && (
+                                <button
+                                    className="danger-button"
+                                    onClick={e => deletePost(_id)}
+                                    type="button"
+                                >
+                                    <i className="fas fa-times"></i>
+                                </button>
+                            )}
+                        </Fragment>
+                    )}
+                </div>
             </div>
         </div>
     );

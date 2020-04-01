@@ -15,7 +15,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     ) : (
         <Fragment>
             <section className="container">
-                <h1>Posts</h1>
+                <h2>Posts</h2>
                 <p>
                     <i className="fas fa-user"></i> Welcome to the community
                 </p>
