@@ -19,6 +19,7 @@ const CommentForm = ({
                         <h3>Leave a Comment</h3>
                     </div>
                     <form
+                        style={{ marginBottom: '5rem' }}
                         onSubmit={e => {
                             e.preventDefault();
                             addComment(videoId, tutorialId, { text });
@@ -37,6 +38,7 @@ const CommentForm = ({
 
                         <input
                             className="btn btn-success"
+                            style={{ width: '100%' }}
                             type="submit"
                             value="Submit"
                         />

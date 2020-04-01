@@ -14,6 +14,7 @@ class VideoPlayerTwo extends Component {
     constructor(props) {
         super(props);
         this.updateDimensions = this.updateDimensions.bind(this);
+        this.handleHideComments = this.handleHideComments.bind(this);
     }
     state = {
         url: this.props.videos[0].videoUrl,
@@ -33,7 +34,8 @@ class VideoPlayerTwo extends Component {
         currentVideo: null,
         currentPosition: 0,
         height: window.innerHeight,
-        width: window.innerWidth
+        width: window.innerWidth,
+        visibility: false
     };
 
     load = url => {
@@ -50,6 +52,7 @@ class VideoPlayerTwo extends Component {
         // Additionally I could have just used an arrow function for the binding `this` to the component...
         window.addEventListener('resize', this.updateDimensions);
     }
+
     updateDimensions() {
         this.setState({
             height: window.innerHeight,
@@ -68,6 +71,12 @@ class VideoPlayerTwo extends Component {
             this.setState({});
         }
     };
+
+    handleHideComments() {
+        this.setState(prevState => ({
+            visibility: !prevState.visibility
+        }));
+    }
 
     handleEnded = () => {
         console.log('onEnded');
@@ -145,31 +154,53 @@ class VideoPlayerTwo extends Component {
                                             key={video._id}
                                             className={`playlist-wrapper`}
                                         >
-                                            <button
-                                                className="playlist-btn"
-                                                value={video.url}
-                                                onClick={() =>
-                                                    this.setState({
-                                                        url: video.videoUrl,
-                                                        currentVideo:
-                                                            video.videoUrl,
-                                                        currentPosition:
-                                                            video.position - 1
-                                                    })
-                                                }
-                                            >
-                                                {/* <img
-                                            className="playlist-img"
-                                            src={
-                                                this.props.tutorial.thumbnailURL
-                                            }
-                                            alt="Thumbnail Image"
-                                        /> */}
-                                                <h6>
-                                                    {video.position}{' '}
-                                                    {video.title}
-                                                </h6>
-                                            </button>
+                                            {video.position - 1 ==
+                                            this.state.currentPosition ? (
+                                                <button
+                                                    className="playlist-btn"
+                                                    style={{
+                                                        background: '#a9c54f',
+                                                        border:
+                                                            '1px solid #f1f1f1'
+                                                    }}
+                                                    value={video.url}
+                                                    onClick={() =>
+                                                        this.setState({
+                                                            url: video.videoUrl,
+                                                            currentVideo:
+                                                                video.videoUrl,
+                                                            currentPosition:
+                                                                video.position -
+                                                                1
+                                                        })
+                                                    }
+                                                >
+                                                    <h6>
+                                                        {video.position}{' '}
+                                                        {video.title}
+                                                    </h6>
+                                                </button>
+                                            ) : (
+                                                <button
+                                                    className={`playlist-btn`}
+                                                    value={video.url}
+                                                    onClick={() =>
+                                                        this.setState({
+                                                            url: video.videoUrl,
+                                                            currentVideo:
+                                                                video.videoUrl,
+                                                            currentPosition:
+                                                                video.position -
+                                                                1
+                                                        })
+                                                    }
+                                                >
+                                                    <h6>
+                                                        {video.position}{' '}
+                                                        {video.title}
+                                                    </h6>
+                                                </button>
+                                            )}
                                         </div>
                                     );
                                 })}
@@ -284,52 +315,87 @@ class VideoPlayerTwo extends Component {
                         </a>
                         <div className="playlist playlist-bottom">
                             <section>
-                                <CommentForm
-                                    tutorialId={
-                                        this.props.videos[
-                                            this.state.currentPosition
-                                        ]._id
-                                    }
-                                    videoId={this.props.tutorial._id}
-                                />
+                                {this.state.visibility ? (
+                                    <button
+                                        className="btn"
+                                        style={{
+                                            marginBottom: '2rem',
+                                            width: '100%',
+                                            background: '#eeaa22',
+                                            marginBottom: '3rem'
+                                        }}
+                                        onClick={this.handleHideComments}
+                                    >
+                                        Hide Comments
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="btn"
+                                        style={{
+                                            marginBottom: '2rem',
+                                            width: '100%',
+                                            background: '#eeaa22',
+                                            marginBottom: '8rem'
+                                        }}
+                                        onClick={this.handleHideComments}
+                                    >
+                                        Show Comments
+                                    </button>
+                                )}
+                                {this.state.visibility ? (
+                                    <div>
+                                        <CommentForm
+                                            tutorialId={
+                                                this.props.videos[
+                                                    this.state.currentPosition
+                                                ]._id
+                                            }
+                                            videoId={this.props.tutorial._id}
+                                        />
 
-                                {this.props.videos.map(video => {
-                                    return (
-                                        <div
-                                            className="comments-wrapper mb2"
-                                            key={video._id}
-                                        >
-                                            {video.videoUrl === this.state.url
-                                                ? video.comments.length > 0
-                                                    ? video.comments.map(
-                                                          comment => (
-                                                              <CommentItem
-                                                                  key={
-                                                                      comment._id
-                                                                  }
-                                                                  comment={
-                                                                      comment
-                                                                  }
-                                                                  tutorialId={
-                                                                      this.props
-                                                                          .tutorial
-                                                                          ._id
-                                                                  }
-                                                                  videoId={
-                                                                      video._id
-                                                                  }
-                                                                  commentId={
-                                                                      comment._id
-                                                                  }
-                                                              ></CommentItem>
-                                                          )
-                                                      )
-                                                    : // <p>No Comments Yet</p>
-                                                      null
-                                                : null}
-                                        </div>
-                                    );
-                                })}
+                                        {this.props.videos.map(video => {
+                                            return (
+                                                <div
+                                                    className="comments-wrapper mb2"
+                                                    key={video._id}
+                                                >
+                                                    {video.videoUrl ===
+                                                    this.state.url
+                                                        ? video.comments
+                                                              .length > 0
+                                                            ? video.comments.map(
+                                                                  comment => (
+                                                                      <CommentItem
+                                                                          key={
+                                                                              comment._id
+                                                                          }
+                                                                          comment={
+                                                                              comment
+                                                                          }
+                                                                          tutorialId={
+                                                                              this
+                                                                                  .props
+                                                                                  .tutorial
+                                                                                  ._id
+                                                                          }
+                                                                          videoId={
+                                                                              video._id
+                                                                          }
+                                                                          commentId={
+                                                                              comment._id
+                                                                          }
+                                                                      ></CommentItem>
+                                                                  )
+                                                              )
+                                                            : // <p>No Comments Yet</p>
+                                                              null
+                                                        : null}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                ) : null}
+
                                 <div>
                                     <section>
                                         {this.props.videos.map(video => {
@@ -338,33 +404,57 @@ class VideoPlayerTwo extends Component {
                                                     key={video._id}
                                                     className="playlist-wrapper"
                                                 >
-                                                    <button
-                                                        className="playlist-btn"
-                                                        value={video.url}
-                                                        onClick={() =>
-                                                            this.setState({
-                                                                url:
-                                                                    video.videoUrl,
-                                                                currentVideo:
-                                                                    video.videoUrl,
-                                                                currentPosition:
-                                                                    video.position -
-                                                                    1
-                                                            })
-                                                        }
-                                                    >
-                                                        {/* <img
-                                            className="playlist-img"
-                                            src={
-                                                this.props.tutorial.thumbnailURL
-                                            }
-                                            alt="Thumbnail Image"
-                                        /> */}
-                                                        <h6>
-                                                            {video.position}{' '}
-                                                            {video.title}
-                                                        </h6>
-                                                    </button>
+                                                    {video.position - 1 ==
+                                                    this.state
+                                                        .currentPosition ? (
+                                                        <button
+                                                            className="playlist-btn"
+                                                            style={{
+                                                                background:
+                                                                    '#a9c54f',
+                                                                border:
+                                                                    '1px solid #f1f1f1'
+                                                            }}
+                                                            value={video.url}
+                                                            onClick={() =>
+                                                                this.setState({
+                                                                    url:
+                                                                        video.videoUrl,
+                                                                    currentVideo:
+                                                                        video.videoUrl,
+                                                                    currentPosition:
+                                                                        video.position -
+                                                                        1
+                                                                })
+                                                            }
+                                                        >
+                                                            <h6>
+                                                                {video.position}{' '}
+                                                                {video.title}
+                                                            </h6>
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                            className={`playlist-btn`}
+                                                            value={video.url}
+                                                            onClick={() =>
+                                                                this.setState({
+                                                                    url:
+                                                                        video.videoUrl,
+                                                                    currentVideo:
+                                                                        video.videoUrl,
+                                                                    currentPosition:
+                                                                        video.position -
+                                                                        1
+                                                                })
+                                                            }
+                                                        >
+                                                            <h6>
+                                                                {video.position}{' '}
+                                                                {video.title}
+                                                            </h6>
+                                                        </button>
+                                                    )}
                                                 </div>
                                             );
                                         })}
