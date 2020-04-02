@@ -11,7 +11,9 @@
         margin: 2rem 0;
         border: $grey solid 2px;
     }
+
     .baseGrid {
+        position: relative;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -39,4 +41,16 @@
             display: none;
         }
     }
+}
+@media only screen and (max-width: 900px) {
+    .baseGrid {
+        display: flex !important;
+        justify-content: space-between;
+        // background: red;
+    }
+}
+
+.danger-button1 {
+    position: absolute;
+    right: 0;
 }
