@@ -17,6 +17,12 @@ body {
     background-attachment: fixed;
 }
 
+@media only screen and (max-width: 800px) {
+    body {
+        font-size: 8px;
+    }
+}
+
 h1 {
     font-size: 5.5rem;
     font-weight: 400;

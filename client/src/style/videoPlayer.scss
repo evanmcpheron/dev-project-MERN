@@ -72,6 +72,12 @@
         flex-direction: column;
         align-items: center;
     }
+
+    @media only screen and (max-width: 800px) {
+        .avatar {
+            display: none;
+        }
+    }
 }
 
 @media only screen and (max-width: 1200px) {

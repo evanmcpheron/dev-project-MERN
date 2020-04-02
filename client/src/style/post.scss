@@ -64,6 +64,15 @@
         border-radius: 20px;
         cursor: pointer;
     }
+    @media only screen and (max-width: 800px) {
+        .avatar-post {
+            align-items: start;
+            flex-direction: initial;
+            .avatar {
+                display: none;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 800px) {
