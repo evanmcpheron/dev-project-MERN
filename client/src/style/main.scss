@@ -17,16 +17,6 @@ body {
     background-attachment: fixed;
 }
 
-@media only screen and (max-width: 800px) {
-    body {
-        font-size: 8px;
-    }
-
-    form {
-        margin-bottom: 4rem;
-    }
-}
-
 h1 {
     font-size: 5.5rem;
     font-weight: 400;
@@ -207,5 +197,34 @@ textarea {
 @media only screen and (min-width: 1200px) {
     .alert {
         top: 7rem;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    body,
+    html {
+        font-size: 8px;
+    }
+
+    form {
+        margin-bottom: 4rem;
+    }
+
+    .github-wrapper {
+        display: flex !important;
+        // flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .skill-list {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .experience-education {
+        display: flex !important;
+        flex-direction: column;
     }
 }

@@ -18,7 +18,10 @@ const ProfileAbout = ({
                 </Fragment>
             )}
             <h3>Skill Set</h3>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div
+                className="skill-list"
+                style={{ display: 'flex', justifyContent: 'center' }}
+            >
                 {skills.map((skill, index) => (
                     <div key={index}>
                         <p style={{ margin: '0 1rem' }}>

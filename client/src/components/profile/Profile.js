@@ -44,7 +44,7 @@ const Profile = ({
                         <div>
                             <ProfileTop profile={profile} />
                             <ProfileAbout profile={profile} />
-                            <div className="bottomGrid">
+                            <div className="bottomGrid experience-education">
                                 <div className="experience-profile">
                                     <h2>Experience</h2>
                                     {profile.experience.length > 0 ? (
