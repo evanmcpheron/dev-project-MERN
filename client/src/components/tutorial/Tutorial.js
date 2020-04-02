@@ -15,8 +15,6 @@ const Tutorial = ({ getTutorial, tutorial: { tutorial, loading }, match }) => {
         getTutorial(match.params.id);
     }, [getTutorial]);
 
-    console.log(tutorial, 'Tutorial.js');
-
     return loading || tutorial === null ? (
         <Spinner />
     ) : (

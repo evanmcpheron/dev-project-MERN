@@ -17,7 +17,6 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
 
     const onChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
-        console.log(videoId);
     };
 
     const onSubmit = event => {

@@ -64,7 +64,6 @@ export const deleteVideo = (id, vidId) => async dispatch => {
 export const getTutorials = () => async dispatch => {
     try {
         const res = await axios.get('/api/tutorial');
-        console.log('GET ALL TUTORIALS ACTION IN ADMIN');
 
         dispatch({
             type: GET_TUTORIALS,

@@ -42,17 +42,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 tutorial: payload,
-                videoTest: console.log(
-                    'TUTORIAL',
-                    state.tutorial.video[0].comments.unshift(payload[0])
-                ),
-                payloadTest: console.log('PAYLOAD', payload),
                 loading: false
             };
         case DELETE_VIDEO_COMMENT:
             return {
                 ...state,
-                testPayload: console.log('PAYLOAD DELETE COMMENT', payload),
                 tutorial: payload,
                 loading: false
             };

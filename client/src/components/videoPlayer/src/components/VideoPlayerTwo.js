@@ -48,7 +48,6 @@ class VideoPlayerTwo extends Component {
     };
 
     componentDidMount() {
-        console.log(this.state.height);
         // Additionally I could have just used an arrow function for the binding `this` to the component...
         window.addEventListener('resize', this.updateDimensions);
     }
@@ -61,7 +60,6 @@ class VideoPlayerTwo extends Component {
     }
 
     handleProgress = state => {
-        console.log('onProgress', state);
         // We only want to update time slider if we are not currently seeking
         if (!this.state.seeking) {
             this.setState(state);
@@ -79,7 +77,6 @@ class VideoPlayerTwo extends Component {
     }
 
     handleEnded = () => {
-        console.log('onEnded');
         if (this.props.videos[this.state.currentPosition + 1] !== undefined) {
             this.setState({
                 playing: true,
@@ -92,9 +89,6 @@ class VideoPlayerTwo extends Component {
     };
 
     handleDuration = duration => {
-        // console.log('onDuration', duration);
-        console.log('TUTORIAL PROPS', this.props.tutorial);
-
         this.setState({ duration });
     };
 

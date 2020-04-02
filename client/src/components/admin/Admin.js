@@ -10,10 +10,7 @@ import TutorialItem from './TutorialItem';
 const Admin = ({ getTutorials, deleteTutorial, admin }, props, state) => {
     useEffect(() => {
         getTutorials();
-        console.log('GET TUTORIALS: ', admin);
     }, [getTutorials]);
-
-    console.log(state, ' ', props);
 
     return admin.loading ? (
         <Spinner />
