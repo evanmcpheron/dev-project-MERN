@@ -80,6 +80,31 @@ router.get('/:id', auth, async (req, res) => {
     }
 });
 
+// @route    PUT api/posts/:id
+// @desc     update post by ID
+// @access   Private
+// router.post('/:id', auth, async (req, res) => {
+//     try {
+//         const post = await Post.findById(req.params.id);
+
+//         const newPost = { text: req.body.text };
+
+//         const updatedPost = Post.findByIdAndUpdate(post._id, newPost);
+
+//         if (!post) {
+//             return res.status(404).json({ msg: 'Post not found' });
+//         }
+
+//         res.json(updatedPost);
+//     } catch (err) {
+//         console.error(err.message);
+//         if (err.kind === 'ObjectId') {
+//             return res.status(404).json({ msg: 'Post not found' });
+//         }
+//         res.status(500).send('Server Error');
+//     }
+// });
+
 // @route    DELETE api/posts/:id
 // @desc     Delete a post
 // @access   Private

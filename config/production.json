@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://emcpheron:3045@cluster0-fjzcf.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "1122f972dbe101b2680b",
+    "githubSecret": "485c1946bbf801e75489dd8e4097d86888b76f7a"
+}
