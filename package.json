@@ -1,7 +1,7 @@
 {
-    "name": "devconnector",
+    "name": "ePoint.io",
     "version": "1.0.0",
-    "description": "",
+    "description": "Social Media platform with coding tutorials",
     "main": "server.js",
     "scripts": {
         "start": "node server",
