@@ -13,6 +13,7 @@ body {
     height: 100vh;
     background: linear-gradient(140deg, $secondary-0, #411141);
     background-size: contain;
+    overflow-x: hidden;
     background-attachment: fixed;
 }
 

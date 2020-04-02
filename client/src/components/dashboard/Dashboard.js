@@ -32,11 +32,13 @@ const Dashboard = ({
 
                         <div>
                             <button
-                                style={{
-                                    position: 'absolute',
-                                    bottom: '10px',
-                                    right: '10px'
-                                }}
+                                style={
+                                    {
+                                        // position: 'absolute',
+                                        // bottom: '10px',
+                                        // right: '10px'
+                                    }
+                                }
                                 className="btn btn-danger my2"
                                 onClick={() => deleteAccount()}
                             >
