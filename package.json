@@ -29,6 +29,7 @@
         "react-hot-loader": "^4.12.20",
         "react-player": "^1.15.2",
         "request": "^2.88.0",
+        "screenfull": "^5.0.2",
         "uuid": "^7.0.2"
     },
     "devDependencies": {
