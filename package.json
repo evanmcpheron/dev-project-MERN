@@ -26,6 +26,7 @@
         "multer-gridfs-storage": "^3.0.0",
         "node-sass": "^4.13.1",
         "normalize-url": "^5.0.0",
+        "react-ga": "^2.7.0",
         "react-hot-loader": "^4.12.20",
         "react-player": "^1.15.2",
         "request": "^2.88.0",
