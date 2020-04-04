@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
-import screenfull from 'screenfull';
 
 import './reset.css';
 import './defaults.css';
@@ -16,7 +14,6 @@ class VideoPlayerTwo extends Component {
       super(props);
       this.updateDimensions = this.updateDimensions.bind(this);
       this.handleHideComments = this.handleHideComments.bind(this);
-      this.onClickFullscreen = this.onClickFullscreen.bind(this);
    }
    state = {
       url: this.props.videos[0].videoUrl,
@@ -38,11 +35,6 @@ class VideoPlayerTwo extends Component {
       height: window.innerHeight,
       width: window.innerWidth,
       visibility: false,
-   };
-
-   onClickFullscreen = () => {
-      screenfull.request(findDOMNode(this.refs.player));
-      console.log(this.refs);
    };
 
    load = (url) => {
@@ -133,6 +125,17 @@ class VideoPlayerTwo extends Component {
                            width="100%"
                            height="100%"
                            url={url}
+                           config={{
+                              youtube: {
+                                 playerVars: {
+                                    showinfo: 0,
+                                    disableRelatedVideos: true,
+                                    rel: 0,
+                                    fs: 1,
+                                 },
+                              },
+                           }}
+                           allowFullscreen="true"
                            pip={pip}
                            playing={playing}
                            controls={controls}
@@ -257,6 +260,11 @@ class VideoPlayerTwo extends Component {
                            ref="player"
                            className="react-player"
                            width="100%"
+                           config={{
+                              youtube: {
+                                 playerVars: { showinfo: 1 },
+                              },
+                           }}
                            height="100%"
                            url={url}
                            pip={pip}
@@ -274,7 +282,6 @@ class VideoPlayerTwo extends Component {
                         />
                      </div>
                   </section>
-                  <button onClick={this.onClickFullscreen}>Fullscreen</button>
                   <h6 className="mt2">
                      {this.props.videos[this.state.currentPosition].title}
                   </h6>
