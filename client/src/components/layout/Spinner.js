@@ -9,7 +9,7 @@ export default () => (
             alt="Loading..."
         /> */}
         <i
-            class="fas fa-spinner"
+            className="fas fa-spinner"
             style={{ width: '200px', margin: 'auto', display: 'block' }}
         ></i>
     </Fragment>
