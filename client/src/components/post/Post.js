@@ -73,7 +73,7 @@ const Post = ({ getPost, updatePost, post: { post, loading }, match }) => {
             <input
               className="btn btn-success admin-submit-btn"
               type="submit"
-              value="Update Tutorial"
+              value="Update Post"
               onClick={() => {
                 setTimeout(() => {
                   setEditMode({ editModeState: 'normal-mode' });
