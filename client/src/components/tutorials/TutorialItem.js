@@ -3,38 +3,28 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const TutorialItem = ({
-    tutorial: { _id, title, description, thumbnailURL }
-}) => {
-    return (
-        <div className="tutorials-container">
+const TutorialItem = ({ tutorial: { _id, title, description, thumbnailURL } }) => {
+   return (
+      <div className="tutorials-container">
+         <Link to={`/tutorial/${_id}`}>
             <div>
-                <img src={thumbnailURL} />
-                <div className="tutorials-container-body">
-                    <h5>{title}</h5>
-                    <p>{description}</p>
-                </div>
+               <img src={thumbnailURL} />
             </div>
-            <div>
-                <Link className="btn btn-success" to={`/tutorial/${_id}`}>
-                    Watch Videos
-                </Link>
-                <div></div>
-            </div>
-        </div>
-    );
+         </Link>
+      </div>
+   );
 };
 
 TutorialItem.defaultProps = {
-    showActions: true
+   showActions: true,
 };
 
 TutorialItem.propTypes = {
-    tutorial: PropTypes.object.isRequired
+   tutorial: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-    auth: state.auth
+const mapStateToProps = (state) => ({
+   auth: state.auth,
 });
 
 export default connect(mapStateToProps, {})(TutorialItem);
