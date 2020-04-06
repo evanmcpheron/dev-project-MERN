@@ -24,6 +24,7 @@ export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const UPDATE_POST = 'UPDATE_POST';
 
 export const GET_TUTORIALS = 'GET_TUTORIALS';
 export const GET_VIDEOS = 'GET_VIDEOS';
@@ -38,3 +39,5 @@ export const DELETE_TUTORIAL = 'DELETE_TUTORIAL';
 export const ADD_VIDEO_COMMENT = 'ADD_VIDEO_COMMENT';
 export const DELETE_VIDEO_COMMENT = 'DELETE_VIDEO_COMMENT';
 export const GET_ADMIN_VIDEOS = 'GET_ADMIN_VIDEOS';
+
+export const UPDATE_TUTORIAL = 'UPDATE_TUTORIAL';
