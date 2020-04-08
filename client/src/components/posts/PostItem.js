@@ -17,7 +17,7 @@ const PostItem = ({
     <div className="post-item">
       <div className="avatar-post">
         <Link className="avatar-center" to={`/profile/${user}`}>
-          <img className="avatar" src={`/api/profile/avatar/${avatar}`} alt="avatar" />
+          <img className="avatar" src={`/api/profile/avatar/${avatar}`} alt="avatar IMG" />
         </Link>
         <Link to={`/profile/${user}`}>
           <p>{name}</p>

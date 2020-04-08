@@ -73,6 +73,14 @@ router.post('/avatar/:id', upload.single('file'), async (req, res, next) => {
   const { file } = req;
 
   try {
+    const post = await Post.updateMany(
+      { user: req.params.id },
+      { avatar: file.filename },
+      {
+        upsert: true,
+      }
+    );
+
     const profile = await User.findByIdAndUpdate(
       req.params.id,
       { avatar: file.filename },

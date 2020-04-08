@@ -14,9 +14,6 @@ const CommentItem = ({
   <div className="post-item">
     <div className="avatar-post">
       <Link className="avatar-center" to={`/profile/${user}`}>
-        <img className="avatar" src={avatar} alt="" />
-      </Link>
-      <Link className="avatar-center" to={`/profile/${user}`}>
         <p>{name}</p>
       </Link>
     </div>

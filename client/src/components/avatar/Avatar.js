@@ -21,14 +21,19 @@ const Avatar = ({ profile, addAvatar }) => {
   };
 
   return (
-    <div className="App">
-      <img src={`/api/profile/avatar/${profile.avatar}`} />
-      <header className="App-header">
+    <div className="avatar-container">
+      <header className="avatar-container-header">
+        {profile.avatar === null ? null : (
+          <img src={`/api/profile/avatar/${profile.avatar}`} className="avatar" />
+        )}
         <form action="#">
           <div className="flex">
-            <label htmlFor="file">File</label>
+            <label htmlFor="file" className="btn">
+              Change Profile Image
+            </label>
             <input
               type="file"
+              className="custom-file-input"
               id="file"
               accept=".jpg"
               onChange={(event) => {
@@ -38,7 +43,12 @@ const Avatar = ({ profile, addAvatar }) => {
             />
           </div>
         </form>
-        <button onClick={send}>Send</button>
+        {file === undefined || file === '' ? null : (
+          <button className="btn" onClick={send}>
+            Upload
+          </button>
+        )}
+        <p>*Profile photo must be a jpeg.</p>
       </header>
     </div>
   );
