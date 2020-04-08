@@ -11,7 +11,7 @@ body {
   font-family: 'Mukta', sans-serif;
   color: $grey;
   height: 100vh;
-  background: linear-gradient(140deg, $secondary-0, #411141);
+  background: linear-gradient(140deg, $secondary-0, lighten($secondary-0, 40));
   background-size: contain;
   overflow-x: hidden;
   background-attachment: fixed;
