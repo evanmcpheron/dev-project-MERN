@@ -173,6 +173,7 @@ router.post(
       website,
       location,
       bio,
+      banner,
       status,
       githubusername,
       skills,
@@ -190,6 +191,7 @@ router.post(
     if (website) profileFields.website = website;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
+    if (banner) profileFields.banner = banner;
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {

@@ -28,6 +28,10 @@ const ProfileSchema = new mongoose.Schema({
   bio: {
     type: String,
   },
+  banner: {
+    type: String,
+    default: null,
+  },
   githubusername: {
     type: String,
   },

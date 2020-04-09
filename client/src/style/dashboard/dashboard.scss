@@ -92,3 +92,30 @@
     outline: 1px dotted #000;
   }
 }
+
+.banner-option-container {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  .banner-img-example {
+    width: 100%;
+  }
+}
+
+.banner-option-container input[type='radio'] {
+  display: none;
+}
+
+.banner-option-container label {
+  padding: 4px 8px;
+  cursor: pointer;
+  height: 100%;
+  display: inline-flex;
+  box-sizing: border-box;
+}
+
+.checked {
+  height: 300px;
+  background: $warn-0;
+}
