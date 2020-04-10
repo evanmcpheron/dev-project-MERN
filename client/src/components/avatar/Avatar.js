@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addAvatar } from '../../actions/profile';
+import blankAvatar from '../../img/blank-avatar.jpg';
 
 import axios from 'axios';
 
@@ -23,7 +24,9 @@ const Avatar = ({ profile, addAvatar }) => {
   return (
     <div className="avatar-container">
       <header className="avatar-container-header">
-        {profile.avatar === null ? null : (
+        {profile.avatar === null ? (
+          <img src={`${blankAvatar}`} className="avatar" />
+        ) : (
           <img src={`/api/profile/avatar/${profile.avatar}`} className="avatar" />
         )}
         <form action="#">

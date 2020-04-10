@@ -1,16 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import harley from '../../img/banner/harley.jpg';
-import birdy from '../../img/banner/birdy.jpg';
-import bubbles from '../../img/banner/bubbles.jpg';
-import colorKeys from '../../img/banner/colorKeys.jpg';
-import computerChip from '../../img/banner/computerChip.jpg';
-import coolKeyboard from '../../img/banner/coolKeyboard.jpg';
-import lights from '../../img/banner/lights.jpg';
-import openMac from '../../img/banner/openMac.jpg';
-import pier from '../../img/banner/pier.jpg';
-import otherMac from '../../img/banner/otherMac.jpg';
+import blankAvatar from '../../img/blank-avatar.jpg';
 
 const ProfileTop = ({
   profile: {
@@ -25,12 +15,17 @@ const ProfileTop = ({
 }) => {
   return (
     <div className={`top-wrapper experience-profile banner-img ${banner}`}>
-      <img
-        className="avatar"
-        style={{ marginTop: '3rem' }}
-        src={`/api/profile/avatar/${avatar}`}
-        alt=""
-      />
+      {avatar === null ? (
+        <img className="avatar" style={{ marginTop: '3rem' }} src={`${blankAvatar}`} alt="" />
+      ) : (
+        <img
+          className="avatar"
+          style={{ marginTop: '3rem' }}
+          src={`/api/profile/avatar/${avatar}`}
+          alt=""
+        />
+      )}
+
       <h1>{`${fName} ${lName}`}</h1>
       <p>
         {status} {company && <span> at {company}</span>}

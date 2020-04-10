@@ -20,9 +20,14 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // avatar: {
-  //     type: String
-  // },
+  following: {
+    type: Array,
+    default: [],
+  },
+  followers: {
+    type: Array,
+    default: [],
+  },
   avatar: {
     type: Object,
   },

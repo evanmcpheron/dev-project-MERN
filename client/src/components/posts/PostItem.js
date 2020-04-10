@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLike, removeLike, deletePost } from '../../actions/post';
+import blankAvatar from '../../img/blank-avatar.jpg';
 
 const PostItem = ({
   addLike,
@@ -17,7 +18,11 @@ const PostItem = ({
     <div className="post-item">
       <div className="avatar-post">
         <Link className="avatar-center" to={`/profile/${user}`}>
-          <img className="avatar" src={`/api/profile/avatar/${avatar}`} alt="avatar IMG" />
+          {avatar === null ? (
+            <img className="avatar" src={`${blankAvatar}`} alt="avatar IMG" />
+          ) : (
+            <img className="avatar" src={`/api/profile/avatar/${avatar}`} alt="avatar IMG" />
+          )}
         </Link>
         <Link to={`/profile/${user}`}>
           <p>{name}</p>

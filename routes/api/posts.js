@@ -48,6 +48,56 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route    GET api/posts/:me
+// @desc     Get following posts
+// @access   Private
+router.get('/following/:me', auth, async (req, res) => {
+  const user = await User.findById(req.params.me);
+  const currentFollowing = user.following.map((item) => item._id);
+  const posts = await Post.find().sort({ date: -1 });
+  let followingPosts = [];
+
+  for (let i = 0; i < currentFollowing.length; i++) {
+    for (let e = 0; e < posts.length; e++) {
+      if (posts[e].user.toString() === currentFollowing[i].toString()) {
+        followingPosts.push(posts[e]);
+      }
+    }
+  }
+
+  followingPosts.sort();
+
+  res.json(followingPosts);
+
+  try {
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    GET api/posts/:me
+// @desc     Get my posts
+// @access   Private
+router.get('/:me', auth, async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  try {
+    const posts = await Post.find().sort({ date: -1 });
+    let myPosts = [];
+
+    for (let i = 0; i < posts.length; i++) {
+      if (posts[i].user == req.params.me) {
+        myPosts.push(posts[i]);
+      }
+    }
+    res.json(myPosts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route    GET api/posts/:id
 // @desc     Get post by ID
 // @access   Private

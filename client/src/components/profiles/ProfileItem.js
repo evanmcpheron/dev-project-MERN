@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import blankAvatar from '../../img/blank-avatar.jpg';
 
 const ProfileItem = ({
   profile: {
@@ -14,7 +15,12 @@ const ProfileItem = ({
   return (
     <div className="profile-grid">
       <div>
-        <img className="avatar" src={`/api/profile/avatar/${avatar}`} alt="" />
+        {avatar === null ? (
+          <img className="avatar" src={`${blankAvatar}`} alt="" />
+        ) : (
+          <img className="avatar" src={`/api/profile/avatar/${avatar}`} alt="" />
+        )}
+
         <h5>{`${fName} ${lName}`}</h5>
       </div>
       <div>

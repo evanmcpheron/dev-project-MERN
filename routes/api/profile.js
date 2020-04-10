@@ -137,7 +137,7 @@ router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.user.id,
-    }).populate('user', ['fName', 'lName', 'avatar', 'profilePhoto']);
+    }).populate('user', ['fName', 'lName', 'avatar', 'following', 'followers']);
 
     if (!profile) {
       return res.status(400).json({ msg: 'There is no profile for this user' });
@@ -237,7 +237,13 @@ router.post(
 // @access   Public
 router.get('/', async (req, res) => {
   try {
-    const profiles = await Profile.find().populate('user', ['fName', 'lName', 'avatar']);
+    const profiles = await Profile.find().populate('user', [
+      'fName',
+      'lName',
+      'avatar',
+      'following',
+      'followers',
+    ]);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -252,7 +258,7 @@ router.get('/user/:user_id', async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.params.user_id,
-    }).populate('user', ['fName', 'lName', 'avatar']);
+    }).populate('user', ['fName', 'lName', 'avatar', 'following', 'followers']);
 
     if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
@@ -450,5 +456,97 @@ router.get('/github/:username', (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// @route    POST api/profile/following/:user/:other_user
+// @desc     Follow A User
+// @access   Private
+router.post('/following/:user_id/:other_user', auth, async (req, res) => {
+  const user = await User.findById(req.params.user_id);
+  const otherUser = await User.findById(req.params.other_user);
+
+  user.following.push(otherUser);
+  const follow = user.following;
+
+  await user.save();
+
+  res.json({ len: follow.length, user });
+
+  try {
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    POST api/profile/follower/:user/:other_user
+// @desc     See your followers
+// @access   Private
+router.post('/follower/:user_id/:other_user', auth, async (req, res) => {
+  const user = await User.findById(req.params.user_id);
+  const otherUser = await User.findById(req.params.other_user);
+
+  user.followers.push(otherUser);
+  const follow = user.followers;
+
+  await user.save();
+
+  res.json({ len: follow.length, user });
+
+  try {
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    POST api/profile/unfollower/:user/:other_user
+// @desc     Unfollow A User (Followers)
+// @access   Private
+router.post('/unfollower/:user_id/:other_user', auth, async (req, res) => {
+  const user = await User.findById(req.params.user_id);
+  const otherUser = await User.findById(req.params.other_user);
+
+  for (let i = 0; i < user.followers.length; i++) {
+    if (user.followers[i]._id == req.params.other_user) {
+      user.followers.splice(i, 1);
+      const follow = user.followers;
+      await user.save();
+      res.json({ len: follow.length, user });
+    }
+  }
+
+  try {
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    POST api/profile/unfollow/:user/:other_user
+// @desc     Unfollow A User (Following)
+// @access   Private
+router.post('/unfollow/:user_id/:other_user', auth, async (req, res) => {
+  const user = await User.findById(req.params.user_id);
+  const otherUser = await User.findById(req.params.other_user);
+
+  for (let i = 0; i < user.following.length; i++) {
+    if (user.following[i]._id == req.params.other_user) {
+      user.following.splice(i, 1);
+      const follow = user.following;
+      await user.save();
+      res.json({ len: follow.length, user });
+    }
+  }
+
+  try {
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    POST api/profile/follower/:user/:other_user
+// @desc     update if someone following
+// @access   Private
 
 module.exports = router;
