@@ -8,7 +8,7 @@ import CommentForm from '../post/CommentForm';
 import CommentItem from '../post/CommentItem';
 import { getPost, updatePost } from '../../actions/post';
 
-const Post = ({ getPost, updatePost, post: { post, loading }, match }) => {
+const Post = ({ auth, getPost, updatePost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
   }, [getPost]);
@@ -84,16 +84,18 @@ const Post = ({ getPost, updatePost, post: { post, loading }, match }) => {
         ) : (
           <PostItem post={post} showActions={false} />
         )}
+        {auth.user._id === post.user ? (
+          editMode.editModeState === 'edit-mode' ? (
+            <button onClick={editing} className="btn">
+              Done
+            </button>
+          ) : (
+            <button onClick={editing} className="btn">
+              Edit Post
+            </button>
+          )
+        ) : null}
 
-        {editMode.editModeState === 'edit-mode' ? (
-          <button onClick={editing} className="btn">
-            Done
-          </button>
-        ) : (
-          <button onClick={editing} className="btn">
-            Edit Post
-          </button>
-        )}
         <CommentForm postId={post._id} />
         <div style={{ paddingTop: '3rem' }}>
           {post.comments.map((comment) => (
@@ -109,10 +111,12 @@ Post.propTypes = {
   updatePost: PropTypes.func.isRequired,
   getPost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   post: state.post,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getPost, updatePost })(Post);

@@ -8,6 +8,7 @@ import {
   DELETE_POST,
   ADD_POST,
   ADD_COMMENT,
+  UPDATE_POST_COMMENT,
   REMOVE_COMMENT,
   UPDATE_POST,
 } from './types';
@@ -207,6 +208,38 @@ export const updatePost = (formData, postId) => async (dispatch) => {
     });
 
     dispatch(setAlert('Post Updated', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// UPDATE VIDEO COMMENT
+export const updateComment = (tutorialId, videoId, commentId, formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const res = await axios.post(
+      `/api/tutorial/comment/update${tutorialId}/${videoId}/${commentId}`,
+      formData,
+      config
+    );
+
+    dispatch({
+      type: UPDATE_POST_COMMENT,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Comment Added', 'success'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
