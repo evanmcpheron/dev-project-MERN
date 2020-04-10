@@ -38,6 +38,8 @@ export default function (state = initialState, action) {
       return {
         ...state,
         post: payload,
+        testPayload: console.log(payload),
+
         loading: false,
       };
     case ADD_POST:

@@ -79,7 +79,7 @@ router.get('/following/:me', auth, async (req, res) => {
 // @route    GET api/posts/:me
 // @desc     Get my posts
 // @access   Private
-router.get('/:me', auth, async (req, res) => {
+router.get('/me/:me', auth, async (req, res) => {
   const user = await User.findById(req.params.id);
 
   try {

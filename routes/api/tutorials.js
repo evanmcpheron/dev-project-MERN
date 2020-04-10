@@ -290,27 +290,6 @@ router.post(
           }
         }
       }
-
-      //   // Make sure comment exists
-      //   if (!comment) {
-      //     return res.status(404).json({ msg: 'Comment does not exist' });
-      //   }
-
-      //   // Check user
-      //   if (comment.user.toString() !== req.user.id) {
-      //     return res.status(401).json({ msg: 'User not authorized' });
-      //   }
-
-      //   // Get remove index
-      //   const removeIndex = video.comments
-      //     .map((comment) => comment._id.toString())
-      //     .indexOf(req.params.comment_id);
-
-      //   video.comments.splice(removeIndex, 1);
-
-      //   await tutorial.save();
-
-      //   res.json(tutorial);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
