@@ -23,10 +23,7 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-    getMyPosts(user._id);
-  }, [getMyPosts, user]);
-
-  console.log('USER INFO: ', user);
+  }, [getMyPosts]);
 
   return loading && profile === null ? (
     <Spinner />

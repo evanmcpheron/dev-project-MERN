@@ -27,6 +27,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        log: console.log('...STATE', state),
         loading: false,
       };
     case UPDATE_POST:

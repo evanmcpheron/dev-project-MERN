@@ -5,10 +5,11 @@ import { getTutorials } from '../../actions/tutorial';
 import Spinner from '../layout/Spinner';
 import TutorialItem from './TutorialItem';
 
-const Tutorials = ({ getTutorials, tutorial: { tutorials, loading } }) => {
+const Tutorials = ({ auth, getTutorials, tutorial: { tutorials, loading } }) => {
   useEffect(() => {
     getTutorials();
   }, [getTutorials]);
+
   return loading ? (
     <Spinner />
   ) : (
@@ -38,10 +39,12 @@ const Tutorials = ({ getTutorials, tutorial: { tutorials, loading } }) => {
 Tutorials.propTypes = {
   getTutorials: PropTypes.func.isRequired,
   tutorial: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   tutorial: state.tutorial,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getTutorials })(Tutorials);
