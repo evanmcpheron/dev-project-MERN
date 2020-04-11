@@ -59,7 +59,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, isAdmin, user }, logout }) =
       </li>
       <li>
         <Link to="/dashboard" onClick={() => setCount(count === 'closed' ? 'open' : 'closed')}>
-          <i className="fas fa-user" /> Dashboard
+          <i className="fas fa-user" /> Profile
         </Link>
       </li>
       <li onClick={() => setCount(count === 'closed' ? 'open' : 'closed')}>
@@ -96,7 +96,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, isAdmin, user }, logout }) =
       </li>
       <li>
         <Link to="/dashboard" onClick={() => setCount(count === 'closed' ? 'open' : 'closed')}>
-          <i className="fas fa-user" /> Dashboard
+          <i className="fas fa-user" /> Profile
         </Link>
       </li>
       <li>

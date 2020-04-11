@@ -44,7 +44,7 @@ const Post = ({ auth, getPost, updatePost, post: { post, loading }, match }) => 
     }
   };
 
-  return loading || post === null ? (
+  return (auth.loading && loading && auth.user === null) || post === null ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -84,7 +84,7 @@ const Post = ({ auth, getPost, updatePost, post: { post, loading }, match }) => 
         ) : (
           <PostItem post={post} showActions={false} />
         )}
-        {auth.user._id === post.user ? (
+        {auth.user && auth.user._id === post.user ? (
           editMode.editModeState === 'edit-mode' ? (
             <button onClick={editing} className="btn">
               Done

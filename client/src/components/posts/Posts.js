@@ -7,40 +7,36 @@ import PostItem from './PostItem';
 import PostForm from './PostForm';
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
-    useEffect(() => {
-        getPosts();
-    }, [getPosts]);
-    return loading ? (
-        <Spinner />
-    ) : (
-        <Fragment>
-            <section className="container">
-                <h2>Posts</h2>
-                <p>
-                    <i className="fas fa-user"></i> Welcome to the community
-                </p>
-                <PostForm />
-                <div>
-                    {posts.map(post => (
-                        <PostItem
-                            showActions={true}
-                            key={post._id}
-                            post={post}
-                        />
-                    ))}
-                </div>
-            </section>
-        </Fragment>
-    );
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
+  return loading ? (
+    <Spinner />
+  ) : (
+    <Fragment>
+      <section className="container">
+        <h2>Posts</h2>
+        <p>
+          <i className="fas fa-user"></i> Welcome to the community
+        </p>
+        {/* <PostForm /> */}
+        <div>
+          {posts.map((post) => (
+            <PostItem showActions={true} key={post._id} post={post} />
+          ))}
+        </div>
+      </section>
+    </Fragment>
+  );
 };
 
 Posts.propTypes = {
-    getPosts: PropTypes.func.isRequired,
-    post: PropTypes.object.isRequired
+  getPosts: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-    post: state.post
+const mapStateToProps = (state) => ({
+  post: state.post,
 });
 
 export default connect(mapStateToProps, { getPosts })(Posts);

@@ -8,16 +8,25 @@ import { DashboardActions } from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 import Avatar from '../avatar/Avatar';
+import { getMyPosts } from '../../actions/post';
+import PostItem from '../posts/PostItem';
+import PostForm from '../posts/PostForm';
 
 const Dashboard = ({
   getCurrentProfile,
+  getMyPosts,
+  auth,
+  post: { posts },
   auth: { user },
   profile: { profile, loading },
   deleteAccount,
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []);
+    getMyPosts(user._id);
+  }, [getMyPosts, user]);
+
+  console.log('USER INFO: ', user);
 
   return loading && profile === null ? (
     <Spinner />
@@ -32,6 +41,14 @@ const Dashboard = ({
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
 
+            <div>
+              {auth.isAuthenticated &&
+                auth.loading === false &&
+                auth.user._id === profile.user._id && <PostForm />}
+              {posts.map((post) => (
+                <PostItem showActions={true} key={post._id} post={post} />
+              ))}
+            </div>
             <div>
               <button
                 style={
@@ -62,13 +79,18 @@ const Dashboard = ({
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  getMyPosts: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   deleteAccount: PropTypes.func.isRequired,
+  posts: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   profile: state.profile,
+  post: state.post,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, getMyPosts, deleteAccount })(
+  Dashboard
+);

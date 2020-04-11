@@ -10,12 +10,10 @@ import {
   CLEAR_PROFILE,
   GET_REPOS,
   ADD_AVATAR,
-  ADD_FOLLOWER,
-  REMOVE_FOLLOWER,
-  FOLLOW_USER,
-  UNFOLLOW_USER,
-  GET_USER_POSTS,
-  GET_FOLLOWER_POSTS,
+  ADD_FOLLOWER, // add follower to array
+  REMOVE_FOLLOWER, // remove follower from array
+  FOLLOW_USER, // button to follow user
+  UNFOLLOW_USER, // button to remove following
 } from './types';
 
 // Get current users profile

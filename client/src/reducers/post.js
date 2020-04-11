@@ -8,11 +8,13 @@ import {
   ADD_COMMENT,
   REMOVE_COMMENT,
   UPDATE_POST,
+  GET_MY_POSTS,
 } from '../actions/types';
 
 const initialState = {
   posts: [],
   post: null,
+  myPosts: [],
   loading: true,
   error: {},
 };
@@ -21,6 +23,12 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case GET_MY_POSTS:
+      return {
+        ...state,
+        posts: payload,
+        loading: false,
+      };
     case UPDATE_POST:
       return {
         ...state,
