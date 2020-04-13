@@ -1,18 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import blankAvatar from '../../img/blank-avatar.jpg';
+import {
+  addFollower,
+  addFollowing,
+  getProfileById,
+  removeFollower,
+  removeFollowing,
+} from '../../actions/profile';
+import { connect } from 'react-redux';
 
 const ProfileTop = ({
   profile: {
-    status,
-    company,
-    location,
-    website,
-    social,
-    banner,
-    user: { fName, lName, avatar },
+    profile: {
+      status,
+      company,
+      location,
+      website,
+      social,
+      banner,
+      user: { fName, lName, avatar, followers, following, _id },
+    },
   },
+  profileID,
+  auth,
+  addFollower,
+  addFollowing,
+  removeFollower,
+  removeFollowing,
+  getProfileById,
+  match,
 }) => {
+  useEffect(() => {
+    getProfileById(profileID);
+    followingUser();
+  }, [getProfileById]);
+
+  const [follow, setFollow] = useState('Follow');
+
+  const followingUser = () => {
+    auth.user.following.filter((follow) => {
+      if (follow._id.includes(_id)) {
+        setFollow('Unfollow');
+      }
+    });
+  };
+
+  const followButton = (e) => {
+    if (follow === 'Follow') {
+      console.log('Follow');
+      setFollow('Unfollow');
+      addFollowing(auth.user._id, _id);
+      addFollower(_id, auth.user._id);
+    } else {
+      console.log('Unfollow');
+      setFollow('Follow');
+      removeFollowing(auth.user._id, _id);
+      removeFollower(_id, auth.user._id);
+    }
+  };
+
   return (
     <div className={`top-wrapper experience-profile banner-img ${banner}`}>
       {avatar === null ? (
@@ -74,12 +121,40 @@ const ProfileTop = ({
           </a>
         )}
       </div>
+      <div>
+        {following === undefined ? <p>0 Following</p> : <p>{following.length} Following</p>}
+        <p>{followers.length} Followers</p>
+        {auth.isAuthenticated && auth.loading === false && auth.user._id !== _id && (
+          <button
+            onClick={() => {
+              followButton();
+            }}
+          >
+            {follow}
+          </button>
+        )}
+      </div>
     </div>
   );
 };
 
 ProfileTop.propTypes = {
   profile: PropTypes.object.isRequired,
+  addFollowing: PropTypes.func.isRequired,
+  addFollower: PropTypes.func.isRequired,
+  removeFollower: PropTypes.func.isRequired,
+  removeFollowing: PropTypes.func.isRequired,
 };
 
-export default ProfileTop;
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {
+  addFollower,
+  addFollowing,
+  getProfileById,
+  removeFollowing,
+  removeFollower,
+})(ProfileTop);

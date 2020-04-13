@@ -463,17 +463,15 @@ router.get('/github/:username', (req, res) => {
 router.post('/following/:user_id/:other_user', auth, async (req, res) => {
   const user = await User.findById(req.params.user_id);
   const otherUser = await User.findById(req.params.other_user);
-
-  user.following.push(otherUser);
-  const follow = user.following;
-
-  await user.save();
-
-  res.json({ len: follow.length, user });
-
   try {
+    user.following.push(otherUser);
+    const follow = user.following;
+
+    await user.save();
+
+    res.json({ len: follow });
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
     res.status(500).send('Server Error');
   }
 });
@@ -484,17 +482,15 @@ router.post('/following/:user_id/:other_user', auth, async (req, res) => {
 router.post('/follower/:user_id/:other_user', auth, async (req, res) => {
   const user = await User.findById(req.params.user_id);
   const otherUser = await User.findById(req.params.other_user);
-
-  user.followers.push(otherUser);
-  const follow = user.followers;
-
-  await user.save();
-
-  res.json({ len: follow.length, user });
-
   try {
+    user.followers.push(otherUser);
+    const follow = user.followers;
+
+    await user.save();
+
+    res.json({ len: follow });
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
     res.status(500).send('Server Error');
   }
 });
@@ -506,16 +502,15 @@ router.post('/unfollower/:user_id/:other_user', auth, async (req, res) => {
   const user = await User.findById(req.params.user_id);
   const otherUser = await User.findById(req.params.other_user);
 
-  for (let i = 0; i < user.followers.length; i++) {
-    if (user.followers[i]._id == req.params.other_user) {
-      user.followers.splice(i, 1);
-      const follow = user.followers;
-      await user.save();
-      res.json({ len: follow.length, user });
-    }
-  }
-
   try {
+    for (let i = 0; i < user.followers.length; i++) {
+      if (user.followers[i]._id == req.params.other_user) {
+        user.followers.splice(i, 1);
+        const follow = user.followers;
+        await user.save();
+        res.json({ len: follow });
+      }
+    }
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -529,16 +524,15 @@ router.post('/unfollow/:user_id/:other_user', auth, async (req, res) => {
   const user = await User.findById(req.params.user_id);
   const otherUser = await User.findById(req.params.other_user);
 
-  for (let i = 0; i < user.following.length; i++) {
-    if (user.following[i]._id == req.params.other_user) {
-      user.following.splice(i, 1);
-      const follow = user.following;
-      await user.save();
-      res.json({ len: follow.length, user });
-    }
-  }
-
   try {
+    for (let i = 0; i < user.following.length; i++) {
+      if (user.following[i]._id == req.params.other_user) {
+        user.following.splice(i, 1);
+        const follow = user.following;
+        await user.save();
+        res.json({ len: follow });
+      }
+    }
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

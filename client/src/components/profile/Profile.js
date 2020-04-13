@@ -43,7 +43,7 @@ const Profile = ({
               </Link>
             )}
             <div>
-              <ProfileTop profile={profile} />
+              <ProfileTop auth={auth} profileID={match.params.id} />
               <ProfileAbout profile={profile} />
               <div className="bottomGrid experience-education">
                 <div className="experience-profile">

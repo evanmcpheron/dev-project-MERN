@@ -12,7 +12,7 @@ import {
   ADD_AVATAR,
   ADD_FOLLOWER, // add follower to array
   REMOVE_FOLLOWER, // remove follower from array
-  FOLLOW_USER, // button to follow user
+  ADD_FOLLOWING, // button to follow user
   UNFOLLOW_USER, // button to remove following
 } from './types';
 
@@ -20,6 +20,7 @@ import {
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/profile/me');
+    const resData = res.data;
 
     dispatch({
       type: GET_PROFILE,
@@ -296,6 +297,101 @@ export const addAvatar = (profileID, file) => async (dispatch) => {
       payload: {
         msg: err.response.statusText,
         status: err.response.status,
+      },
+    });
+  }
+};
+
+/*---------------------------------------------------------------------------------------
+ ----------------------------------FOLLOWERS SECTION-------------------------------------
+---------------------------------------------------------------------------------------*/
+
+// ADD FOLLOWING
+export const addFollowing = (current_user, other_user) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/profile/following/${current_user}/${other_user}`);
+
+    dispatch({
+      type: ADD_FOLLOWING,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Followed User', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        message: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// ADD FOLLOWER
+export const addFollower = (current_user, other_user) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/profile/follower/${current_user}/${other_user}`);
+
+    dispatch({
+      type: ADD_FOLLOWER,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Followed User', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        // message: err.response.statusText,
+        // status: err.response.status,
+        test: console.log('ERROR TEST', err),
+      },
+    });
+  }
+};
+
+// REMOVE FOLLOWER
+export const removeFollower = (current_user, other_user) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/profile/unfollower/${current_user}/${other_user}`);
+
+    dispatch({
+      type: REMOVE_FOLLOWER,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Unfollowed User', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        // message: err.response.statusText,
+        // status: err.response.status,
+        test: console.log('ERROR TEST', err),
+      },
+    });
+  }
+};
+
+// REMOVE FOLLOWER
+export const removeFollowing = (current_user, other_user) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/profile/unfollow/${current_user}/${other_user}`);
+
+    dispatch({
+      type: UNFOLLOW_USER,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Unfollowed User', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        // message: err.response.statusText,
+        // status: err.response.status,
+        test: console.log('ERROR TEST', err),
       },
     });
   }

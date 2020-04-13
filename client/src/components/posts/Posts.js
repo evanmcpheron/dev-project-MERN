@@ -1,15 +1,17 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getPosts } from '../../actions/post';
+import { getPosts, getFollowingPost } from '../../actions/post';
 import Spinner from '../layout/Spinner';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
 
-const Posts = ({ getPosts, post: { posts, loading } }) => {
+const Posts = ({ getPosts, getFollowingPost, auth, post: { posts, loading } }) => {
   useEffect(() => {
-    getPosts();
-  }, [getPosts]);
+    // getPosts();
+    getFollowingPost(auth.user._id);
+  }, [getFollowingPost]);
+
   return loading ? (
     <Spinner />
   ) : (
@@ -32,11 +34,14 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
 
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
+  getFollowingPost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   post: state.post,
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default connect(mapStateToProps, { getPosts, getFollowingPost })(Posts);

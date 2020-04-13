@@ -9,6 +9,7 @@ import {
   REMOVE_COMMENT,
   UPDATE_POST,
   GET_MY_POSTS,
+  GET_FOLLOWING_POSTS,
 } from '../actions/types';
 
 const initialState = {
@@ -27,7 +28,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         posts: payload,
-        log: console.log('...STATE', state),
         loading: false,
       };
     case UPDATE_POST:
@@ -35,8 +35,8 @@ export default function (state = initialState, action) {
         ...state,
         post: payload,
         loading: false,
-        log: console.log(payload),
       };
+    case GET_FOLLOWING_POSTS:
     case GET_POSTS:
       return {
         ...state,
@@ -47,7 +47,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         post: payload,
-        testPayload: console.log(payload),
 
         loading: false,
       };

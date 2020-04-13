@@ -23,7 +23,16 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, [getMyPosts]);
+    getMyPosts(user._id);
+  }, []);
+
+  //   function fetchProfileAndPosts() {
+  //     return async (dispatch, getState) => {
+  //       dispatch(getCurrentProfile());
+  //       const state = getState();
+  //       dispatch(getMyPosts(state.auth.user._id));
+  //     };
+  //   }
 
   return loading && profile === null ? (
     <Spinner />
@@ -75,8 +84,8 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
   getMyPosts: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   posts: PropTypes.object.isRequired,

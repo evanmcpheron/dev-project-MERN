@@ -11,8 +11,7 @@ import {
   UPDATE_POST_COMMENT,
   REMOVE_COMMENT,
   UPDATE_POST,
-  GET_USER_POSTS,
-  GET_FOLLOWER_POSTS,
+  GET_FOLLOWING_POSTS,
   GET_MY_POSTS,
 } from './types';
 
@@ -152,6 +151,26 @@ export const getPost = (id) => async (dispatch) => {
 
     dispatch({
       type: GET_POST,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// Get Following Posts
+export const getFollowingPost = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/posts/following/${id}`);
+
+    dispatch({
+      type: GET_FOLLOWING_POSTS,
       payload: res.data,
     });
   } catch (err) {
