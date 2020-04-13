@@ -33,7 +33,6 @@ export default function (state = initialState, action) {
         user: {
           ...state.user,
           following: payload.len,
-          test: console.log(payload.len),
         },
       };
 

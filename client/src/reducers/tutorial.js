@@ -43,7 +43,6 @@ export default function (state = initialState, action) {
     case ADD_VIDEO_COMMENT:
       return {
         ...state,
-        testingPayload: console.log(payload),
 
         tutorial: payload,
         loading: false,

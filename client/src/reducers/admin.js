@@ -26,7 +26,6 @@ export default function (state = initialState, action) {
         ...state,
         tutorials: payload,
         loading: false,
-        testPayload: console.log('TESTING UPDATE_TUTORIAL PAYLOAD: ', payload),
       };
     case DELETE_VIDEO:
       return {

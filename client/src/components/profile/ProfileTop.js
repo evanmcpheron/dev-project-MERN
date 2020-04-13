@@ -48,12 +48,10 @@ const ProfileTop = ({
 
   const followButton = (e) => {
     if (follow === 'Follow') {
-      console.log('Follow');
       setFollow('Unfollow');
       addFollowing(auth.user._id, _id);
       addFollower(_id, auth.user._id);
     } else {
-      console.log('Unfollow');
       setFollow('Follow');
       removeFollowing(auth.user._id, _id);
       removeFollower(_id, auth.user._id);

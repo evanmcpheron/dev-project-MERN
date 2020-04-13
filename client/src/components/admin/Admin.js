@@ -60,12 +60,10 @@ const Admin = (
       setEditMode({
         editModeState: 'edit-mode',
       });
-      console.log(editModeState);
     } else {
       setEditMode({
         editModeState: 'normal-mode',
       });
-      console.log(editModeState);
     }
   };
 

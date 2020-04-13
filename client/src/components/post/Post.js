@@ -35,12 +35,10 @@ const Post = ({ auth, getPost, updatePost, post: { post, loading }, match }) => 
       setEditMode({
         editModeState: 'edit-mode',
       });
-      console.log(editModeState);
     } else {
       setEditMode({
         editModeState: 'normal-mode',
       });
-      console.log(editModeState);
     }
   };
 

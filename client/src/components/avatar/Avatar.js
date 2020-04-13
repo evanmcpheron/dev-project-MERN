@@ -17,7 +17,7 @@ const Avatar = ({ profile, addAvatar }) => {
 
   const avatarImage = () => {
     axios.get(`/api/profile/avatar/${profile.avatar}`).then((res) => {
-      console.log(res);
+      //   console.log(res);
     });
   };
 
