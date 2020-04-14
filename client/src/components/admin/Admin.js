@@ -90,13 +90,13 @@ const Admin = (
             <form
               onSubmit={(event) => {
                 event.preventDefault();
-                // setFormData({
-                //   title: '',
-                //   description: '',
-                //   thumbnailURL: '',
-                //   status: 'Choose Status',
-                //   id: '',
-                // });
+                setFormData({
+                  title: '',
+                  description: '',
+                  thumbnailURL: '',
+                  status: 'Choose Status',
+                  id: '',
+                });
                 updateTutorial({ title, description, thumbnailURL, status }, id);
               }}
             >
