@@ -11,13 +11,17 @@ const Landing = ({ isAuthenticated }) => {
 
   return (
     <section className="landing-wrapper">
-      <div>
-        <div>
+      <div className="shape-path">
+        <div className="text-position">
           <h1>ePoint.io</h1>
           <p>Create a developer profile/portfolio, share posts, and learn</p>
-          <div>
-            <Link to="/register">Sign Up</Link>
-            <Link to="/login">Login</Link>
+          <div className="action-btns">
+            <Link className="btn" to="/register">
+              Sign Up
+            </Link>
+            <Link className="btn btn-two" to="/login">
+              Login
+            </Link>
           </div>
         </div>
       </div>

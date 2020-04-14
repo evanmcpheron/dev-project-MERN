@@ -3,18 +3,51 @@
 *::after {
   margin: 0;
   padding: 0;
-  line-height: 1;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 html,
 body {
   font-size: 10px;
   color: $white;
+  font-family: Mukta, sans-serif;
+  background: linear-gradient(120deg, darken($primary-2, 20%), darken($primary-4, 20%));
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (max-width: 1160px) {
+  html,
+  body {
+    font-size: 9px;
+  }
+}
+@media only screen and (max-width: 850px) {
+  html,
+  body {
+    font-size: 8px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  html,
+  body {
+    font-size: 7px;
+  }
 }
 
 a {
   font-size: 1.75rem;
+  color: $warn-0;
+  transition: color 0.3s ease;
+  &:focus,
+  &:active,
+  &:visited {
+    color: $warn-0;
+  }
+  &:hover {
+    color: darken($warn-0, 20%);
+  }
 }
 
 h1 {

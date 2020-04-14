@@ -30,6 +30,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import NavContainer from './components/layout/NavContainer';
 
 ReactGA.initialize('UA-80246531-5', {
   debug: false,
@@ -58,7 +59,7 @@ const App = () => {
     <Provider store={store}>
       <Router history={history}>
         <Fragment>
-          <Navbar />
+          <NavContainer />
           <Route exact path="/" component={Landing} />
           <section>
             <Alert />
