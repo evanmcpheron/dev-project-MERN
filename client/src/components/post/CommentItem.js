@@ -18,18 +18,16 @@ const CommentItem = ({
       </Link>
     </div>
     <div className="post-text">
-      <p style={{ paddingBottom: '2rem' }}>{text}</p>
+      <p>{text}</p>
       <div className="bottom-post-text">
         <span></span>
-        <p className="moment" style={{ marginRight: '1rem' }}>
-          Posted on<span style={{ paddingRight: '1rem' }}></span>{' '}
-          <Moment format="YYYY/MM/DD">{date}</Moment>
+        <p className="moment">
+          Posted on<span></span> <Moment format="YYYY/MM/DD">{date}</Moment>
         </p>
 
         <Fragment></Fragment>
         {!auth.loading && user === auth.user._id && (
           <button
-            style={{ cursor: 'pointer' }}
             className="danger-button"
             onClick={(e) => deleteComment(postId, _id)}
             type="button"

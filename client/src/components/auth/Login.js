@@ -53,17 +53,7 @@ const Login = ({ login, isAuthenticated }) => {
               minLength="6"
             />
           </div>
-          <input
-            type="submit"
-            value="Sign In"
-            className="btn btn-success"
-            style={{
-              border: 'none',
-              width: '100%',
-              fontSize: '2rem',
-              marginBottom: '2rem',
-            }}
-          />
+          <input type="submit" value="Sign In" className="btn btn-success" />
         </form>
         <p>
           Don't have an account? <Link to="/register">Sign Up</Link>

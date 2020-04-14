@@ -29,33 +29,23 @@ const PostItem = ({
         </Link>
       </div>
       <div className="post-text">
-        <p style={{ paddingBottom: '2rem' }}>{text}</p>
+        <p>{text}</p>
         <div className="bottom-post-text">
           <span></span>
-          <p className="moment" style={{ marginRight: '1rem' }}>
-            Posted on <span style={{ paddingRight: '1rem' }}></span>
+          <p className="moment">
+            Posted on <span></span>
             <Moment format="YYYY/MM/DD">{date}</Moment>
           </p>
           {showActions && (
             <Fragment>
-              <button
-                className="success-button"
-                style={{ marginRight: '1rem' }}
-                onClick={(e) => addLike(_id)}
-                type="button"
-              >
+              <button className="success-button" onClick={(e) => addLike(_id)} type="button">
                 <i className="fas fa-thumbs-up"></i>
                 {likes.length > 0 && <span> {likes.length}</span>}
               </button>
-              <button
-                style={{ marginRight: '1rem' }}
-                onClick={(e) => removeLike(_id)}
-                type="button"
-                className="danger-button"
-              >
+              <button onClick={(e) => removeLike(_id)} type="button" className="danger-button">
                 <i className="fas fa-thumbs-down"></i>
               </button>
-              <Link style={{ marginRight: '1rem' }} to={`/post/${_id}`} className="button">
+              <Link to={`/post/${_id}`} className="button">
                 Discussion {comments.length > 0 && <span>{comments.length}</span>}
               </Link>
               {!auth.loading && user === auth.user._id && (

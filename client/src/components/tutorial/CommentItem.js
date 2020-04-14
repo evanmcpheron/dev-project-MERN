@@ -15,14 +15,14 @@ const CommentItem = ({
 }) => (
   <div className="playlist-comment-item">
     <div class="avatar-link">
-      <Link style={{ lineHeight: '1' }} to={`/profile/${user}`}>
+      <Link to={`/profile/${user}`}>
         <h6>{name}</h6>
       </Link>
     </div>
     <div className="bottom-comment">
       <p>{text}</p>
       <div className="btn-comment">
-        <p style={{ lineHeight: '1' }}>
+        <p>
           Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
         </p>
         {!auth.loading && user === auth.user._id && (

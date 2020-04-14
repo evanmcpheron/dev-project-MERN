@@ -91,17 +91,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               minLength="6"
             />
           </div>
-          <input
-            type="submit"
-            className="btn btn-success"
-            value="Register"
-            style={{
-              border: 'none',
-              width: '100%',
-              fontSize: '2rem',
-              marginBottom: '2rem',
-            }}
-          />
+          <input type="submit" className="btn btn-success" value="Register" />
         </form>
         <p>
           Already have an account? <Link to="/login">Sign In</Link>

@@ -29,7 +29,7 @@ const ProfileItem = ({
         </p>
         <p>- {location && <span>{location}</span>}</p>
       </div>
-      <ul style={{ listStyle: 'none' }}>
+      <ul>
         {skills.slice(0, 4).map((skill, index) => (
           <p>
             <li key={index}>

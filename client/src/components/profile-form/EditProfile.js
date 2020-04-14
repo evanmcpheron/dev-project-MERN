@@ -93,12 +93,7 @@ const EditProfile = ({
         <small>* = required field</small>
         <form onSubmit={(e) => onSubmit(e)}>
           <div>
-            <select
-              value={status}
-              style={{ marginBottom: '0' }}
-              onChange={(event) => onChange(event)}
-              name="status"
-            >
+            <select value={status} onChange={(event) => onChange(event)} name="status">
               <option value="0">* Select Professional Status</option>
               <option value="Developer">Developer</option>
               <option value="Junior Developer">Junior Developer</option>
@@ -113,7 +108,6 @@ const EditProfile = ({
           </div>
           <div>
             <input
-              style={{ marginBottom: '0' }}
               type="text"
               placeholder="Company"
               name="company"
@@ -124,7 +118,6 @@ const EditProfile = ({
           </div>
           <div>
             <input
-              style={{ marginBottom: '0' }}
               type="text"
               placeholder="Website"
               name="website"
@@ -135,7 +128,6 @@ const EditProfile = ({
           </div>
           <div>
             <input
-              style={{ marginBottom: '0' }}
               type="text"
               placeholder="Location"
               name="location"
@@ -146,7 +138,6 @@ const EditProfile = ({
           </div>
           <div>
             <input
-              style={{ marginBottom: '0' }}
               type="text"
               placeholder="* Skills"
               name="skills"
@@ -157,7 +148,6 @@ const EditProfile = ({
           </div>
           <div>
             <input
-              style={{ marginBottom: '0' }}
               type="text"
               placeholder="Github Username"
               name="githubusername"
@@ -168,7 +158,6 @@ const EditProfile = ({
           </div>
           <div>
             <textarea
-              style={{ marginBottom: '0' }}
               placeholder="A short bio of yourself"
               name="bio"
               value={bio}
@@ -180,7 +169,6 @@ const EditProfile = ({
           <div>
             <button
               onClick={() => toggleSocialInputs(!displaySocialInputs)}
-              style={{ marginTop: '2rem' }}
               className="btn btn-warn"
               type="button"
             >
@@ -377,12 +365,7 @@ const EditProfile = ({
             </Fragment>
           )}
 
-          <input
-            type="submit"
-            value="Submit"
-            style={{ margin: '2rem 0' }}
-            className="btn btn-success"
-          />
+          <input type="submit" value="Submit" className="btn btn-success" />
         </form>
       </section>
     </Fragment>

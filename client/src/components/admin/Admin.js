@@ -219,10 +219,7 @@ const Admin = (
           {admin.tutorials.map((tut) => (
             <div className="tutorials-container" key={tut._id}>
               {editModeState === 'edit-mode' ? (
-                <button
-                  style={{ border: 'none', background: 'none', cursor: 'pointer' }}
-                  onClick={(event) => editTutorial(event, tut)}
-                >
+                <button onClick={(event) => editTutorial(event, tut)}>
                   <div>
                     <img className="edit-mode" src={tut.thumbnailURL} />
                   </div>

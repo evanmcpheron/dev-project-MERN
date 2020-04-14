@@ -21,12 +21,7 @@ const Tutorials = ({ auth, getTutorials, tutorial: { tutorials, loading } }) => 
           {tutorials.map((tut) =>
             tut.status === 'Published' ? (
               <div key={tut._id}>
-                <TutorialItem
-                  style={{ display: 'none' }}
-                  showActions={true}
-                  key={tut._id}
-                  tutorial={tut}
-                />
+                <TutorialItem showActions={true} key={tut._id} tutorial={tut} />
               </div>
             ) : null
           )}

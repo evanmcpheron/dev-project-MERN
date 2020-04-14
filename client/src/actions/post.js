@@ -262,7 +262,7 @@ export const updatePost = (formData, postId) => async (dispatch) => {
 };
 
 // UPDATE VIDEO COMMENT
-export const updateComment = (tutorialId, videoId, commentId, formData) => async (dispatch) => {
+export const updateComment = (postId, commentId, formData) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -271,7 +271,7 @@ export const updateComment = (tutorialId, videoId, commentId, formData) => async
 
   try {
     const res = await axios.post(
-      `/api/tutorial/comment/update${tutorialId}/${videoId}/${commentId}`,
+      `/api/post/comment/update${postId}/${commentId}`,
       formData,
       config
     );

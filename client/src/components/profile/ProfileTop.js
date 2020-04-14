@@ -61,14 +61,9 @@ const ProfileTop = ({
   return (
     <div className={`top-wrapper experience-profile banner-img ${banner}`}>
       {avatar === null ? (
-        <img className="avatar" style={{ marginTop: '3rem' }} src={`${blankAvatar}`} alt="" />
+        <img className="avatar" src={`${blankAvatar}`} alt="" />
       ) : (
-        <img
-          className="avatar"
-          style={{ marginTop: '3rem' }}
-          src={`/api/profile/avatar/${avatar}`}
-          alt=""
-        />
+        <img src={`/api/profile/avatar/${avatar}`} alt="" />
       )}
 
       <h1>{`${fName} ${lName}`}</h1>
@@ -76,13 +71,7 @@ const ProfileTop = ({
         {status} {company && <span> at {company}</span>}
       </p>
       <p>{location && <span>{location}</span>}</p>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          margin: '3rem 0',
-        }}
-      >
+      <div>
         {website && (
           <a href={website} target="_blank" rel="noopener noreferrer">
             <i className="fas fa-globe fa-2x"></i>

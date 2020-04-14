@@ -38,7 +38,7 @@ const Profile = ({
               Back to Profiles
             </Link>
             {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="btn tablet" style={{ marginLeft: '2rem' }}>
+              <Link to="/edit-profile" className="btn tablet">
                 Edit Profile
               </Link>
             )}

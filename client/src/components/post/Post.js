@@ -52,7 +52,6 @@ const Post = ({ auth, getPost, updatePost, post: { post, loading }, match }) => 
         </Link>
         {editModeState === 'edit-mode' ? (
           <form
-            style={{ marginBottom: '0' }}
             onSubmit={(event) => {
               event.preventDefault();
               setFormData({
@@ -95,7 +94,7 @@ const Post = ({ auth, getPost, updatePost, post: { post, loading }, match }) => 
         ) : null}
 
         <CommentForm postId={post._id} />
-        <div style={{ paddingTop: '3rem' }}>
+        <div>
           {post.comments.map((comment) => (
             <CommentItem key={comment._id} comment={comment} postId={post._id} />
           ))}
