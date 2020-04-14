@@ -17,16 +17,33 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
+
+.container {
+  width: 80%;
+  margin: 4rem 0;
+  margin-left: 10%;
+}
 @media only screen and (max-width: 1160px) {
   html,
   body {
     font-size: 9px;
+  }
+
+  .container {
+    width: 90%;
+    margin: 4rem 0;
+    margin-left: 5%;
   }
 }
 @media only screen and (max-width: 850px) {
   html,
   body {
     font-size: 8px;
+  }
+  .container {
+    width: 95%;
+    margin: 2rem 0;
+    margin-left: 2.5%;
   }
 }
 @media only screen and (max-width: 550px) {
@@ -40,10 +57,12 @@ a {
   font-size: 1.75rem;
   color: $warn-0;
   transition: color 0.3s ease;
+  cursor: pointer;
   &:focus,
   &:active,
   &:visited {
     color: $warn-0;
+    cursor: pointer;
   }
   &:hover {
     color: darken($warn-0, 20%);
