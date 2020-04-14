@@ -51,29 +51,13 @@
 .hidden {
   color: red;
 }
-ul li a {
-  font-size: 3rem;
-  padding-left: 2rem;
-  padding-top: 3rem;
-}
-ul li:nth-child(1) {
-  padding-top: 3rem;
-}
-.logo-navbar {
-  margin-top: 4rem;
-  font-size: 2rem;
-  border-bottom: $warn-0 3px solid;
-  width: 100%;
-  padding: 0 2rem;
-  color: $warn-0;
-}
 
 .logged-in-navbar-mobile {
   display: flex;
   justify-content: space-between;
 }
 
-visible {
+.visible {
   display: block;
 }
 
@@ -100,6 +84,22 @@ visible {
 @media only screen and (max-width: 1200px) {
   .navbar-container-desktop {
     display: none;
+  }
+  .logo-navbar {
+    margin-top: 4rem;
+    font-size: 2rem;
+    border-bottom: $warn-0 3px solid;
+    width: 100%;
+    padding: 0 2rem;
+    color: $warn-0;
+  }
+  ul li a {
+    font-size: 3rem;
+    padding-left: 2rem;
+    padding-top: 3rem;
+  }
+  ul li:nth-child(1) {
+    padding-top: 3rem;
   }
 }
 
