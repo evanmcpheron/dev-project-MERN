@@ -97,9 +97,12 @@ const Navbar = ({ auth: { isAuthenticated, loading, isAdmin, user }, logout }) =
 
   const guestLinks = (
     <ul className="navbar-ul">
-      <li>
+      {/* <li>
         <Link to="/profiles">Developers</Link>
-      </li>
+      </li> */}
+      <div></div>
+      <div></div>
+      <div></div>
       <li>
         <Link to="/register">Register</Link>
       </li>
@@ -134,6 +137,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, isAdmin, user }, logout }) =
             <i className="fas fa-code"></i> ePOINT
           </Link>
         )}
+        <div></div>
         {!loading && (
           <Fragment>
             {isAuthenticated ? greeting() : null}

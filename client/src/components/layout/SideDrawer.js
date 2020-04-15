@@ -109,11 +109,9 @@ const SideDrawer = ({ auth: { isAuthenticated, loading, isAdmin, user }, logout,
 
   const guestLinks = (
     <ul className="navbar-ul">
-      <li>
-        <Link to="/profiles" onClick={click}>
+      <li>{/* <Link to="/profiles" onClick={click}>
           Developers
-        </Link>
-      </li>
+        </Link> */}</li>
       <li>
         <Link to="/register" onClick={click}>
           Register
