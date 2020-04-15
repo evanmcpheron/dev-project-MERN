@@ -335,8 +335,10 @@ export const addFollower = (current_user, other_user) => async (dispatch) => {
 
     dispatch({
       type: ADD_FOLLOWER,
-      payload: res.data,
+      payload: res.data.len,
     });
+
+    console.log('ADD_FOLLLOWER: ', res.data.len);
 
     dispatch(setAlert('Followed User', 'success'));
   } catch (err) {
@@ -381,8 +383,10 @@ export const removeFollowing = (current_user, other_user) => async (dispatch) =>
 
     dispatch({
       type: UNFOLLOW_USER,
-      payload: res.data,
+      payload: res.data.user.followers,
     });
+
+    console.log('UNFOLLOW_USER: ', res.data.user.followers);
 
     dispatch(setAlert('Unfollowed User', 'success'));
   } catch (err) {

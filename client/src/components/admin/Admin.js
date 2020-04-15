@@ -163,7 +163,7 @@ const Admin = (
                 addTutorial({ title, description, thumbnailURL, status });
               }}
             >
-              <div>
+              <div className="relative">
                 <input
                   type="text"
                   placeholder="Title"
@@ -172,6 +172,8 @@ const Admin = (
                   onChange={(event) => onChange(event)}
                   required
                 ></input>
+                <span></span>
+                <div className="my2"></div>
                 <input
                   type="text"
                   placeholder="Description"
@@ -180,6 +182,8 @@ const Admin = (
                   onChange={(event) => onChange(event)}
                   required
                 ></input>
+                <span></span>
+                <div className="my2"></div>
                 <input
                   type="text"
                   placeholder="Tutorial Thumbnail URL"
@@ -188,6 +192,8 @@ const Admin = (
                   name="thumbnailURL"
                   required
                 ></input>
+                <span></span>
+                <div className="my2"></div>
                 <select
                   type="text"
                   placeholder="Tutorial Thumbnail URL"
@@ -200,6 +206,7 @@ const Admin = (
                   <option>Published</option>
                   <option>Draft</option>
                 </select>
+                <div className="my2"></div>
                 <input
                   className="btn btn-success admin-submit-btn"
                   type="submit"

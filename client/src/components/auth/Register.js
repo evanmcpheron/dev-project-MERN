@@ -33,14 +33,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <Fragment className="register-wrapper container">
-      <section className="container">
-        <h1>Sign Up</h1>
+    <Fragment className="register-wrapper">
+      <section className="container" style={{ marginTop: '6rem' }}>
+        <h2>Sign Up</h2>
         <p>
           <i className="fas fa-user"></i> Create Your Account
         </p>
         <form onSubmit={onSubmit}>
-          <div>
+          <div className="relative">
             <input
               type="text"
               placeholder="First Name"
@@ -49,6 +49,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               onChange={(event) => onChange(event)}
               required
             />
+            <span></span>
+            <div className="my2"></div>
             <input
               type="text"
               placeholder="Last Name"
@@ -57,8 +59,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               onChange={(event) => onChange(event)}
               required
             />
+            <span></span>
+            <div className="my2"></div>
           </div>
-          <div>
+          <div className="relative">
             <input
               type="email"
               placeholder="Email Address"
@@ -67,11 +71,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               name="email"
               required
             />
-            <small>
-              This site uses Gravatar so if you want a profile image, use a Gravatar email
-            </small>
+            <span></span>
+            <div className="my2"></div>
           </div>
-          <div>
+          <div className="relative">
             <input
               type="password"
               placeholder="Password"
@@ -80,8 +83,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               onChange={(event) => onChange(event)}
               minLength="6"
             />
+            <span></span>
+            <div className="my2"></div>
           </div>
-          <div>
+          <div className="relative">
             <input
               type="password"
               placeholder="Confirm Password"
@@ -90,10 +95,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               onChange={(event) => onChange(event)}
               minLength="6"
             />
+            <span></span>
+            <div className="my2"></div>
           </div>
           <input type="submit" className="btn btn-success" value="Register" />
         </form>
-        <p>
+        <p className="mt2">
           Already have an account? <Link to="/login">Sign In</Link>
         </p>
       </section>

@@ -530,7 +530,7 @@ router.post('/unfollow/:user_id/:other_user', auth, async (req, res) => {
         user.following.splice(i, 1);
         const follow = user.following;
         await user.save();
-        res.json({ len: follow });
+        res.json({ user });
       }
     }
   } catch (err) {

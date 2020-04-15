@@ -29,6 +29,8 @@ const CommentForm = ({ tutorialId, videoId, addComment, auth: { isAuthenticated 
               onChange={(e) => setText(e.target.value)}
               required
             />
+            <span></span>
+            <div className="my2"></div>
 
             <input className="btn btn-success" type="submit" value="Submit" />
           </form>

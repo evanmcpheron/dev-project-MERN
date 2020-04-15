@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
           ...state.profile,
           user: {
             ...state.profile.user,
-            followers: payload.len,
+            followers: payload,
           },
         },
       };

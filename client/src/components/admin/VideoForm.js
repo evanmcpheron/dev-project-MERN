@@ -35,7 +35,7 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
       <h1>Create a new video</h1>
 
       <form onSubmit={onSubmit}>
-        <div>
+        <div className="relative">
           <input
             type="text"
             placeholder="Title"
@@ -44,6 +44,8 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
             onChange={(event) => onChange(event)}
             required
           />
+          <span></span>
+          <div className="my2"></div>
           <input
             type="number"
             placeholder="Video Position"
@@ -52,6 +54,8 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
             onChange={(event) => onChange(event)}
             required
           />
+          <span></span>
+          <div className="my2"></div>
           <input
             type="text"
             placeholder="Video URL"
@@ -60,6 +64,8 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
             name="videoUrl"
             required
           />
+          <span></span>
+          <div className="my2"></div>
           <input
             type="text"
             placeholder="GitHub URL"
@@ -68,6 +74,8 @@ const VideoForm = ({ setAlert, addVideo, isAuthenticated, videoId }) => {
             name="githubUrl"
             required
           />
+          <span></span>
+          <div className="my2"></div>
         </div>
         <input className="btn btn-success" type="submit" value="Create Tutorial" />
       </form>

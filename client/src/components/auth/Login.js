@@ -27,13 +27,13 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <section className="container">
-        <h1>Sign In</h1>
+      <section className="container" style={{ marginTop: '6rem' }}>
+        <h2>Sign In</h2>
         <p>
           <i className="fas fa-user"></i> Log into your account
         </p>
         <form onSubmit={onSubmit}>
-          <div>
+          <div className="relative">
             <input
               type="email"
               placeholder="Email Address"
@@ -42,8 +42,10 @@ const Login = ({ login, isAuthenticated }) => {
               name="email"
               required
             />
+            <span></span>
+            <div className="my2"></div>
           </div>
-          <div>
+          <div className="relative">
             <input
               type="password"
               placeholder="Password"
@@ -52,10 +54,12 @@ const Login = ({ login, isAuthenticated }) => {
               onChange={(event) => onChange(event)}
               minLength="6"
             />
+            <span></span>
+            <div className="my2"></div>
           </div>
           <input type="submit" value="Sign In" className="btn btn-success" />
         </form>
-        <p>
+        <p className="mt2">
           Don't have an account? <Link to="/register">Sign Up</Link>
         </p>
       </section>

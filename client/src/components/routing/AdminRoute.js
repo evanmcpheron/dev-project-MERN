@@ -4,28 +4,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const AdminRoute = ({
-    component: Component,
-    auth: { isAuthenticated, isAdmin, loading },
-    ...rest
+  component: Component,
+  auth: { isAuthenticated, isAdmin, loading },
+  ...rest
 }) => (
-    <Route
-        {...rest}
-        render={props =>
-            !isAdmin && !loading ? (
-                <Redirect to="/dashboard" />
-            ) : (
-                <Component {...props} />
-            )
-        }
-    />
+  <Route
+    {...rest}
+    render={(props) =>
+      !isAdmin && !loading ? <Redirect to="/tutorials" /> : <Component {...props} />
+    }
+  />
 );
 
 AdminRoute.propTypes = {
-    auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-    auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps)(AdminRoute);
