@@ -109,6 +109,8 @@ const Admin = (
                   onChange={(event) => onChange(event)}
                   required
                 ></input>
+                <span></span>
+                <div className="my2"></div>
                 <input
                   type="text"
                   placeholder="Description"
@@ -117,6 +119,8 @@ const Admin = (
                   onChange={(event) => onChange(event)}
                   required
                 ></input>
+                <span></span>
+                <div className="my2"></div>
                 <input
                   type="text"
                   placeholder="Tutorial Thumbnail URL"
@@ -125,6 +129,8 @@ const Admin = (
                   name="thumbnailURL"
                   required
                 ></input>
+                <span></span>
+                <div className="my2"></div>
                 <select
                   type="text"
                   placeholder="Tutorial Thumbnail URL"
@@ -137,15 +143,14 @@ const Admin = (
                   <option>Published</option>
                   <option>Draft</option>
                 </select>
+                <span></span>
+                <div className="my2"></div>
                 <input
                   className="btn btn-success admin-submit-btn"
                   type="submit"
                   value="Update Tutorial"
                   onClick={() => {
                     getTutorials();
-                    setTimeout(() => {
-                      setEditMode({ editModeState: 'normal-mode' });
-                    }, 500);
                   }}
                 />
               </div>
@@ -217,18 +222,35 @@ const Admin = (
             </form>
           )}
         </Fragment>
-        <button onClick={editing} className="btn">
-          Edit Tutorials
-        </button>
+        {editModeState === 'edit-mode' ? (
+          <button onClick={editing} className="btn">
+            Done Editing
+          </button>
+        ) : (
+          <button onClick={editing} className="btn">
+            Edit Tutorials
+          </button>
+        )}
+
         <hr />
         <h1>Tutorials</h1>
         <div className="bottom-section-admin mb2">
           {admin.tutorials.map((tut) => (
             <div className="tutorials-container" key={tut._id}>
               {editModeState === 'edit-mode' ? (
-                <button onClick={(event) => editTutorial(event, tut)}>
+                <button
+                  className="video-btn"
+                  onClick={(event) => {
+                    editTutorial(event, tut);
+                    window.scrollTo(0, 0);
+                  }}
+                >
                   <div>
-                    <img className="edit-mode" src={tut.thumbnailURL} />
+                    <img
+                      onClick={() => window.scrollTo(0, 0)}
+                      className="edit-mode"
+                      src={tut.thumbnailURL}
+                    />
                   </div>
                 </button>
               ) : (
