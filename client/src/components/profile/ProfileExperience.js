@@ -3,29 +3,29 @@ import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
 const ProfileExperience = ({
-    experience: { company, title, location, current, from, to, description }
+  experience: { company, title, location, current, from, to, description },
 }) => {
-    return (
-        <div>
-            <h4>- {company}</h4>
-            <p>
-                <Moment format="YYYY/MM/DD">{from}</Moment> -{' '}
-                {!to ? ' Current' : <Moment format="YYYY/MM/DD">{to}</Moment>}
-            </p>
-            <p>
-                <strong>Position: </strong>
-                {title}
-            </p>
-            <p>
-                <strong>Description: </strong>
-                {description}
-            </p>
-        </div>
-    );
+  return (
+    <div>
+      <h5>- {company}</h5>
+      <p>
+        <Moment format="YYYY/MM/DD">{from}</Moment> -{' '}
+        {!to ? ' Current' : <Moment format="YYYY/MM/DD">{to}</Moment>}
+      </p>
+      <p>
+        <strong>Position: </strong>
+        {title}
+      </p>
+      <p>
+        <strong>Description: </strong>
+        {description}
+      </p>
+    </div>
+  );
 };
 
 ProfileExperience.propTypes = {
-    experience: PropTypes.object.isRequired
+  experience: PropTypes.object.isRequired,
 };
 
 export default ProfileExperience;

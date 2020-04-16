@@ -46,12 +46,6 @@ body {
     margin-left: 2.5%;
   }
 }
-// @media only screen and (max-width: 550px) {
-//   html,
-//   body {
-//     font-size: 7px;
-//   }
-// }
 
 a {
   font-size: 1.75rem;
@@ -208,6 +202,9 @@ input:focus + span::after {
   animation: dropDownDesktop 3s ease;
   &-success {
     background: $success-0;
+  }
+  &-danger {
+    background: $danger-1;
   }
 }
 

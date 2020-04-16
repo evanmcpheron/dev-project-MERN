@@ -19,22 +19,28 @@ const PostItem = ({
       <div className="avatar-post">
         <Link className="avatar-center" to={`/profile/${user}`}>
           {avatar === null ? (
-            <img className="avatar" src={`${blankAvatar}`} alt="avatar IMG" />
+            <div className="avatar-container">
+              <div className="avatar" style={{ backgroundImage: `url(${blankAvatar})` }} />
+            </div>
           ) : (
-            <img className="avatar" src={`/api/profile/avatar/${avatar}`} alt="avatar IMG" />
+            <div className="avatar-container">
+              <div
+                className="avatar"
+                style={{ backgroundImage: `url(/api/profile/avatar/${avatar})` }}
+              />
+            </div>
           )}
         </Link>
         <Link to={`/profile/${user}`}>
-          <p>{name}</p>
+          <p className="poster-name">{name}</p>
         </Link>
       </div>
       <div className="post-text">
-        <p>{text}</p>
+        <p className="top-post-text">{text}</p>
         <div className="bottom-post-text">
-          <span></span>
           <p className="moment">
             Posted on <span></span>
-            <Moment format="YYYY/MM/DD">{date}</Moment>
+            <Moment format="MM/DD/YYYY">{date}</Moment>
           </p>
           {showActions && (
             <Fragment>
@@ -46,7 +52,7 @@ const PostItem = ({
                 <i className="fas fa-thumbs-down"></i>
               </button>
               <Link to={`/post/${_id}`} className="button">
-                Discussion {comments.length > 0 && <span>{comments.length}</span>}
+                Comments {comments.length > 0 && <span>{comments.length}</span>}
               </Link>
               {!auth.loading && user === auth.user._id && (
                 <button className="danger-button" onClick={(e) => deletePost(_id)} type="button">

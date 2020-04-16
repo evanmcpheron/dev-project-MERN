@@ -16,31 +16,31 @@ const ProfileItem = ({
     <div className="profile-grid">
       <div>
         {avatar === null ? (
-          <img className="avatar" src={`${blankAvatar}`} alt="" />
+          <div className="avatar-container">
+            <Link to={`/profile/${_id}`}>
+              <div className="avatar" style={{ backgroundImage: `url(${blankAvatar})` }} />
+            </Link>
+          </div>
         ) : (
-          <img className="avatar" src={`/api/profile/avatar/${avatar}`} alt="" />
+          <div className="avatar-container">
+            <Link to={`/profile/${_id}`}>
+              <div
+                className="avatar"
+                style={{ backgroundImage: `url(/api/profile/avatar/${avatar})` }}
+              />
+            </Link>
+          </div>
         )}
-
-        <h5>{`${fName} ${lName}`}</h5>
+        <Link style={{ display: 'inline-flex' }} to={`/profile/${_id}`}>
+          <h5>{`${fName} ${lName}`}</h5>
+        </Link>
       </div>
-      <div>
+      <div className="profile-body-info">
         <p>
-          - {status} {company && <span> at {company}</span>}
+          {status} {company && <span> at {company}</span>}
         </p>
-        <p>- {location && <span>{location}</span>}</p>
+        <p>{location && <span>{location}</span>}</p>
       </div>
-      <ul>
-        {skills.slice(0, 4).map((skill, index) => (
-          <p>
-            <li key={index}>
-              <i className="fas fa-check" /> {skill}
-            </li>
-          </p>
-        ))}
-      </ul>
-      <Link className="btn" to={`/profile/${_id}`}>
-        View Profile
-      </Link>
     </div>
   );
 };
