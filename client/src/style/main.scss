@@ -208,6 +208,10 @@ input:focus + span::after {
   }
 }
 
+input {
+  -webkit-appearance: none;
+}
+
 @media only screen and (max-width: 1200px) {
   .alert {
     width: 95%;
