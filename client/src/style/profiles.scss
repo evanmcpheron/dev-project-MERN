@@ -1,5 +1,9 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 .profile-body-div {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 1rem 3fr;
   grid-template-columns: 1fr 3fr;
   grid-gap: 1rem;
   margin-top: 4rem;
@@ -29,6 +33,8 @@
 
   h3 {
     line-height: 1;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
     border-bottom: 2px solid;
     margin: 2rem 0;
@@ -69,6 +75,8 @@
     }
   }
   .post-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin: 4rem 0;
     background: $white;
@@ -84,12 +92,23 @@
     }
     .post-text {
       width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
       flex-direction: column;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
       justify-content: space-between;
       .bottom-post-text {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         line-height: 1;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         padding-top: 1rem;
         border-top: 3px solid;
@@ -99,9 +118,15 @@
 }
 
 .top-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 50rem;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: end;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   padding-bottom: 2rem;
 
@@ -121,19 +146,30 @@
     background-size: cover;
 
     &-name {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: end;
+      -ms-flex-align: end;
       align-items: end;
       margin-left: 2rem;
       position: relative;
 
       &-company {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         margin-left: 2rem;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
       }
     }
   }
   .following-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 
     &-two {
@@ -148,6 +184,8 @@
       border-radius: 5px;
       border: none;
       cursor: pointer;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
       transition: all 0.3s ease;
       &:hover {
         background: darken($warn-0, 20%);
@@ -168,6 +206,7 @@
   }
   .profile-body-div {
     margin-top: 0;
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
     .left-side-body {
       border: none;
@@ -180,13 +219,27 @@
 
 @media only screen and (max-width: 1000px) {
   .top-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: end;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     padding-bottom: 2rem;
     .avatar-name {
+      -webkit-box-align: start;
+      -ms-flex-align: start;
       align-items: start;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
       flex-direction: column;
       &-company {
         margin: 0;
@@ -198,7 +251,12 @@
     }
   }
   .post-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
   .moment {
@@ -207,42 +265,142 @@
 }
 
 .harley {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/harley.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/harley.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/harley.jpg');
 }
 .birdy {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/birdy.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/birdy.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/birdy.jpg');
 }
 .bubbles {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/bubbles.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/bubbles.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/bubbles.jpg');
 }
 .colorKeys {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/colorKeys.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/colorKeys.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/colorKeys.jpg');
 }
 .computerChip {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/computerChip.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/computerChip.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/computerChip.jpg');
 }
 .coolKeyboard {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/coolKeyboard.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/coolKeyboard.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/coolKeyboard.jpg');
 }
 .lights {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/lights.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/lights.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/lights.jpg');
 }
 .openMac {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/openMac.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/openMac.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/openMac.jpg');
 }
 .pier {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/pier.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/pier.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/pier.jpg');
 }
 .otherMac {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.9))
+    ),
+    url('../img/banner/otherMac.jpg');
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('../img/banner/otherMac.jpg');
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
     url('../img/banner/otherMac.jpg');
 }
