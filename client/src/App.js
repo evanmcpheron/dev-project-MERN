@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import { createBrowserHistory } from 'history';
@@ -31,6 +31,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import NavContainer from './components/layout/NavContainer';
+import PostForm from './components/posts/PostForm';
 
 ReactGA.initialize('UA-80246531-5', {
   debug: false,
@@ -55,11 +56,14 @@ const App = () => {
     store.dispatch(loadUser());
   }, []);
 
+  const [show, setShow] = useState('');
+
   return (
     <Provider store={store}>
       <Router history={history}>
         <Fragment>
           <NavContainer />
+
           <Route exact path="/" component={Landing} />
           <section>
             <Alert />

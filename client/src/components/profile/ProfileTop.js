@@ -37,6 +37,7 @@ const ProfileTop = ({
   }, [getProfileById]);
 
   const [follow, setFollow] = useState('Follow');
+  const [disabledBtn, setDisabledBtn] = useState(false);
 
   const followingUser = () => {
     auth.user.following.filter((follow) => {
@@ -60,64 +61,76 @@ const ProfileTop = ({
 
   return (
     <div className={`top-wrapper experience-profile banner-img ${banner}`}>
-      {avatar === null ? (
-        <img className="avatar" src={`${blankAvatar}`} alt="" />
-      ) : (
-        <img src={`/api/profile/avatar/${avatar}`} alt="" />
-      )}
-
-      <h1>{`${fName} ${lName}`}</h1>
-      <p>
-        {status} {company && <span> at {company}</span>}
-      </p>
-      <p>{location && <span>{location}</span>}</p>
-      <div>
+      <div className="avatar-name">
+        {avatar === null ? (
+          <div className="avatar" style={{ backgroundImage: `url(${blankAvatar})` }} alt="" />
+        ) : (
+          <div
+            className="avatar"
+            style={{ backgroundImage: `url(/api/profile/avatar/${avatar})` }}
+            alt=""
+          />
+        )}
+        <div className="avatar-name-company">
+          <h1>{`${fName} ${lName}`}</h1>
+          <p>
+            {status} {company && <span> at {company}</span>}
+          </p>
+        </div>
+      </div>
+      <p className="location">{location && <span>{location}</span>}</p>
+      <div className="profile-links">
         {website && (
           <a href={website} target="_blank" rel="noopener noreferrer">
-            <i className="fas fa-globe fa-2x"></i>
+            <i className="fas profile-link fa-globe fa-2x"></i>
           </a>
         )}
 
         {social && social.twitter && (
           <a href={social.twitter} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-twitter fa-2x"></i>
+            <i className="fab profile-link fa-twitter fa-2x"></i>
           </a>
         )}
 
         {social && social.facebook && (
           <a href={social.facebook} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-facebook fa-2x"></i>
+            <i className="fab profile-link fa-facebook fa-2x"></i>
           </a>
         )}
 
         {social && social.linkedin && (
           <a href={social.linkedin} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-linkedin fa-2x"></i>
+            <i className="fab profile-link fa-linkedin fa-2x"></i>
           </a>
         )}
 
         {social && social.youtube && (
           <a href={social.youtube} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-youtube fa-2x"></i>
+            <i className="fab profile-link fa-youtube fa-2x"></i>
           </a>
         )}
 
         {social && social.instagram && (
           <a href={social.instagram} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-instagram fa-2x"></i>
+            <i className="fab profile-link fa-instagram fa-2x"></i>
           </a>
         )}
       </div>
-      <div>
+      <div className="following-info">
         {following === undefined ? <p>0 Following</p> : <p>{following.length} Following</p>}
-        <p>{followers.length} Followers</p>
+        <p className="following-info-two">{followers.length} Followers</p>
         {auth.isAuthenticated && auth.loading === false && auth.user._id !== _id && (
           <button
+            className="following-info-btn"
+            style={{ marginRight: '2rem' }}
             onClick={() => {
               followButton();
+              setDisabledBtn(true);
+              setTimeout(() => setDisabledBtn(false), 2000);
             }}
+            disabled={disabledBtn}
           >
-            {follow}
+            <p>{follow}</p>
           </button>
         )}
       </div>

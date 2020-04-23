@@ -1,0 +1,53 @@
+// .app-post-form {
+//   display: none;
+// }
+
+// @media only screen and (max-width: 1200px) {
+//   .app-post-form {
+//     // position: fixed;
+//     height: 100%;
+//     background: rgba($black, 0.75);
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     z-index: 201;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     transform: translateY(200%);
+//     transition: transform 0.2s linear;
+
+//     div {
+//       height: 75%;
+//       width: 75%;
+//     }
+//     .exit {
+//       position: fixed;
+//       top: 1rem;
+//       left: 1.5rem;
+//       font-size: 6rem;
+//       cursor: pointer;
+//     }
+
+//     form,
+//     textarea {
+//       height: 100%;
+//       width: 100%;
+//     }
+//   }
+//   .app-post-form.open {
+//     transform: translateX(0);
+//     box-shadow: 15px 0px 29px rgba($black, 0.5);
+//   }
+// }
+
+// .fa-plus-circle {
+//   position: fixed;
+//   bottom: 0;
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+//   font-size: 5rem;
+//   z-index: 500;
+// }

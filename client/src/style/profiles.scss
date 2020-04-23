@@ -8,9 +8,6 @@
     display: none;
   }
 
-  .avatar-center {
-  }
-
   h3 {
     line-height: 1;
     display: inline-flex;
@@ -78,6 +75,99 @@
         padding-top: 1rem;
         border-top: 3px solid;
       }
+    }
+  }
+}
+
+.top-wrapper {
+  display: flex;
+  height: 50rem;
+  align-items: end;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+
+  .profile-link {
+    margin: 0 2rem;
+    &s {
+      position: absolute;
+      top: 6rem;
+    }
+  }
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &-name {
+      display: flex;
+      align-items: end;
+      margin-left: 2rem;
+      position: relative;
+
+      &-company {
+        display: flex;
+        margin-left: 2rem;
+        flex-direction: column;
+      }
+    }
+  }
+  .following-info {
+    display: flex;
+
+    &-two {
+      margin: 0 2rem !important;
+    }
+    &-btn p {
+      width: 80px;
+    }
+    &-btn {
+      background: $warn-0;
+      color: $black;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background: darken($warn-0, 20%);
+        color: $white;
+      }
+      &:disabled {
+        background: darken($warn-0, 40%);
+        color: $black;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .profile-body-div {
+    grid-template-columns: 1fr;
+  }
+  .profile-links {
+    top: 2rem !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .top-wrapper {
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    flex-direction: column;
+    padding-bottom: 2rem;
+    .avatar-name {
+      align-items: start;
+      flex-direction: column;
+      &-company {
+        margin: 0;
+      }
+    }
+    .location,
+    .following-info {
+      margin-left: 2rem;
     }
   }
 }

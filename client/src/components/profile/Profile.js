@@ -33,9 +33,9 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <section className="container">
-            <div>
-              <ProfileTop auth={auth} profileID={match.params.id} />
+          <div>
+            <ProfileTop auth={auth} profileID={match.params.id} />
+            <section className="container">
               <div className="profile-body-div">
                 <div className="left-side-body">
                   <ProfileAbout profile={profile} />
@@ -77,8 +77,8 @@ const Profile = ({
                   ))}
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </Fragment>
       )}
     </Fragment>
