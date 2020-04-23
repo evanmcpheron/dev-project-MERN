@@ -163,7 +163,11 @@
 
 @media only screen and (max-width: 1200px) {
   .profile-body-div {
+    margin-top: 0;
     grid-template-columns: 1fr;
+    .left-side-body {
+      border: none;
+    }
   }
   .profile-links {
     top: 2rem !important;
