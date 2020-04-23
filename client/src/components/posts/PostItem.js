@@ -20,12 +20,12 @@ const PostItem = ({
         <Link className="avatar-center" to={`/profile/${user}`}>
           {avatar === null ? (
             <div className="avatar-container">
-              <div className="avatar" style={{ backgroundImage: `url(${blankAvatar})` }} />
+              <div className="avatar-post" style={{ backgroundImage: `url(${blankAvatar})` }} />
             </div>
           ) : (
             <div className="avatar-container">
               <div
-                className="avatar"
+                className="avatar-post"
                 style={{ backgroundImage: `url(/api/profile/avatar/${avatar})` }}
               />
             </div>
