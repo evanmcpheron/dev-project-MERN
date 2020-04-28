@@ -47,9 +47,6 @@ const Post = ({ auth, getPost, updatePost, post: { post, loading }, match }) => 
   ) : (
     <Fragment>
       <section className="container">
-        <Link className="btn" to="/posts">
-          Back To Posts
-        </Link>
         {editModeState === 'edit-mode' ? (
           <form
             onSubmit={(event) => {

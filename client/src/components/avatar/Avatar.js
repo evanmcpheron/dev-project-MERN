@@ -22,8 +22,8 @@ const Avatar = ({ profile, addAvatar }) => {
   };
 
   return (
-    <div className="avatar-container">
-      <header className="avatar-container-header">
+    <div className="avatar-upload">
+      <header className="avatar-upload-header">
         {profile.avatar === null ? (
           <img src={`${blankAvatar}`} className="avatar" />
         ) : (

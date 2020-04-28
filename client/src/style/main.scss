@@ -243,3 +243,35 @@ input {
     transform: translateY(4.4rem);
   }
 }
+
+.btn {
+  width: 100%;
+  margin-top: 1rem;
+  cursor: pointer;
+  &-success {
+    background: $success-4;
+    color: $white !important;
+    &:hover,
+    &:focus {
+      background: darken($success-4, 10%);
+      color: $white;
+    }
+
+    // &:active,
+    // &:visited {
+    //   background-color: $success-4;
+    //   color: $white;
+    // }
+  }
+  &-danger {
+    background: $danger-4;
+    color: $white;
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+      background: darken($danger-4, 10%);
+      color: $white;
+    }
+  }
+}

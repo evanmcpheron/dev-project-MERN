@@ -26,14 +26,6 @@ const Dashboard = ({
     getMyPosts(user._id);
   }, []);
 
-  //   function fetchProfileAndPosts() {
-  //     return async (dispatch, getState) => {
-  //       dispatch(getCurrentProfile());
-  //       const state = getState();
-  //       dispatch(getMyPosts(state.auth.user._id));
-  //     };
-  //   }
-
   return loading && profile === null ? (
     <Spinner />
   ) : (
@@ -56,17 +48,7 @@ const Dashboard = ({
               ))}
             </div>
             <div>
-              <button
-                style={
-                  {
-                    // position: 'absolute',
-                    // bottom: '10px',
-                    // right: '10px'
-                  }
-                }
-                className="btn btn-danger my2"
-                onClick={() => deleteAccount()}
-              >
+              <button className="btn btn-danger my2" onClick={() => deleteAccount()}>
                 <i className="fas fa-user"></i> Delete My Account
               </button>
             </div>

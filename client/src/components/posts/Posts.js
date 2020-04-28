@@ -18,10 +18,6 @@ const Posts = ({ getPosts, getFollowingPost, auth, post: { posts, loading } }) =
     <Fragment>
       <section className="container">
         <h2>Posts</h2>
-        <p>
-          <i className="fas fa-user"></i> Welcome to the community
-        </p>
-        {/* <PostForm /> */}
         <div>
           {posts.map((post) => (
             <PostItem showActions={true} key={post._id} post={post} />

@@ -17,29 +17,35 @@ const PostItem = ({
   return (
     <div className="post-item">
       <div className="avatar-post">
-        <Link className="avatar-center" to={`/profile/${user}`}>
-          {avatar === null ? (
-            <div className="avatar-container">
-              <div
-                className="avatar-post avatar"
-                style={{ backgroundImage: `url(${blankAvatar})` }}
-              />
-            </div>
-          ) : (
-            <div className="avatar-container">
-              <div
-                className="avatar-post avatar"
-                style={{ backgroundImage: `url(/api/profile/avatar/${avatar})` }}
-              />
-            </div>
-          )}
-        </Link>
-        <Link to={`/profile/${user}`}>
-          <p className="poster-name">{name}</p>
-        </Link>
+        <div className="avatar-name-container">
+          <Link className="avatar-center" to={`/profile/${user}`}>
+            {avatar === null ? (
+              <div className="avatar-container">
+                <div
+                  className="avatar-post avatar"
+                  style={{ backgroundImage: `url(${blankAvatar})` }}
+                />
+              </div>
+            ) : (
+              <div className="avatar-container">
+                <div
+                  className="avatar-post avatar"
+                  style={{ backgroundImage: `url(/api/profile/avatar/${avatar})` }}
+                />
+              </div>
+            )}
+          </Link>
+        </div>
       </div>
       <div className="post-text">
-        <p className="top-post-text">{text}</p>
+        <p className="top-post-text">
+          <span>
+            <Link to={`/profile/${user}`}>
+              <p className="poster-name">{name}</p>
+            </Link>
+          </span>
+          {text}
+        </p>
         <div className="bottom-post-text">
           <p className="moment">
             Posted on <span></span>
@@ -55,7 +61,10 @@ const PostItem = ({
                 <i className="fas fa-thumbs-down"></i>
               </button>
               <Link to={`/post/${_id}`} className="button">
-                Comments {comments.length > 0 && <span>{comments.length}</span>}
+                {comments.length > 0 && (
+                  <span style={{ marginRight: '1rem' }}>{comments.length}</span>
+                )}{' '}
+                Comments
               </Link>
               {!auth.loading && user === auth.user._id && (
                 <button className="danger-button" onClick={(e) => deletePost(_id)} type="button">
