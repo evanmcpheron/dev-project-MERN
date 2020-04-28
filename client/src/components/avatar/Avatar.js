@@ -25,9 +25,19 @@ const Avatar = ({ profile, addAvatar }) => {
     <div className="avatar-upload">
       <header className="avatar-upload-header">
         {profile.avatar === null ? (
-          <img src={`${blankAvatar}`} className="avatar" />
+          <div className="avatar-container" style={{ height: '200px', width: '200px' }}>
+            <div
+              className="avatar-post avatar"
+              style={{ backgroundImage: `url(${blankAvatar})` }}
+            />
+          </div>
         ) : (
-          <img src={`/api/profile/avatar/${profile.avatar}`} className="avatar" />
+          <div className="avatar-container" style={{ height: '200px', width: '200px' }}>
+            <div
+              className="avatar-post avatar"
+              style={{ backgroundImage: `url(/api/profile/avatar/${profile.avatar})` }}
+            />
+          </div>
         )}
         <form action="#">
           <div className="flex">
