@@ -6,7 +6,7 @@ import background from '../../img/landing.jpg';
 
 const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
-    return <Redirect to="/tutorials" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (

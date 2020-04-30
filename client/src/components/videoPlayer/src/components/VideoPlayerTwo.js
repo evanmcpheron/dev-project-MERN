@@ -148,6 +148,9 @@ class VideoPlayerTwo extends Component {
                       {video.position - 1 == this.state.currentPosition ? (
                         <button
                           className="playlist-btn btn"
+                          style={{
+                            background: '#a9c54f',
+                          }}
                           value={video.url}
                           onClick={() =>
                             this.setState({
@@ -157,9 +160,9 @@ class VideoPlayerTwo extends Component {
                             })
                           }
                         >
-                          <h6>
+                          <p>
                             {video.position} {video.title}
-                          </h6>
+                          </p>
                         </button>
                       ) : (
                         <button
@@ -173,9 +176,9 @@ class VideoPlayerTwo extends Component {
                             })
                           }
                         >
-                          <h6>
+                          <p>
                             {video.position} {video.title}
-                          </h6>
+                          </p>
                         </button>
                       )}
                     </div>
@@ -255,11 +258,25 @@ class VideoPlayerTwo extends Component {
             <div className="playlist playlist-bottom">
               <section>
                 {this.state.visibility ? (
-                  <button className="btn" onClick={this.handleHideComments}>
+                  <button
+                    className="btn"
+                    style={{
+                      width: '100%',
+                      background: '#eeaa22',
+                    }}
+                    onClick={this.handleHideComments}
+                  >
                     Hide Comments
                   </button>
                 ) : (
-                  <button className="btn" onClick={this.handleHideComments}>
+                  <button
+                    className="btn"
+                    style={{
+                      width: '100%',
+                      background: '#eeaa22',
+                    }}
+                    onClick={this.handleHideComments}
+                  >
                     Show Comments
                   </button>
                 )}
@@ -301,6 +318,9 @@ class VideoPlayerTwo extends Component {
                           {video.position - 1 == this.state.currentPosition ? (
                             <button
                               className="playlist-btn btn"
+                              style={{
+                                background: '#a9c54f',
+                              }}
                               value={video.url}
                               onClick={() =>
                                 this.setState({
@@ -310,9 +330,9 @@ class VideoPlayerTwo extends Component {
                                 })
                               }
                             >
-                              <h6>
+                              <p>
                                 {video.position} {video.title}
-                              </h6>
+                              </p>
                             </button>
                           ) : (
                             <button
@@ -326,9 +346,9 @@ class VideoPlayerTwo extends Component {
                                 })
                               }
                             >
-                              <h6>
+                              <p>
                                 {video.position} {video.title}
-                              </h6>
+                              </p>
                             </button>
                           )}
                         </div>

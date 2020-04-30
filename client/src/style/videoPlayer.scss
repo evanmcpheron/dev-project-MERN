@@ -1,17 +1,17 @@
-.player-section {
-  display: grid;
-  grid-template-columns: 2.5fr 1fr;
-  grid-gap: 1rem;
-}
+// .player-section {
+//   display: grid;
+//   grid-template-columns: 2.5fr 1fr;
+//   grid-gap: 1rem;
+// }
 
-.playlist {
-  &-bottom {
-    margin-top: 3rem;
-    display: grid;
-    grid-template-columns: 2.5fr 1fr;
-  }
-}
-.player-wrapper {
-  position: relative;
-  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
-}
+// .playlist {
+//   &-bottom {
+//     margin-top: 3rem;
+//     display: grid;
+//     grid-template-columns: 2.5fr 1fr;
+//   }
+// }
+// .player-wrapper {
+//   position: relative;
+//   padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+// }

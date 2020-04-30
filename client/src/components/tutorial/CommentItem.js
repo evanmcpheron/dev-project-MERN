@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { deleteComment } from '../../actions/tutorial';
+import blankAvatar from '../../img/blank-avatar.jpg';
 
 const CommentItem = ({
   tutorialId,
@@ -13,27 +14,53 @@ const CommentItem = ({
   commentId,
   deleteComment,
 }) => (
-  <div className="playlist-comment-item">
-    <div class="avatar-link">
-      <Link to={`/profile/${user}`}>
-        <h6>{name}</h6>
-      </Link>
+  <div className="post-item">
+    <div className="avatar-post">
+      <div className="avatar-name-container">
+        <Link className="avatar-center" to={`/profile/${user}`}>
+          {avatar === null ? (
+            <div className="avatar-container">
+              <div
+                className="avatar-post avatar"
+                style={{ backgroundImage: `url(${blankAvatar})` }}
+              />
+            </div>
+          ) : (
+            <div className="avatar-container">
+              <div
+                className="avatar-post avatar"
+                style={{ backgroundImage: `url(/api/profile/avatar/${avatar})` }}
+              />
+            </div>
+          )}
+        </Link>
+      </div>
     </div>
-    <div className="bottom-comment">
-      <p>{text}</p>
-      <div className="btn-comment">
-        <p>
-          Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
+    <div className="post-text">
+      <p className="top-post-text">
+        <span>
+          <Link to={`/profile/${user}`}>
+            <p className="poster-name">{name}</p>
+          </Link>
+        </span>
+        {text}
+      </p>
+      <div className="bottom-post-text">
+        <p className="moment">
+          Posted on <span></span>
+          <Moment format="MM/DD/YYYY">{date}</Moment>
         </p>
-        {!auth.loading && user === auth.user._id && (
-          <button
-            className="btn btn-danger"
-            onClick={(e) => deleteComment(tutorialId, videoId, commentId)}
-            type="button"
-          >
-            <i className="fas fa-times" />
-          </button>
-        )}
+        <Fragment>
+          {!auth.loading && user === auth.user._id && (
+            <button
+              className="danger-button"
+              onClick={(e) => deleteComment(tutorialId, videoId, commentId)}
+              type="button"
+            >
+              <i className="fas fa-times"></i>
+            </button>
+          )}
+        </Fragment>
       </div>
     </div>
   </div>

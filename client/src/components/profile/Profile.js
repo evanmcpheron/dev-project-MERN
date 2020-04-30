@@ -29,7 +29,7 @@ const Profile = ({
 
   return (
     <Fragment>
-      {profile === null || loading ? (
+      {profile === null || loading || auth.user === undefined ? (
         <Spinner />
       ) : (
         <Fragment>

@@ -26,7 +26,7 @@ const Dashboard = ({
     getMyPosts(user._id);
   }, []);
 
-  return loading && profile === null ? (
+  return (loading && profile === null) || user === null ? (
     <Spinner />
   ) : (
     <Fragment>

@@ -24,6 +24,7 @@ const CommentForm = ({ tutorialId, videoId, addComment, auth: { isAuthenticated 
               name="text"
               cols="30"
               rows="5"
+              className="comment-textarea"
               placeholder="Create a post"
               value={text}
               onChange={(e) => setText(e.target.value)}
