@@ -18,7 +18,7 @@ const Education = ({ education, deleteEducation }) => {
 
   return (
     <Fragment>
-      <h2>Education</h2>
+      <h3>Education</h3>
       <div className="topGrid">
         <div className="middleGrid">
           <hr />

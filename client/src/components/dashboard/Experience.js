@@ -18,7 +18,7 @@ const Experience = ({ experience, deleteExperience }) => {
 
   return (
     <Fragment>
-      <h2>Experience </h2>
+      <h3>Experience </h3>
       <div className="topGrid">
         <div className="middleGrid">
           <hr />
@@ -35,54 +35,3 @@ Experience.propTypes = {
 };
 
 export default connect(null, { deleteExperience })(Experience);
-
-// import React, { Fragment } from 'react';
-// import { connect } from 'react-redux';
-// import Moment from 'react-moment';
-// import PropTypes from 'prop-types';
-// import { deleteExperience } from '../../actions/profile';
-
-// const Experience = ({ experience, deleteExperience }) => {
-//     const experiences = experience.map(exp => (
-//         <div key={exp._id}>
-//             <div>{exp.company}</div>
-//             <div>{exp.title}</div>
-//             <div>
-//                 <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{' '}
-//                 {exp.to === null ? (
-//                     ' Now'
-//                 ) : (
-//                     <Moment format="YYYY/MM/DD">{exp.to}</Moment>
-//                 )}
-//             </div>
-//             <div>
-//                 <button onClick={() => deleteExperience(exp._id)}>
-//                     Delete
-//                 </button>
-//             </div>
-//         </div>
-//     ));
-
-//     return (
-//         <Fragment>
-//             <h2>Experience Credentials</h2>
-//             <div>
-//                 <div>
-//                     <div>
-//                         <h3>Company</h3>
-//                         <h3>Title</h3>
-//                         <h3>Years</h3>
-//                     </div>
-//                 </div>
-//                 <tbody>{experiences}</tbody>
-//             </table>
-//         </Fragment>
-//     );
-// };
-
-// Experience.propTypes = {
-//     experience: PropTypes.array.isRequired,
-//     deleteExperience: PropTypes.func.isRequired
-// };
-
-// export default connect(null, { deleteExperience })(Experience);
