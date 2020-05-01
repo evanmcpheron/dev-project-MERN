@@ -19,7 +19,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         ) : (
           <Fragment>
             <h2>Developers</h2>
-            <p>Browse and connect with developers</p>
             <div className="profiles-wrapper">
               {profiles.length > 0 ? (
                 profiles.map((profile) => <ProfileItem key={profile._id} profile={profile} />)
