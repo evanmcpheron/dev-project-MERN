@@ -164,16 +164,7 @@
     }
   }
 }
-@media only screen and (max-width: 1200px) {
-  .profile-body-div {
-    margin-top: 0;
-    -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
-    .left-side-body {
-      border: none;
-    }
-  }
-}
+
 .avatar-post {
   width: 60px;
   height: 60px;
@@ -367,5 +358,18 @@
   grid-auto-flow: dense;
   ul li {
     padding: 0;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .profile-body-div {
+    margin-top: 0;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    .left-side-body {
+      border: none;
+    }
+  }
+  .profile-links {
+    top: 2rem !important;
   }
 }
