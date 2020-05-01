@@ -117,9 +117,20 @@ ul {
 label {
   margin-left: 10vw;
 }
-input,
-textarea,
-select {
+
+input[type='checkbox'] {
+  height: 2rem;
+  width: 2rem;
+  -webkit-appearance: checkbox;
+}
+
+input[type='select'],
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='date'],
+textarea {
   display: block;
   border: none;
   width: 100%;

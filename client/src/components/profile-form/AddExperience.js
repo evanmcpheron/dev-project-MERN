@@ -47,7 +47,7 @@ const AddExperience = ({ addExperience, history }) => {
               required
             />
           </div>
-          <div class="form-group">
+          <div class="form-group" style={{ margin: '1rem 0' }}>
             <input
               type="text"
               placeholder="* Company"
@@ -71,7 +71,7 @@ const AddExperience = ({ addExperience, history }) => {
             <input type="date" name="from" value={from} onChange={(e) => onChange(e)} />
           </div>
           <div class="form-group">
-            <p>
+            <p style={{ display: 'flex', alignItems: 'center' }}>
               <input
                 type="checkbox"
                 name="current"
@@ -91,6 +91,7 @@ const AddExperience = ({ addExperience, history }) => {
           <div class="form-group">
             <h4>To Date</h4>
             <input
+              style={{ marginBottom: '1rem' }}
               type="date"
               name="to"
               value={to}

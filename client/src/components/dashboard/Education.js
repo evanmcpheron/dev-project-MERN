@@ -9,8 +9,13 @@ const Education = ({ education, deleteEducation }) => {
     <div className="baseGrid" key={edu._id}>
       <p className=" flex">{edu.school}</p>
       <div className="danger-button1">
-        <button className="btn btn-danger my2" onClick={() => deleteEducation(edu._id)}>
-          Delete
+        <button
+          className="danger-button"
+          onClick={(e) => deleteEducation(edu._id)}
+          type="button"
+          style={{ marginRight: '1rem' }}
+        >
+          <i className="fas fa-times"></i>
         </button>
       </div>
     </div>

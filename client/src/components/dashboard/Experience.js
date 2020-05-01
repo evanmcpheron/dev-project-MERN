@@ -9,8 +9,13 @@ const Experience = ({ experience, deleteExperience }) => {
     <div className="baseGrid" key={exp._id}>
       <p className=" flex">{exp.company}</p>
       <div className="danger-button1">
-        <button className="btn btn-danger my2" onClick={() => deleteExperience(exp._id)}>
-          Delete
+        <button
+          className="danger-button"
+          onClick={(e) => deleteExperience(exp._id)}
+          type="button"
+          style={{ marginRight: '1rem' }}
+        >
+          <i className="fas fa-times"></i>
         </button>
       </div>
     </div>
