@@ -363,12 +363,8 @@
 .github-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  grid-template-rows: repeat(6, 200px);
   grid-gap: 1rem;
   grid-auto-flow: dense;
-  text-align: center;
-  //   display: flex;
-  //   justify-content: space-between;
   ul li {
     padding: 0;
   }

@@ -35,15 +35,17 @@ const Avatar = ({ profile, addAvatar }) => {
           <div className="avatar-container" style={{ height: '200px', width: '200px' }}>
             <div
               className="avatar-post avatar"
-              style={{ backgroundImage: `url(/api/profile/avatar/${profile.avatar})` }}
+              style={{
+                backgroundImage: `url(/api/profile/avatar/${profile.avatar})`,
+              }}
             />
+            <label htmlFor="file" className="btn-avatar-upload">
+              <i class="fas fa-camera"></i>
+            </label>
           </div>
         )}
         <form action="#">
           <div className="flex">
-            <label htmlFor="file" className="btn">
-              Change Profile Image
-            </label>
             <input
               type="file"
               className="custom-file-input"

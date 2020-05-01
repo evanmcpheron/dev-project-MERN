@@ -19,9 +19,11 @@ const Posts = ({ getPosts, getFollowingPost, auth, post: { posts, loading } }) =
       <section className="container">
         <h2>Posts</h2>
         <div>
-          {posts.map((post) => (
-            <PostItem showActions={true} key={post._id} post={post} />
-          ))}
+          {posts.length === 0 ? (
+            <p>Follow users to see their posts here.</p>
+          ) : (
+            posts.map((post) => <PostItem showActions={true} key={post._id} post={post} />)
+          )}
         </div>
       </section>
     </Fragment>

@@ -34,19 +34,23 @@ const Dashboard = ({
         <h1>Dashboard</h1>
         {profile !== null ? (
           <Fragment>
-            <Avatar profile={profile.user} />
-            <DashboardActions />
-            <Experience experience={profile.experience} />
-            <Education education={profile.education} />
-
-            <div>
-              {auth.isAuthenticated &&
-                auth.loading === false &&
-                auth.user._id === profile.user._id && <PostForm />}
-              {posts.map((post) => (
-                <PostItem showActions={true} key={post._id} post={post} />
-              ))}
+            <div className="grid-dashboard">
+              <div>
+                <Avatar profile={profile.user} />
+                <DashboardActions />
+                <Experience experience={profile.experience} />
+                <Education education={profile.education} />
+              </div>
+              <div>
+                {auth.isAuthenticated &&
+                  auth.loading === false &&
+                  auth.user._id === profile.user._id && <PostForm />}
+                {posts.map((post) => (
+                  <PostItem showActions={true} key={post._id} post={post} />
+                ))}
+              </div>
             </div>
+
             <div>
               <button className="btn btn-danger my2" onClick={() => deleteAccount()}>
                 <i className="fas fa-user"></i> Delete My Account
